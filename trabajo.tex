@@ -1,0 +1,168 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% University Assignment Title Page
+% LaTeX Template
+% Version 1.0 (27/12/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% WikiBooks (http://en.wikibooks.org/wiki/LaTeX/Title_Creation)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Instructions for using this template:
+% This title page is capable of being compiled as is. This is not useful for
+% including it in another document. To do this, you have two options:
+%
+% 1) Copy/paste everything between \begin{document} and \end{document}
+% starting at \begin{titlepage} and paste this into another LaTeX file where you
+% want your title page.
+% OR
+% 2) Remove everything outside the \begin{titlepage} and \end{titlepage} and
+% move this file to the same directory as the LaTeX file you wish to add it to.
+% Then add \input{./title_page_1.tex} to your LaTeX file where you want your
+% title page.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\title{Title page with logo}
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[12pt]{article}
+\usepackage[toc,page]{appendix}
+\usepackage[spanish]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{changepage}
+\usepackage[font=scriptsize]{caption}
+\usepackage[a4paper,bindingoffset=0.2in,left=1in,right=1in,top=1in,bottom=0.5in,footskip=.25in]{geometry}
+\usepackage{cleveref}
+\usepackage[hidelinks]{hyperref}
+\usepackage{eurosym}
+
+
+
+\setlength{\arrayrulewidth}{1mm}
+\setlength{\tabcolsep}{18pt}
+\renewcommand{\arraystretch}{1.5}
+
+
+\renewcommand{\labelitemii}{$\circ$}
+\pagestyle{fancy}
+\lhead{\textbf{Teoría del caos y fractales}}
+\chead{\leftmark}
+%\rhead{\includegraphics[width=2.8cm]{img/logo_memo}}
+\rhead{\textbf{CyC}}
+
+\renewcommand{\headrulewidth}{0.5pt}
+
+\begin{document}
+
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\center % Center everything on the page
+
+%----------------------------------------------------------------------------------------
+%	HEADING SECTIONS
+%----------------------------------------------------------------------------------------
+
+\textsc{\LARGE Universidad Autónoma de Madrid}\\[1.5cm] % Name of your university/college
+\textsc{\Large Complejidad y Computación}\\[0.5cm] % Major heading such as course name
+
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Teoría del caos y fractales}\\[0.4cm] % Title of your document
+\HRule \\[1cm]
+
+
+%----------------------------------------------------------------------------------------
+%	AUTHOR SECTION
+%----------------------------------------------------------------------------------------
+
+
+% If you don't want a supervisor, uncomment the two lines below and remove the section above
+\Large \emph{Autoress:}\\
+Alejandro \textsc{Villegas}\\ % Your name
+Elena \textsc{Gutiérrez}\\ % Your name
+Miguel Ángle \textsc{González-gallego} \\
+Pedro \textsc{Valero}\\[1cm] % Your name
+
+%----------------------------------------------------------------------------------------
+%	LOGO SECTION
+%----------------------------------------------------------------------------------------
+
+\includegraphics{img/Logo.jpg}\\ % Include a department/university logo - this will require the graphicx package
+
+%----------------------------------------------------------------------------------------
+%	DATE SECTION
+%----------------------------------------------------------------------------------------
+
+{\large \today}\\[1cm] % Date, change the \today to a set date if you want to be precise
+
+
+%----------------------------------------------------------------------------------------
+
+\vfill % Fill the rest of the page with whitespace
+
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+
+\section{Sistemas discretos}
+
+\subsection{Ecuaciones en diferencias.}
+\subsection{Procesos de Verhulst. Period doubling, bifurcaciones.}
+\subsection{Ecuación logística}
+\subsection{$x=x^2+c$. Julia sets. Mandelbrot set.}
+\subsection{Fractales/dimensión de Hausdorlf/dimensión fractal}
+\subsection{Polvo de Cantor}
+
+
+\section{Sistemas continuos}
+\subsection{Sistemas dinámicos deterministas, ecuaciones diferenciales}
+\subsection{Espacio de estados}
+\subsection{Oscilaciones}
+\subsection{Sistemas disipativos: atractores}
+\subsection{Flujos, compresibles o no}
+\subsection{Atractores extraños: caos}
+\subsection{Exponentes de lyapunov}
+\subsection{Ejemplos de sistemas}
+\subsection{Lorenz Volterra}
+
+\section{Aplicaciones}
+\subsection{Generación gráfica de conjuntos de Julia}
+\subsection{Ejemplos gráficos de explorar el conjunto de Mandelbrot}
+\subsection{Caos y criptografía}
+\subsection{Compresión fractal}
+\subsection{Antenas fractales}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%
+%%%%%%
+%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+
+\begin{thebibliography}{1}
+\bibitem{B1165 SPR}Dprott, J.C, Elegant Chaos
+\bibitem{C4260 PEI}Peitgen, H-O, Richter, P.H., The Beauty of Fractals.
+\bibitem{B1165 NEW}Hall, Nina, Guide to Chaos
+\bibitem{B0240 STR}Strogatz, S.H. Nonlinear Dynamics and Chaos,
+\bibitem{B1165 ALL}Alligood, K.T. et al, CHAOS: An introduction to dynamical systems
+\end{thebibliography}
+
+\end{document}
