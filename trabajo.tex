@@ -45,6 +45,15 @@
 \usepackage{cleveref}
 \usepackage[hidelinks]{hyperref}
 \usepackage{eurosym}
+\usepackage{MathUnicode}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{pdfsync}
+\usepackage{color,xspace,hyperref}
+\usepackage{changepage}
+\usepackage{float}
+\usepackage{caption}
 
 
 
@@ -59,6 +68,13 @@
 \chead{\leftmark}
 %\rhead{\includegraphics[width=2.8cm]{img/logo_memo}}
 \rhead{\textbf{CyC}}
+
+\newtheorem{theorem}{Teorema}
+\newtheorem{lemma}{Lema}
+\newtheorem{proposition}{Proposición}
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}
+\newtheorem{example}{Ejemplo}
 
 \renewcommand{\headrulewidth}{0.5pt}
 
@@ -83,7 +99,7 @@
 %----------------------------------------------------------------------------------------
 
 \HRule \\[0.4cm]
-{ \huge \bfseries Teoría del caos y fractales}\\[0.4cm] % Title of your document
+{ \huge \bfseries Teoría del Caos y fractales}\\[0.4cm] % Title of your document
 \HRule \\[1cm]
 
 
@@ -121,6 +137,30 @@ Pedro \textsc{Valero}\\[1cm] % Your name
 \tableofcontents
 \newpage
 
+\section{Introducción}
+Antes de comenzar a indagar en los fundamentos de la Teoría del Caos o en los fractales, debemos aclarar una serie de conceptos que aparecerán a lo largo de estos apuntes.
+
+\begin{definition}[Teoría del Caos]
+La teoría del Caos es la rama de las Matemáticas que estudia el comportamiento de sistemas dinámicos \textbf{deterministas} muy sensibles a los datos iniciales.
+\end{definition}
+
+Es importante destacar el hecho de que los sistemas han de ser deterministas pues, de lo contrario, estaríamos hablando de procesos aleatorios o impredecibles. La \textbf{idea clave} del concepto del Caos es que comprendemos el fenómeno y sabemos modelizarlo ``a la perfección'' pero el resultado futuro varía enormemente a partir de un pequeño cambio en los valores tomados del mundo real.
+
+\begin{example}
+A modo de ejemplo podemos suponer un fenomeno que venga modelizado por la ecuación:
+\[z_{n+1} = f(z_n) \text{ siendo } f(x) = x^2+1\]
+
+Para un $n=11$, que no parece ser algo demasiado grande, siendo $z$ un número complejo, supongamos que cometemos un error muy pequeño, de la forma: $ε=10^{-5}+10^{-5}i$ al medir $z_0$.
+
+En estas condiciones, la diferencia entre el valor obtenido y el original es
+\[f^{11}(ε)=1.4 \cdot 10^{181} + 1.13\cdot 10^{174}\]
+\end{example}
+
+También es fundamental aclarar, aunque algunos lectores pueden tener ya una idea intuitiva, qué es un fractal.
+
+\begin{definition}[Fractal]
+Un fractal es un objeto geométrico cuya estructura básica, fragmentada o irregular, se repite a diferentes escalas.
+\end{definition}
 
 \section{Sistemas discretos}
 Tiempo estimado de esta parte: 50 min\\
@@ -136,13 +176,24 @@ Referencia
 \subsection{Polvo de Cantor} No aparece en The Beauty of fractals (en algún otro libro de la bibliografía está).
 \subsection{Ecuaciones de Volterra}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Sistemas continuos}
-Tiempo estimado de esta parte: 70 min.\\
-Referencia
-\begin{itemize}
-\item CHAOS: An introduction to dynamical systems temas 7,8,9 y 11.
-\item Elegant Chaos
-\end{itemize}
+% Tiempo estimado de esta parte: 70 min.\\
+% Referencia
+% \begin{itemize}
+% \item CHAOS: An introduction to dynamical systems temas 7,8,9 y 11.
+% \item Elegant Chaos
+% \end{itemize}
+
 \subsection{Sistemas dinámicos deterministas, ecuaciones diferenciales}
 \subsection{Espacio de estados/fases}
 \subsection{Oscilaciones}
@@ -156,6 +207,16 @@ Hay que incluir algo.
 Para los ejemplos: Non linear dynamic and chaos.
 \subsection{Lorenz Volterra}
 Ecuaciones en Non linear dynamic and chaos.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Aplicaciones}
 Tiempo estimado de esta parte: 30 min.\\
