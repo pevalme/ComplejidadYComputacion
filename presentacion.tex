@@ -76,6 +76,8 @@
 %\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
 }
 
+\usepackage[spanish]{babel} % Para que aparezcan en español los términos "theorem", "lemma" o "proof"
+\usepackage[utf8x]{inputenc} % Para poder añadir tildes
 \usepackage{graphicx} % Allows including images
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
 
@@ -83,14 +85,14 @@
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
 
-\title[Short title]{Full Title of the Talk} % The short title appears at the bottom of every slide, the full title is only on the title page
+\title[Short title]{Fractales y teoría del caos} % The short title appears at the bottom of every slide, the full title is only on the title page
 
-\author{John Smith} % Your name
+\author{Miguel Ángel González-Gallego \and Elena Gutiérrez \and Pedro Valero \and Alejando Villegas} % Your name
 \institute[UCLA] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
 {
-University of California \\ % Your institution for the title page
+Universidad Autónoma de Madrid\\ % Your institution for the title page
 \medskip
-\textit{john@smith.com} % Your email address
+\textit{Complejidad y Computación}
 }
 \date{\today} % Date, can be changed to a custom date
 
@@ -100,10 +102,47 @@ University of California \\ % Your institution for the title page
 \titlepage % Print the title page as the first slide
 \end{frame}
 
+\section{Sistemas discretos}
+
+\subsection{Ecuaciones en diferencias.}
+\subsection{Procesos de Verhulst. Period doubling, bifurcaciones.}
+\subsection{Ecuación logística}
+\subsection{$x=x^2+c$. Julia sets. Mandelbrot set.}
+\subsection{Fractales/dimensión de Hausdorlf/dimensión fractal}
+\subsection{Polvo de Cantor}
+
+
+\section{Sistemas continuos}
+\subsection{Sistemas dinámicos deterministas, ecuaciones diferenciales}
+\subsection{Espacio de estados}
+\subsection{Oscilaciones}
+\subsection{Sistemas disipativos: atractores}
+\subsection{Flujos, compresibles o no}
+\subsection{Atractores extraños: caos}
+\subsection{Exponentes de lyapunov}
+\subsection{Ejemplos de sistemas}
+\subsection{Lorenz Volterra}
+
+\section{Aplicaciones}
+\subsection{Generación gráfica de conjuntos de Julia}
+\subsection{Ejemplos gráficos de explorar el conjunto de Mandelbrot}
+\subsection{Caos y criptografía}
+\subsection{Compresión fractal}
+\subsection{Antenas fractales}
+
+\begin{frame}
+Las transparencias que vienen a continuación son las que aparecen por defecto con el paquete que estamos usando. Las dejamos hasta el último momento ya que ahí se pueden ver muchos ejemplos de cómo hacer diferentes cosas.
+
+El índice no se ve bien ahora mismo. Pasemos de eso, cuando tengamos esto terminado y veamos cuántas secciones y subsecciones hemos utilizado nos peleamos con cómo mostrar el índice.
+\end{frame}
+
+
+
 \begin{frame}
 \frametitle{Overview} % Table of contents slide, comment this block out to remove it
 \tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
 \end{frame}
+
 
 %----------------------------------------------------------------------------------------
 %	PRESENTATION SLIDES
