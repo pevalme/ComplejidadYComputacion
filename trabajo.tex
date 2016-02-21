@@ -46,7 +46,6 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{eurosym}
 \usepackage{MathUnicode}
-\usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{pdfsync}
@@ -154,6 +153,8 @@ Para un $n=11$, que no parece ser algo demasiado grande, siendo $z$ un número c
 
 En estas condiciones, la diferencia entre el valor obtenido y el original es
 \[f^{11}(ε)=1.4 \cdot 10^{181} + 1.13\cdot 10^{174}\]
+
+Este ejemplo será estudiado con más detalle al hablar de los conjuntos de Mandelbrot
 \end{example}
 
 También es fundamental aclarar, aunque algunos lectores pueden tener ya una idea intuitiva, qué es un fractal.
@@ -168,7 +169,44 @@ Referencia
 \begin{itemize}
 \item The Beauty of fractals temas 1,2,3,4 y 8.
 \end{itemize}
+
+\begin{definition}[Sistema dinámico]\label{def:sistemaDinamico}
+Un sistema dinámico es un sistema cuyo estado evoluciona con el tiempo. Los sistemas físicos en situación no estacionaria son ejemplos de sistemas dinámicos, pero también existen modelos económicos, matemáticos y de otros tipos que son sistemas abstractos que son sistemas dinámicos.
+
+Según las variables que intervienen en el sistema sean \textbf{discretas} (sólo tomen una serie de valores posibles) o \textbf{continuas} (pueden tomar cualquier valor dentro de un intervalo), así lo será el sistema.
+\end{definition}
+
+Un sistema dinámico se define como \textbf{determinista} si existe una ecuación que nos permite conocer \textbf{teóricamente} la evolución del sistema con total precisión.
+
+
 \subsection{Ecuaciones en diferencias.}
+% Pedro: Esta no es mi parte pero he escrito esto y al final me he dado cuenta de que se corresponde con sistemas discretos, no continuos. Así que lo pongo por aquí.
+
+\begin{definition}[Ecuación en diferencias]
+Una ecuación en diferencias es una expresión del tipo:
+\[G(n,f(n),f(n+1),...,f(n+k))=0, \ \forall n \in \mathbb{Z}\]
+donde $f$ es una función definida en $\mathbb{Z}$.
+\end{definition}
+
+\begin{example}
+La ecuación en diferencias de primer orden:
+\[X_{t+1} = F(X_t)\]
+constituye un ejemplo de sistema dinámico determinista, siendo $F(x)$ una función conocida.
+\end{example}
+
+
+% Todo lo que viene a continuación viene de http://ltcconline.net/greenl/courses/204/firstOrder/differenceEquations.htm
+
+A simple vista puede parecer que el ejemplo mencionado no es una ecuación en diferencias, puesto que no se aprecia ninguna derivada en la ecuación. No obstante, podemos escribir:
+\[X'(t)=g(X(t)) \implies \lim_{h\to 0} \frac{X(t+h)-X(t)}{h}\]
+
+Puesto que los valores posibles de $t$ y $h$ son enteros, lo más pequeño que puede ser $h$ sin llegar a ser $0$ es $h=1$ con lo que tenemos:
+\[g(X(t))=X'(t)=X(t+h)-X(t)=ΔX(t) \implies X(t+h) = X(t) +ΔX(t) \implies \atop F(X(t)) = X(t) + ΔX(t)\]
+
+Por tanto, encontrar la función $X(t)$ que resuelve el sistema planteado en el ejemplo es equivalente a resolver la ecuación:
+\[X(t+1)=X(t)+ΔX(t)\]
+que, claramente, es una ecuación en diferencias.
+
 \subsection{Procesos de Verhulst. Period doubling, bifurcaciones.}
 \subsection{Ecuación logística}
 \subsection{$x=x^2+c$. Julia sets. Mandelbrot set.}
@@ -195,7 +233,76 @@ Referencia
 % \end{itemize}
 
 \subsection{Sistemas dinámicos deterministas, ecuaciones diferenciales}
+
+Los sistemas dinámicos continuos deterministas \ref{def:sistemaDinamico} vienen modelizados por ecuaciones diferenciales.
+
+\begin{definition}
+Una ecuación diferencial es una fórmula matemática que relaciona una función con sus derivadas.
+\end{definition}
+
+\textcolor{red}{No se si poner este ejemplo es demasiado. Creo que si queremos hablar de ecuaciones diferenciales debemos explicar qué son y cómo se usan. No veo mal si decidimos quitarlo por completo. Es un copy and paste xd}
+
+\begin{example}[Curva de persecución]
+Supongamos que una liebre que se encuentra inicialmente en el origen de coordenadas comienza a huir, con velocidad $V_L$ y en el sentido positivo del eje de ordenadas, de un perro que inicialmente tiene la posición $(0,D)$ y que comienza a perseguirle con velocidad $V_P$.
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.4\textwidth]{img/perro-liebre.png}
+\end{figure}
+
+Llamaremos $Q$ a la posición de la liebre en cada instante y $Q^\prime:(x,y(x))$ a la posición del perro.
+
+Observamos que el perro, al perseguir a la liebre, siempre lo hace mirándole, por tanto, en cada instante, la recta tangente a la curva que describe el perro al perseguir a la liebre pasa por $Q$ y por $Q^\prime$.
+
+Como dato adicional tenemos que la distancia recorrida por la liebre es $V_Lt$ y la distancia recorrida por el perro es $V_Pt$, por tanto, en cada instante, la liebre está en la posición $(0, V_Lt)$.
+
+Tenemos pues:
+
+\begin{itemize}
+\item Vector tangente: $(1, y^\prime(x))$
+\item Recta tangente: $(x,y) + \lambda(1, y^\prime(x))$
+\item Como sabemos que la recta tangente pasa por $Q$ cuando $\lambda = -x$ (porque $Q$ está en el eje de ordenadas y ha de tener la primera coordenada igual a cero) tenemos que \\$Q=(0, y-xy^\prime(x))$ y además que $Q=(0, V_Lt)$ por tanto $V_Lt = xy^\prime(x)$
+\item La distancia recorrida por el perro es $V_Pt =\int_x^D{\sqrt{1+(y^\prime(s))^2ds}}$
+\item Despejando $t$ de ambas ecuaciones e igualando términos tenemos que $\frac{V_P}{V_L}(y-xy^\prime(x))=\int_x^D{\sqrt{1+(y^\prime(s))^2ds}}$
+\item Derivando ambos términos y utilizando el cambio $p=y^\prime$ llegamos a $\frac{V_p}{V_L}xp^\prime=\sqrt{1+p^2}$
+\item Integrando: $\sqrt{1+p^2}+p = e^{C_1}x^\frac{V_L}{V_T}$
+\item Despejando de esta ecuación obtenemos $p$ y por tanto $y^\prime$, habrá que calcular la constante de integración y volver a integrar y a calcular la nueva constante de integración para obtener $y$, por lo que necesitaremos dos datos adicionales para efectuar este cálculo:$$y(D)=0$$ $$y^\prime(D)=0$$
+\end{itemize}
+La expresión que se obtiene depende de las velocidades $V_L$ y $V_P$. Vamos a simplificar el problema suponiendo $D=1$. Tenemos tres casos distintos:
+\begin{itemize}
+\item \textbf{Caso 1:} $V_L=V_P$\\
+En este caso se tiene $y^\prime(x) = \frac{1}{2}(x-\frac{1}{x})$ de donde obtenemos $y(x) = \frac{1}{2}(\frac{x^2}{2}-ln(x))+C_2$ y utilizando el dato $y(1) = 0$ podemos hallar $C_2=\frac{-1}{4}$.\\Tenemos como solución $y(x) = \frac{x^2}{4}-\frac{1}{2}ln(x)-\frac{1}{4}$.\\ Una vez obtenida la expresión, podemos hallar la distancia entre la liebre y el perro, que dependerá de la posición del perro: $d=\sqrt{x^2+x^2(y^\prime(x))^2}$.\\ Como el perro va describiendo una curva y la liebre una recta vemos que el perro se va acercando poco a poco a la liebre. Sin embargo, cuando $x\longrightarrow 0^+$ vemos que la curva que describe el perro ``se parece'' cada vez más a una recta y por tanto en el infinito la distancia de separación se mantendrá constante.\\
+Tenemos pues que $$\lim_{x\to 0^+} d = \frac{1}{2}$$
+\item \textbf{Caso 2:} $V_L < V_P$\\
+Tenemos la expresión $$y=\frac{1}{2}(\frac{x^{\frac{V_L}{V_P}+1}}{\frac{V_L}{V_P}+1}-\frac{x^{1-\frac{V_L}{V_P}}}{1-\frac{V_L}{V_P}})+C_3$$
+En esta ocasión tenemos que el perro alcanza a la liebre. Sabiendo que $y(1) = 0$ podemos calcular la constante $C_3$ y el valor de $y(0)$ es el punto de captura.
+\item \textbf{Caso 3} $V_L > V_P$\\
+En este caso el perro no llega a alcanzar nunca a la liebre, que es más rápida. Al igual que hemos calculado la distancia de separación en el caso 1 y el punto de captura en el caso 2, en este caso lo interesante será calcular la tasa de separación entre la liebre y el perro.
+\end{itemize}
+\end{example}
+
 \subsection{Espacio de estados/fases}
+
+Un concepto muy útil a la hora de trabajar con ecuaciones diferenciales son los \textbf{diagramas de fases}.
+
+Tomemos la ecuación diferencial
+\[y(x)'=f(y(x))\]
+donde la función $f$ viene dada por la siguiente gráfica
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.8\textwidth]{img/propiedades-autonomas.png}
+\end{figure}
+
+Podemos observar que si nos situamos ``a la izquierda de $a$'' o ``entre $b$ y $c$'' la función $y$ es decreciente. Del mismo modo, si nos situamos ``entre $a$ y $b$'' o ``a la derecha de $c$'' la función será creciente mientras que en los puntos $a, b$ y $c$ la función ni crece ni decrece. Esta información queda recogida en el siguiente diagrama de fases:
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.8\textwidth]{img/diagrama-fases.png}
+\end{figure}
+
+En este caso diremos que $a$ y $c$ son puntos \textbf{inestables} pues una pequeña perturbación hará que nos alejemos de ellos. Igualmente, diremos que $b$ es un punto \textbf{estable} porque una pequeña perturbación hará que volvamos de nuevo a desplazarnos hacia $b$.
+
 \subsection{Oscilaciones}
 \subsection{Sistemas disipativos: atractores}
 \subsection{Flujos, compresibles o no}
