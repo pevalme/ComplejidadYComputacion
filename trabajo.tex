@@ -236,10 +236,94 @@ que, claramente, es una ecuación en diferencias.
 
 Los sistemas dinámicos continuos deterministas \ref{def:sistemaDinamico} vienen modelizados por ecuaciones diferenciales.
 
+En lugar de expresar el estado actual en función de un estado anterior, las ecuaciones diferenciales tratan de expresar la \emph{tasa de cambio} del estado actual en función del estado actual. La tasa de cambio de una cierta función es su \emph{derivada}. Tenemos la siguiente definicón general de ecuación diferencial.
+
 \begin{definition}
 Una ecuación diferencial es una fórmula matemática que relaciona una función con sus derivadas.
 \end{definition}
 
+\begin{example}\label{ex:calor}
+Un ejemplo de este tipo de dependencia es la \emph{Ley del calor de Newton}. Si consideramos $x$ como la diferencia de temperatura entre el objecto caliente y la temperatura ambiente del aire que lo rodea, la tasa de cambio de esta diferencia de temperatura es inversamente proporcional a la diferencia de temperatura. En términos de ecuaciones diferenciales, diremos:
+\begin{equation}
+x' = ax~~~con~~ a<0
+\end{equation}
+
+La solución de esta ecuación viene dada por:
+\begin{equation}
+x(t) = c x(0)e^{at}
+\end{equation}
+
+Esto quiere decir que, la diferencia de temperatura $x$ decrece exponencialmente con el tiempo $t$. Se trata de una ecuación  de \emph{primer orden}, puesto que el \emph{orden} de la derivada más alto que aparece es el de la \emph{primera} derivada, y \emph{lineal} porque la relación entre las funciones $x'$ y $x$ en la ecuación es \emph{lineal}.
+\end{example}
+
+En el siguiente ejemplo, veremos un caso de ecuación diferencial \emph{de segundo orden} \emph{no lineal}.
+
+\begin{example}
+En este caso estudiaremos el movimiento de un péndulo \emph{bob}, el movimiento de un péndulo que tiene en su extrem un peso y que cuelga de un soporte que limita su movimiento a lo largo de un círculo. La aceleración que experimenta este péndulo es tangente a la dirección dle movimiento y proporcional a la componente de la fuerza gravitatoria sobre la dirección tangencial. Si representamos con $x$ la posición angular (eso es la razón entre la longitud del arco que forma el péndulo con la vertical y la longitud del péndulo), entonces la relación entre su derivada segunda y ésta viene dada por:
+\begin{equation}
+x'' = -sinx
+\end{equation}
+
+Esta ecuación es una de las más importantes en ciencia y se trata de una ecuación de \emph{segundo orden}, puesto que el \emph{orden} de la derivada más alto que aparece es el de la \emph{segunda} derivada, y \emph \emph{no lineal}, porque la relación entre las funciones $x''$ y $x$ en la ecuación es \emph{no lineal}.
+\end{example}
+
+
+En ambos ejemplos, buscamos soluciones de la forma $x(t)$ donde $t$ denota el tiempo y $x(t)$, por tanto, una cierta magnitud física que varía en función del tiempo: en el primer ejemplo, la diferencia de temperatura; en el segundo ejemplo, la posición angular. Es por eso que, consideramos que $x$ es una variable \emph{dependiente}. Si la variable \emph{independiente} $t$ no aparece explicítamente en la ecuación, como es el caso en los dos ejemplos anteriores, hablaremos de ecuaciones diferenciales \emph{autónomas}. Si $t$ aparece explícitamente en la ecuación como es el caso de la ecuación del \emph{péndulo amortiguado} (el columpio):
+\begin{equation}
+x'' = -cx'-sinx+\rho~sint
+\end{equation}
+entonces hablaremos de ecuaciones diferenciales \emph{no autónomas}.
+
+Recapitulando las nociones vistas hasta ahora tendríamos la siguiente clasificación de las ecuaciones diferenciales:
+
+\begin{itemize}
+\item Según el orden de las derivadas que aparezcan en la expresión:
+	\begin{itemize}
+	\item Primer orden
+	\item Segundo orden
+	\item ...
+	\end{itemize}
+\item Según la relación entre la función $x$ y sus derivadas
+	\begin{itemize}
+	\item Lineales
+	\item No lineales
+	\end{itemize}
+\item Según si aparece explicítamente la variable $t$ en la ecuación
+	\begin{itemize}
+	\item Autónomas
+	\item No autónomas
+	\end{itemize}
+\end{itemize}
+
+Si recuperamos el ejemplo \ref{ex:calor}, teníamos que las soluciones eran de la forma:
+\begin{equation}
+x(t) = c x(0)e^{at}
+\end{equation}
+ La $c$ es una constante en $\mathbb{R}$. Esto quiere decir que, la ecuación diferencial planteada en \ref{ex:calor} tiene \emph{infinitas} soluciones, a menos que especifiquemos un \emph{valor inicial} de la $x$. Al hacer esto estaremos \emph{seleccionando} una de las soluciones dentro de la familia de soluciones (GRAFICA FAMILIA DE SOLUCIONES p.276). En nuestro caso, podemos establecer:
+
+\begin{equation}
+x(0) = x_0
+\end{equation}
+
+y por tanto, la solución particular de nuestro problema sería:
+
+\begin{equation}
+x(t) = x_0e^{at}.
+\end{equation}
+
+En general, a los problemas experesados en forma de ecuación diferencial más dato inicial, los denominaremos \emph{problemas de valor inicial}.
+
+A seguir con:
+
+\begin{itemize}
+\item Hablar de ls GRAFICA FAMILIA DE SOLUCIONES DE E. NO LINEALES (p.279)
+\item Concepto de solución de equilibrio
+\item Concepto de trayectorias/puntos atractores
+\item Concepto de trayectorias/puntos ?repelentes?
+\item Concepto de existencia, unicidad y dependencia continua (que no es lo mismo que dependencia ?sensitiva?)
+\item Ejemplos de ecuaciones de dimension>1 y sus soluciones.
+\item Sistemas no lineales y pérdida de la posibilidad de resolver explicitamente (hay más pegas, ver cuáles).
+\end{itemize}
 \textcolor{red}{No se si poner este ejemplo es demasiado. Creo que si queremos hablar de ecuaciones diferenciales debemos explicar qué son y cómo se usan. No veo mal si decidimos quitarlo por completo. Es un copy and paste xd}
 
 \begin{example}[Curva de persecución]
