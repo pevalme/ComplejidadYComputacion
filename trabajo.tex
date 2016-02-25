@@ -144,31 +144,36 @@ Pedro \textsc{Valero}\\[1cm] % Your name
 Antes de comenzar a indagar en los fundamentos de la Teoría del Caos o en los fractales, debemos aclarar una serie de conceptos que aparecerán a lo largo de estos apuntes.
 
 \begin{definition}[Sistema dinámico]\label{def:sistemaDinamico}
-Un sistema dinámico es un sistema cuyo estado evoluciona con el tiempo. Los sistemas físicos en situación no estacionaria son ejemplos de sistemas dinámicos, pero también existen modelos económicos, matemáticos y de otros tipos que son sistemas abstractos que son sistemas dinámicos.
-
-Según las variables que intervienen en el sistema sean \textbf{discretas} (sólo tomen una serie de valores posibles) o \textbf{continuas} (pueden tomar cualquier valor dentro de un intervalo), así lo será el sistema.
+Un sistema dinámico es un sistema que consiste en un conjunto de estados, junto con una regla que determina el estado \emph{actual} en términos de los estados \emph{anteriores}.
 \end{definition}
 
-Un sistema dinámico se define como \textbf{determinista} si existe una ecuación que nos permite conocer \emph{teóricamente} la evolución del sistema con total precisión.
+Los sistemas físicos en situación no estacionaria (es decir, los que varían con el tiempo) son ejemplos de sistemas dinámicos. También existen modelos económicos, matemáticos y de otros tipos que son sistemas abstractos y a la vez, son sistemas dinámicos.
+
+Según las variables que intervienen en el sistema sean \textbf{discretas} (sólo tomen una serie de valores posibles) o \textbf{continuas} (pueden tomar cualquier valor dentro de un intervalo), así lo será el sistema.
+
+Cuando definamos un sistema dinámico, exigiremos que la regla que lo rige sea determinista, es decir, una regla que nos permite conocer \emph{teóricamente} la evolución del sistema con total precisión. En particular, diremos que un sistema es \textbf{determinista} si es posible determinar su estado actual (p.e. la población de una cierta especie) \emph{solamente} a partir de los estados anteriores.
+
+Es importante destacar el hecho de que los sistemas han de ser deterministas pues, de lo contrario, estaríamos hablando de procesos aleatorios, y por tanto, impredecibles. La \emph{idea clave} del concepto del Caos es que comprendemos el fenómeno y sabemos modelizarlo ``a la perfección'' pero el resultado futuro varía enormemente a partir de un pequeño cambio en los valores tomados del mundo real.
+
 
 \begin{definition}[Teoría del Caos]
 La teoría del Caos es la rama de las Matemáticas que estudia el comportamiento de sistemas dinámicos \emph{deterministas} muy sensibles a los datos iniciales.
 \end{definition}
 
-Es importante destacar el hecho de que los sistemas han de ser deterministas pues, de lo contrario, estaríamos hablando de procesos aleatorios o impredecibles. La \emph{idea clave} del concepto del Caos es que comprendemos el fenómeno y sabemos modelizarlo ``a la perfección'' pero el resultado futuro varía enormemente a partir de un pequeño cambio en los valores tomados del mundo real.
+
 
 \begin{example}
 A modo de ejemplo podemos suponer un fenomeno que venga modelizado por la ecuación:
 \[z_{n+1} = f(z_n) \text{ siendo } f(x) = x^2+1\]
 
-Puesto que conocemos la ecuación que modela el fenómeno, queda claro que no encontramos ante un sistema dinámico determinista, pues para todo valor de $n$ podemos calcular $z_{n+1}$.
+Puesto que conocemos la ecuación que modela el fenómeno, queda claro que nos encontramos ante un sistema dinámico determinista, pues para todo valor de $n$ podemos calcular $z_{n+1}$.
 
 Para un $n=11$, que no parece ser algo demasiado grande, siendo $z$ un número complejo, supongamos que cometemos un error muy pequeño, de la forma: $ε=10^{-5}+10^{-5}i$ al medir $z_0$.
 
 En estas condiciones, la diferencia entre el valor obtenido y el original es
 \[f^{11}(ε)=1.4 \cdot 10^{181} + 1.13\cdot 10^{174}\]
 
-Este ejemplo será estudiado con más detalle al hablar de los conjuntos de Mandelbrot
+Este ejemplo será estudiado con más detalle al hablar de los conjuntos de Mandelbrot.
 \end{example}
 
 También es fundamental aclarar, aunque algunos lectores pueden tener ya una idea intuitiva, qué es un fractal.
