@@ -360,23 +360,12 @@ y por tanto, la solución particular de nuestro problema sería:
 x(t) = x_0e^{at}.
 \end{equation}
 
-En general, a los problemas experesados en forma de ecuación diferencial más dato inicial, los denominaremos \textbf{problemas de valor inicial}.
-
-A seguir con:
-
-\begin{itemize}
-\item Hablar de ls GRAFICA FAMILIA DE SOLUCIONES DE E. NO LINEALES (p.279)
-\item Concepto de solución de equilibrio
-\item Concepto de trayectorias/puntos atractores
-\item Concepto de trayectorias/puntos ?repelentes?
-\item Concepto de existencia, unicidad y dependencia continua (que no es lo mismo que dependencia ?sensitiva?)
-\item Ejemplos de ecuaciones de dimension>1 y sus soluciones.
-\item Sistemas no lineales y pérdida de la posibilidad de resolver explicitamente (hay más pegas, ver cuáles).
-\end{itemize}
+En general, a los problemas experesados en forma de ecuación diferencial más dato inicial, los denominaremos \textbf{problemas de valor inicial}.\newline
+Es el momento de introducir el concepto de \emph{espacio de fases}, que nos permitirá estudiar el comportamiento cualitativo de nuestras soluciones, e incluso, será la idea a la que nos aferremos para obtener las soluciones en casos más complicados.
 
 \subsection{Espacio de estados/fases}
 
-Un concepto muy útil a la hora de trabajar con ecuaciones diferenciales son los \textbf{diagramas de fases}.
+Un concepto muy útil a la hora de trabajar con ecuaciones diferenciales son los \textbf{diagramas de fases}, pues nos permite conocer de manera inequívoca el estado de nuestra sistema en cualquier tiempo futuro.
 
 Tomemos la ecuación diferencial
 \[y(x)'=f(y(x))\]
@@ -417,6 +406,47 @@ Por tanto, si tomamos por error $\tilde{x}_0 = x_0 + ε$, estamos cometiendo un 
 \[x(t)-\tilde{x}(t) = x_0\cdot e^{t} - \tilde{x}_0\cdot e^{t} = e^{t}\cdot ε\]
 al evaluar la función. Puesto que tenemos una exponencial el error cometido se dispara.
 \end{example}
+
+\subsection{Sistemas de ecuaciones no lineales}
+Hasta ahora la tarea ha sido relativamente sencilla, sin embargo, no podemos decir lo mismo cuando estudiamos sistemas dinámicos \emph{no lineales}. La mayoría de los sistemas no lineales de ecuaciones diferenciales no pueden ser resueltos de manera explícita, es decir, las soluciones a dicho sistema no se pueden obtener mediante cálculo. Usaremos métodos geométricos que nos revelarán propiedades cualtitativas de las soluciones: Para qué valores del dato inicial las soluciones son crecientes? Para qué valores son decrecientes?,...
+
+Utilícemos un ejemplo para ilustrar los conceptos siguientes: Supongamos que trabajamos con un modelo para estudiar la evolución de una cierta población. Es común, en este caso, utilizar la función \emph{logística} de la población:
+
+\begin{equation}
+x'(t) = a\cdot x(t)(1-\frac{x(t)}{K})~~~~con~~a>0~~yK>0
+\end{equation}
+A esta ecuación la llamamos \emph{ecuación diferencial logística}. En ese caso, $x(t)$ mide la población de una cierta especie. Llamamos $K$ al valor de la población \emph{limitante}, aquel a partir del cual la población deja de crecer y, de hecho decrece, por sobrepoblación.
+
+Este tipo de comportamiento solo puede ser modelado mediante una ecuación no lineal. Ahora nos preguntamos: Es posible predecir para qué valores iniciales la población crecerá? Y para que valores sólo decrecerá?
+
+En la siguiente gráfica observamos las soluciones de la ecuación diferencial logística:\newline
+
+GRAFICA SOLUCIONES.\newline
+
+Con lo que hemos visto sobre puntos estables e inestables, le resultará sencillo al lector detectar que en $x=1$ tenemos un punto estable, mientras que en $x=0$, tenemos un punto inestable. Decimos que ambas soluciones $x(t) = 0$ y $x(t) = 1$ son \textbf{soluciones de equilibrio}. 
+
+Ahora podemos resolver las preguntas planteadas anteriormente. La población crecerá siempre la población sea positiva y estrictamente menor que $K$. Mientras que decrecerá siempre que sea superior a $K$. Por otro lado, las soluciones que corresponden con valores negativos de la población y que \emph{explotan} (se van a infinito) en tiempo finito, afortunadamente, pueden descartarse pues no tienen sentido físico.\newline
+
+OPCIONALMENTE, PODEMOS MOSTRAR EL DIAGRAMA DE FASES DE ESTA ECUACION.\newline
+
+Para poder resolver sistemas de ecuaciones a partir de sus gráficas, nos basamos en los siguientes 3 conceptos importantes:
+
+\begin{itemize}
+\item \textbf{Existencia de solución} Para cada punto $(t,x)$ de la gráfica existe una  solución $x(t)$ que pasa por ese punto. La pendiente de dicha solución viene dada por la ecuación diferencial en ese punto.
+\item \textbf{Unicidad de la solución} Para cada punto $(t,x)$ de la gráfica únicamente pasa una solución.
+\item \textbf{Dependencia continua} Dada una cierta solucion $x(t)$ para un cierta condición inicial, las soluciones próximas en un cierto entorno del dato inicial permanecen próximas a lo largo de intervalos cortos de tiempo. 
+\end{itemize}
+
+El concepto de dependencia continua no debe ser confundido con el de \emph{dependencia sensible}. 
+\begin{itemize}
+\item Hablar de ls GRAFICA FAMILIA DE SOLUCIONES DE E. NO LINEALES (p.279)
+\item Concepto de solución de equilibrio
+\item Concepto de trayectorias/puntos atractores
+\item Concepto de trayectorias/puntos ?repelentes?
+\item Concepto de existencia, unicidad y dependencia continua (que no es lo mismo que dependencia ?sensitiva?)
+\item Ejemplos de ecuaciones de dimension>1 y sus soluciones.
+\item Sistemas no lineales y pérdida de la posibilidad de resolver explicitamente (hay más pegas, ver cuáles).
+\end{itemize}
 
 \subsection{Oscilaciones}
 
