@@ -35,6 +35,7 @@
 \usepackage[toc,page]{appendix}
 \usepackage[spanish]{babel}
 \usepackage[utf8x]{inputenc}
+\usepackage{pgfplots}
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{fancyhdr}
@@ -53,6 +54,8 @@
 \usepackage{changepage}
 \usepackage{float}
 \usepackage{caption}
+\usepackage{titlesec}
+\newcommand{\sectionbreak}{\clearpage}
 
 
 \setlength{\arrayrulewidth}{1mm}
@@ -68,12 +71,12 @@
 %\rhead{\includegraphics[width=2.8cm]{img/logo_memo}}
 %\rhead{\textbf{CyC}}
 
-\newtheorem{theorem}{Teorema}
-\newtheorem{lemma}{Lema}
-\newtheorem{proposition}{Proposición}
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{lemma}{Lema}[section]
+\newtheorem{proposition}{Proposición}[section]
 \theoremstyle{definition}
-\newtheorem{definition}{Definición}
-\newtheorem{example}{Ejemplo}
+\newtheorem{definition}{Definición}[section]
+\newtheorem{example}{Ejemplo}[section]
 
 \renewcommand{\headrulewidth}{0.5pt}
 
@@ -140,15 +143,25 @@ Pedro \textsc{Valero}\\[1cm] % Your name
 \section{Introducción}
 Antes de comenzar a indagar en los fundamentos de la Teoría del Caos o en los fractales, debemos aclarar una serie de conceptos que aparecerán a lo largo de estos apuntes.
 
-\begin{definition}[Teoría del Caos]
-La teoría del Caos es la rama de las Matemáticas que estudia el comportamiento de sistemas dinámicos \textbf{deterministas} muy sensibles a los datos iniciales.
+\begin{definition}[Sistema dinámico]\label{def:sistemaDinamico}
+Un sistema dinámico es un sistema cuyo estado evoluciona con el tiempo. Los sistemas físicos en situación no estacionaria son ejemplos de sistemas dinámicos, pero también existen modelos económicos, matemáticos y de otros tipos que son sistemas abstractos que son sistemas dinámicos.
+
+Según las variables que intervienen en el sistema sean \textbf{discretas} (sólo tomen una serie de valores posibles) o \textbf{continuas} (pueden tomar cualquier valor dentro de un intervalo), así lo será el sistema.
 \end{definition}
 
-Es importante destacar el hecho de que los sistemas han de ser deterministas pues, de lo contrario, estaríamos hablando de procesos aleatorios o impredecibles. La \textbf{idea clave} del concepto del Caos es que comprendemos el fenómeno y sabemos modelizarlo ``a la perfección'' pero el resultado futuro varía enormemente a partir de un pequeño cambio en los valores tomados del mundo real.
+Un sistema dinámico se define como \textbf{determinista} si existe una ecuación que nos permite conocer \emph{teóricamente} la evolución del sistema con total precisión.
+
+\begin{definition}[Teoría del Caos]
+La teoría del Caos es la rama de las Matemáticas que estudia el comportamiento de sistemas dinámicos \emph{deterministas} muy sensibles a los datos iniciales.
+\end{definition}
+
+Es importante destacar el hecho de que los sistemas han de ser deterministas pues, de lo contrario, estaríamos hablando de procesos aleatorios o impredecibles. La \emph{idea clave} del concepto del Caos es que comprendemos el fenómeno y sabemos modelizarlo ``a la perfección'' pero el resultado futuro varía enormemente a partir de un pequeño cambio en los valores tomados del mundo real.
 
 \begin{example}
 A modo de ejemplo podemos suponer un fenomeno que venga modelizado por la ecuación:
 \[z_{n+1} = f(z_n) \text{ siendo } f(x) = x^2+1\]
+
+Puesto que conocemos la ecuación que modela el fenómeno, queda claro que no encontramos ante un sistema dinámico determinista, pues para todo valor de $n$ podemos calcular $z_{n+1}$.
 
 Para un $n=11$, que no parece ser algo demasiado grande, siendo $z$ un número complejo, supongamos que cometemos un error muy pequeño, de la forma: $ε=10^{-5}+10^{-5}i$ al medir $z_0$.
 
@@ -170,14 +183,6 @@ Referencia
 \begin{itemize}
 \item The Beauty of fractals temas 1,2,3,4 y 8.
 \end{itemize}
-
-\begin{definition}[Sistema dinámico]\label{def:sistemaDinamico}
-Un sistema dinámico es un sistema cuyo estado evoluciona con el tiempo. Los sistemas físicos en situación no estacionaria son ejemplos de sistemas dinámicos, pero también existen modelos económicos, matemáticos y de otros tipos que son sistemas abstractos que son sistemas dinámicos.
-
-Según las variables que intervienen en el sistema sean \textbf{discretas} (sólo tomen una serie de valores posibles) o \textbf{continuas} (pueden tomar cualquier valor dentro de un intervalo), así lo será el sistema.
-\end{definition}
-
-Un sistema dinámico se define como \textbf{determinista} si existe una ecuación que nos permite conocer \textbf{teóricamente} la evolución del sistema con total precisión.
 
 
 \subsection{Ecuaciones en diferencias.}
@@ -246,34 +251,39 @@ Una ecuación diferencial es una fórmula matemática que relaciona una función
 \begin{example}[Ecuación del calor]\label{ex:calor}
 Un ejemplo de este tipo de dependencia es la \emph{Ley del calor de Newton}. Si consideramos $x$ como la diferencia de temperatura entre el objecto caliente y la temperatura ambiente del aire que lo rodea, la tasa de cambio de esta diferencia de temperatura es inversamente proporcional a la diferencia de temperatura. En términos de ecuaciones diferenciales, diremos:
 \begin{equation}
-x' = ax~~~con~~ a<0
+x'(t) = ax(t)~~~con~~ a<0
 \end{equation}
 
 La solución de esta ecuación viene dada por:
 \begin{equation}
-x(t) = c x(0)e^{at}
+x(t) = c\cdot e^{at}
 \end{equation}
 
-Esto quiere decir que, la diferencia de temperatura $x$ decrece exponencialmente con el tiempo $t$. Se trata de una ecuación  de \emph{primer orden}, puesto que el \emph{orden} de la derivada más alto que aparece es el de la \emph{primera} derivada, y \emph{lineal} porque la relación entre las funciones $x'$ y $x$ en la ecuación es \emph{lineal}.
+Esto quiere decir que la diferencia de temperatura $x(t)$ decrece exponencialmente con el tiempo $t$. Se trata de una ecuación  de \emph{primer orden}, puesto que el \emph{orden} de la derivada más alto que aparece es el de la \emph{primera} derivada, y \emph{lineal} porque la relación entre las funciones $x'(t)$ y $x(t)$ en la ecuación es \emph{lineal}.
 \end{example}
 
 En el siguiente ejemplo, veremos un caso de ecuación diferencial \emph{de segundo orden} \emph{no lineal}.
 
 \begin{example}[Péndulo]
-En este caso estudiaremos el movimiento de un péndulo \emph{bob}, el movimiento de un péndulo que tiene en su extrem un peso y que cuelga de un soporte que limita su movimiento a lo largo de un círculo. La aceleración que experimenta este péndulo es tangente a la dirección dle movimiento y proporcional a la componente de la fuerza gravitatoria sobre la dirección tangencial. Si representamos con $x$ la posición angular (eso es la razón entre la longitud del arco que forma el péndulo con la vertical y la longitud del péndulo), entonces la relación entre su derivada segunda y ésta viene dada por:
+En este caso estudiaremos el movimiento de un péndulo \emph{bob}, el movimiento de un péndulo que tiene en su extrem un peso y que cuelga de un soporte que limita su movimiento a lo largo de un círculo. La aceleración que experimenta este péndulo es tangente a la dirección del movimiento y proporcional a la componente de la fuerza gravitatoria sobre la dirección tangencial. Si representamos con $x(t)$ la posición angular (es decir, la razón entre la longitud del arco que forma el péndulo con la vertical y la longitud del péndulo), entonces la relación entre su derivada segunda y ésta viene dada por:
 \begin{equation}
-x'' = -sinx
+x''(t) = -\sin x(t)
 \end{equation}
 
-Esta ecuación es una de las más importantes en ciencia y se trata de una ecuación de \emph{segundo orden}, puesto que el \emph{orden} de la derivada más alto que aparece es el de la \emph{segunda} derivada, y \emph \emph{no lineal}, porque la relación entre las funciones $x''$ y $x$ en la ecuación es \emph{no lineal}.
+Esta ecuación es una de las más importantes en ciencia y se trata de una ecuación de \emph{segundo orden}, puesto que el \emph{orden} de la derivada más alto que aparece es el de la \emph{segunda} derivada, y \emph \emph{no lineal}, porque la relación entre las funciones $x''(t)$ y $x(t)$ en la ecuación es \emph{no lineal}.
 \end{example}
 
 
-En ambos ejemplos, buscamos soluciones de la forma $x(t)$ donde $t$ denota el tiempo y $x(t)$, por tanto, una cierta magnitud física que varía en función del tiempo: en el primer ejemplo, la diferencia de temperatura; en el segundo ejemplo, la posición angular. Es por eso que, consideramos que $x$ es una variable \emph{dependiente}. Si la variable \emph{independiente} $t$ no aparece explicítamente en la ecuación, como es el caso en los dos ejemplos anteriores, hablaremos de ecuaciones diferenciales \emph{autónomas}. Si $t$ aparece explícitamente en la ecuación como es el caso de la ecuación del \emph{péndulo amortiguado} (el columpio):
+En ambos ejemplos, buscamos soluciones de la forma $x(t)$ donde $t$ denota el tiempo y $x(t)$, por tanto, una cierta magnitud física que varía en función del tiempo: en el primer ejemplo, la diferencia de temperatura; en el segundo ejemplo, la posición angular. Es por eso que consideramos que $x(t)$ es una variable \emph{dependiente}.
+
+
+\begin{definition}[Ecuación diferencial autónomas]
+Si la variable \emph{independiente} $t$ no aparece explicítamente en la ecuación, como es el caso en los dos ejemplos anteriores, hablaremos de ecuaciones diferenciales \textbf{autónomas}. Si $t$ aparece explícitamente en la ecuación como es el caso de la ecuación del \emph{péndulo amortiguado} (el columpio):
 \begin{equation}
-x'' = -cx'-sinx+\rho~sint
+x''(t) = -cx'(t)-\sin x(t)+\rho~\sin t
 \end{equation}
-entonces hablaremos de ecuaciones diferenciales \emph{no autónomas}.
+entonces hablaremos de ecuaciones diferenciales \textbf{no autónomas}.
+\end{definition}
 
 Recapitulando las nociones vistas hasta ahora tendríamos la siguiente clasificación de las ecuaciones diferenciales:
 
@@ -298,9 +308,42 @@ Recapitulando las nociones vistas hasta ahora tendríamos la siguiente clasifica
 
 Si recuperamos el ejemplo \ref{ex:calor}, teníamos que las soluciones eran de la forma:
 \begin{equation}
-x(t) = c x(0)e^{at}
+x(t) = c \cdot e^{at}
 \end{equation}
- La $c$ es una constante en $\mathbb{R}$. Esto quiere decir que, la ecuación diferencial planteada en \ref{ex:calor} tiene \emph{infinitas} soluciones, a menos que especifiquemos un \emph{valor inicial} de la $x$. Al hacer esto estaremos \emph{seleccionando} una de las soluciones dentro de la familia de soluciones (GRAFICA FAMILIA DE SOLUCIONES p.276). En nuestro caso, podemos establecer:
+
+La $c$ es una constante en $\mathbb{R}$, cuyo valor dependerá del punto inicial que tomemos, es decir, la ecuación diferencial planteada en \ref{ex:calor} tiene \emph{infinitas} soluciones, a menos que especifiquemos un \emph{valor inicial} $x(0)$.
+
+En el momento en que definimos un valor inicial $x(0)=x_0$ tenemos:
+\[x(0)=c\cdot e^0=c \implies c=x_0 \implies x(t) = x(0)\cdot e^{at}\]
+
+Así, estamos \emph{seleccionando} una de las soluciones dentro de la familia de soluciones.
+
+
+% No se que aparece en la pagina que decías, pero yo me dibujo aquí la familia de funciones que creo que hay que poner xd
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[xmin=-1, xmax=1, samples=50, cycle list name=color list]
+  \addplot (x,-7*e^x);
+  \addplot (x,-6*e^x);
+  \addplot (x,-5*e^x);
+  \addplot (x,-3*e^x);
+  \addplot (x,4*e^x);
+  \addplot (x,-3*e^x);
+  \addplot (x,-2*e^x);
+  \addplot (x,-1*e^x);
+  \addplot (x,e^x);
+  \addplot (x,2*e^x);
+  \addplot (x,3*e^x);
+  \addplot (x,4*e^x);
+  \addplot (x,5*e^x);
+  \addplot (x,6*e^x);
+  \addplot (x,7*e^x);
+\end{axis}
+\end{tikzpicture}
+\captionof{figure}{Familia de funciones de la forma $x(t)=x(0)e^t$}
+\end{center}
+
+En nuestro caso, podemos establecer:
 
 \begin{equation}
 x(0) = x_0
@@ -312,7 +355,7 @@ y por tanto, la solución particular de nuestro problema sería:
 x(t) = x_0e^{at}.
 \end{equation}
 
-En general, a los problemas experesados en forma de ecuación diferencial más dato inicial, los denominaremos \emph{problemas de valor inicial}.
+En general, a los problemas experesados en forma de ecuación diferencial más dato inicial, los denominaremos \textbf{problemas de valor inicial}.
 
 A seguir con:
 
@@ -348,7 +391,42 @@ Podemos observar que si nos situamos ``a la izquierda de $a$'' o ``entre $b$ y $
 
 En este caso diremos que $a$ y $c$ son puntos \textbf{inestables} pues una pequeña perturbación hará que nos alejemos de ellos. Igualmente, diremos que $b$ es un punto \textbf{estable} porque una pequeña perturbación hará que volvamos de nuevo a desplazarnos hacia $b$.
 
+\begin{example}
+Retomamos el ejemplo \ref{ex:calor} considerando un valor $a=-1$. Ya vimos que la solución a la EDO era:
+\[x(t) = x(0)\cdot e^{-t}\]
+
+En esta ocasión, estudiando el signo de la derivada $x'(t)=ax(t)$ vemos que la la pendiente sólo se anula en $x(t)=0$ y que una vez que la función $x(t)$ toma un valor positivo empieza a decrecer del mismo modo que crece al encontrar un valor negativo. Por tanto tenemos un punto estable en $x(t)=0$. Esto provoca que un pequeño error en la aproximación del dato inicial, cuanto tomamos $t$ grande, no nos aleje mucho del valor real.
+
+Es decir, si tomamos por error $\tilde{x}_0 = x_0 + ε$, estamos cometiendo un error ε en la medida del dato inicial, lo que nos lleva a un error:
+\[x(t)-\tilde{x}(t) = x_0\cdot e^{-t} - \tilde{x}_0\cdot e^{-t} = e^{-t}\cdot ε\]
+al evaluar la función. Puesto que tenemos una exponencial en el denominador, por mucho error ε que hayamos cometido, al final, este será ``despreciable''.
+\end{example}
+
+\begin{example}
+Repitamos el mismo ejemplo con $a=1$. En este caso tendremos:
+\[x(t) = x(0)\cdot e^{t}\]
+
+Imitando el ejemplo anterior es trivial comprobar que no hay ningún punto estable.
+
+Por tanto, si tomamos por error $\tilde{x}_0 = x_0 + ε$, estamos cometiendo un error ε en la medida del dato inicial, lo que nos lleva a un error:
+\[x(t)-\tilde{x}(t) = x_0\cdot e^{t} - \tilde{x}_0\cdot e^{t} = e^{t}\cdot ε\]
+al evaluar la función. Puesto que tenemos una exponencial el error cometido se dispara.
+\end{example}
+
 \subsection{Oscilaciones}
+
+\begin{definition}[Ecuación diferencial oscilante]
+Decimos que una ecuación diferencial es oscilante cuando tiene infinitos puntos críticos. Un ejemplo de ecuación de este tipo es
+\[x''(t)+x(t)=0\]
+de la que $x(t)=\sin(t)$ es una solución.
+\end{definition}
+
+Con este tipo de ecuaciones nos encontramos con que hay numerosos puntos de estabilidad.
+
+Sabemos que un pequeño error respecto al dato inicial, si este era el único punto estable, no era un problema puesto que la solución se acababa aproximando bastante a la estabilidad.
+
+No obstante, si tenemos varios puntos de estabilidad la duda que nos surge es, ¿De qué solución real no se distancia mucho el valor que calculemos?
+
 \subsection{Sistemas disipativos: atractores}
 \subsection{Flujos, compresibles o no}
 \subsection{Atractores extraños: caos}
