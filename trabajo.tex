@@ -160,9 +160,7 @@ Es importante destacar el hecho de que los sistemas han de ser deterministas pue
 La teoría del Caos es la rama de las Matemáticas que estudia el comportamiento de sistemas dinámicos \emph{deterministas} muy sensibles a los datos iniciales.
 \end{definition}
 
-
-
-\begin{example}
+\begin{example}\label{example:Julia}
 A modo de ejemplo podemos suponer un fenomeno que venga modelizado por la ecuación:
 \[z_{n+1} = f(z_n) \text{ siendo } f(x) = x^2+1\]
 
@@ -183,15 +181,15 @@ Un fractal es un objeto geométrico cuya estructura básica, fragmentada o irreg
 \end{definition}
 
 \section{Sistemas discretos}
-Tiempo estimado de esta parte: 50 min\\
-Referencia
-\begin{itemize}
-\item The Beauty of fractals temas 1,2,3,4 y 8.
-\end{itemize}
+\begin{definition}[Sistemas discretos]
+Los sistemas dinámicos discretos son aquellos que sólo pueden tomar una serie de valores posibles.
 
+Un reloj digital sería un sistema dinámico discreto mientras que un reloj analógico sería un sistema dinámico continuo.
+\end{definition}
+
+Para \emph{modelizar} los sistemas dinámicos discretos empleamos las ecuaciones en diferencias.
 
 \subsection{Ecuaciones en diferencias.}
-% Pedro: Esta no es mi parte pero he escrito esto y al final me he dado cuenta de que se corresponde con sistemas discretos, no continuos. Así que lo pongo por aquí.
 
 \begin{definition}[Ecuación en diferencias]
 Una ecuación en diferencias es una expresión del tipo:
@@ -205,7 +203,6 @@ La ecuación en diferencias de primer orden:
 constituye un ejemplo de sistema dinámico determinista, siendo $F(x)$ una función conocida.
 \end{example}
 
-
 % Todo lo que viene a continuación viene de http://ltcconline.net/greenl/courses/204/firstOrder/differenceEquations.htm
 
 A simple vista puede parecer que el ejemplo mencionado no es una ecuación en diferencias, puesto que no se aprecia ninguna derivada en la ecuación. No obstante, podemos escribir:
@@ -218,9 +215,88 @@ Por tanto, encontrar la función $X(t)$ que resuelve el sistema planteado en el 
 \[X(t+1)=X(t)+ΔX(t)\]
 que, claramente, es una ecuación en diferencias.
 
+
 \subsection{Procesos de Verhulst. Period doubling, bifurcaciones.}
 \subsection{Ecuación logística}
 \subsection{$x=x^2+c$. Julia sets. Mandelbrot set.}
+
+\subsubsection{Repaso de números complejos}
+Antes de comenzar a hablar de los fractales de Julia y Mandelbrot se hace necesario dar una pequeña referencia sobre los números complejos. Básicamente podemos definir un número complejo como una expresión de la forma:
+\[z=a +bi\]
+Donde a y b son numeros reales, e i es la raiz cuadrada de -1.
+
+Los números complejos se representan en un plano: \textbf{el plano complejo}, de manera que cada número complejo tiene asociado un punto del plano y viceversa. Es en esta identificación entre puntos del plano y números complejos en lo que se basa la representación de los fractales.
+
+\subsubsection{Conjunto de Julia}
+\begin{definition}[Conjunto de Julia]
+Los \textbf{conjuntos de Julia}, así llamados por el matemático Gaston Julia, son una familia de conjuntos fractales que se obtienen al estudiar el comportamiento de los números complejos al ser iterados por una función.
+
+Son conjuntos de Julia, por ejemplo, los formados por la familia cuadrática definida por la ecuación de recurrencia vista en el ejemplo \ref{example:Julia}:
+\begin{equation}\label{eq:Julia}
+z_{n+1} = z_n^2+c \text{ siendo } c \text{ un número complejo}
+\end{equation}
+\end{definition}
+
+Para explicar los conjuntos de Julia nos basaremos en el ejemplo que acabamos de comentar, aunque puede realizarse una construcción equivalente con muchas otras funciones.
+
+El conjunto de Julia que se obtiene a partir de esta función se denota \textbf{J$_c$}. Para construirlo, partiendo de un punto cualquiera $z_0$, aplicamos la ecuación \ref{eq:Julia} de manera iterativa obteniendo una serie de puntos del plano:
+\[\begin{array}{l}
+z_0=z_0\\
+z_1=z_0^2+c \\
+z_2 = z_1^2 + c \\
+\vdots \\
+z_{n+1} = z_n^2+c
+\end{array}\]
+
+Si esta sucesión queda acotada, entonces se dice que $z$ pertenece al conjunto de Julia de parámetro $c$, denotado por $J_c$; de lo contrario, si la sucesión tiende al infinito, $z$ queda excluido de éste.
+
+Debido a la enorme cantidad de cálculos que se necesitaban para obtener la gráfica correspondiente, se tuvo que esperar hasta los años ochenta para poder representar estos conjuntos.
+
+Algunos ejemplos de conjuntos de Julia aplicando diferentes valores de $c$ a la ecuación anterior están representados en la figura \ref{fig:Julia}
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.8\textwidth]{img/Julia_sets.png}
+\caption{Ejemplos de conjuntos de Julia}
+\end{figure}
+
+Puede demostrarse que si $|z_n| > 2$ entonces la sucesión diverge y el punto $z_0$ no pertenece al conjunto de Julia. Por lo tanto, basta encontrar un sólo término en la sucesión que verifique esta desigualdad para tener la certeza de que $z_0$ no está en el conjunto.
+
+\subsubsection{Conjunto de Mandelbrot}
+\begin{definition}
+El conjunto de Mandelbrot es el más conocido de los conjuntos fractales y el más estudiado. Se conoce así en honor al matemático Benoît Mandelbrot (1924-2010), que investigó sobre él en los años setenta.
+
+Mandelbrot modifica el proceso iterativo de Julia haciendo variable el punto $c$ y fijando el punto $z_0=0$. El conjunto de Mandelbrot es el conjunto de números complejos $c$ para los cuales la sucesión de puntos obtenida por el método iterativo:
+\[\begin{array}{l}
+z_0=z_0\\
+z_1=z_0^2+c \\
+z_2 = z_1^2 + c \\
+\vdots \\
+z_{n+1} = z_n^2+c
+\end{array}\]
+no tiende a infinito, es decir, está acotada.
+\end{definition}
+
+La figura \ref{fig:Mandelbrot} muestra la representación del conjunto de Mandelbrot obtenida si asignamos el color negro a los puntos $c$ que dan lugar a sucesiones acotadas y otros colores a los demás puntos, según lo rápido que tiendan al infinito.
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.8\textwidth]{img/Mandelbrot_set.png}
+\label{fig:Mandelbrot}
+\caption{Conjunto de Mandelbrot}
+\end{figure}
+
+Si la constante $c$ fuera la misma para todos los puntos del dibujo y no dependiera de la posición, obtendríamos los llamados \emph{Conjuntos de Julia}. Hay uno diferente para cada punto del plano complejo. Estos conjuntos están completamente relacionados con el \emph{Conjunto de Mandelbrot}. Para cada punto de éste se puede decir que hay un conjunto de Julia. La figura \ref{fig:Mandelbrot-Julia} ilustra esta relación:
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.8\textwidth]{img/Mandelbrot-Julia.png}
+\label{fig:Mandelbrot}
+\caption{Conjuntos de Julia asociados a cada punto del conjunto de Mandelbrot}
+\end{figure}
+
+Queda claro pues que los conjuntos de Mandelbrot y Julia están estrechamente relacionados. El conjunto de Mandelbrot itera $z=z^2+c$ comenzando con $z = 0$ y variando el valor de $c$.El de Julia, por su parte, itera esa misma función, pero con valores fijos para $c$ y variando los de $z$. Cada punto $c$ en el conjunto de Mandelbrot especifica la estructura geométrica del conjunto de Julia correspondiente. Si $c$ está en el conjunto de Mandelbrot, entonces el de Julia será conectado (cerrado). De lo contrario, el conjunto de Julia será sólo una colección de puntos desconectados, trazados sobre una gráfica.
+
 \subsection{Fractales/dimensión de Hausdorlf/dimensión fractal}
 \subsection{Polvo de Cantor} No aparece en The Beauty of fractals (en algún otro libro de la bibliografía está).
 \subsection{Ecuaciones de Volterra}
@@ -423,7 +499,7 @@ En la siguiente gráfica observamos las soluciones de la ecuación diferencial l
 
 GRÁFICA SOLUCIONES.\newline
 
-Con lo que hemos visto sobre puntos estables e inestables, le resultará sencillo al lector detectar que en $x=1$ tenemos un punto estable, mientras que en $x=0$, tenemos un punto inestable. Decimos que ambas soluciones $x(t) = 0$ y $x(t) = 1$ son \textbf{soluciones de equilibrio}. 
+Con lo que hemos visto sobre puntos estables e inestables, le resultará sencillo al lector detectar que en $x=1$ tenemos un punto estable, mientras que en $x=0$, tenemos un punto inestable. Decimos que ambas soluciones $x(t) = 0$ y $x(t) = 1$ son \textbf{soluciones de equilibrio}.
 
 Ahora podemos resolver las preguntas planteadas anteriormente. La población crecerá siempre la población sea positiva y estrictamente menor que $K$. Mientras que decrecerá siempre que sea superior a $K$. Por otro lado, las soluciones que corresponden con valores negativos de la población y que \emph{explotan} (se van a infinito) en tiempo finito, afortunadamente, pueden descartarse pues no tienen sentido físico.\newline
 
@@ -434,7 +510,7 @@ Para poder resolver sistemas de ecuaciones a partir de sus gráficas, nos basamo
 \begin{itemize}
 \item \textbf{Existencia de solución} Para cada punto $(t,x)$ de la gráfica existe una  solución $x(t)$ que pasa por ese punto. La pendiente de dicha solución viene dada por la ecuación diferencial en ese punto.
 \item \textbf{Unicidad de la solución} Para cada punto $(t,x)$ de la gráfica únicamente pasa una solución.
-\item \textbf{Dependencia continua} Dada una cierta solucion $x(t)$ para un cierta condición inicial, las soluciones próximas en un cierto entorno del dato inicial permanecen próximas a lo largo de intervalos cortos de tiempo. 
+\item \textbf{Dependencia continua} Dada una cierta solucion $x(t)$ para un cierta condición inicial, las soluciones próximas en un cierto entorno del dato inicial permanecen próximas a lo largo de intervalos cortos de tiempo.
 \end{itemize}
 
 El concepto de dependencia continua no debe ser confundido con el de dependencia \emph{sensible} de las condiciones iniciales, también conocido como \textbf{efecto mariposa}. Éste hace refencia a la propiedad de ciertos sistemas dinámicos no lineales en los que una pequeña variación en los datos iniciales resulta en grandes variaciones en estados futuros tras un largo período de tiempo. Esta es la característica más importante de los \textbf{sistemas caóticos}.
@@ -484,7 +560,46 @@ Referencia
 \subsection{Ejemplos gráficos de explorar el conjunto de Mandelbrot}
 \subsection{Caos y criptografía}
 \subsection{Compresión fractal}
+La compresión fractal es una tecnología bastante controvertida, con detractores y admiradores. La idea básica detrás de la compresión fractal de imágenes, es expresar la imagen como un sistema de funciones iteradas (IFS). La imagen puede mostrarse rápidamente, y un zoom proporciona infinitos niveles de detalles fractales (sintéticos).
+
+El problema es cómo generar eficientemente la imagen IFS.
+
+Hay cuatro características de la tecnología IFS que es necesario conocer para entender su situación actual:
+\begin{itemize}
+\item Es un método de compresión que pierde un poco de información (como JPG).
+\item La resolución al agrandar es poderosa, pero no una forma de comprimir 100:1.
+\item La compresión es lenta, la descompresión es rápida.
+\item La tecnología está patentada.
+\end{itemize}
+
+Dado que los fractales matemáticos servían para generar imágenes que se veían naturales, se pensó que también podría servir en el sentido opuesto: para comprimirlas.
+
+La idea es tomar una imagen y llevarla a un sistema de funciones iterado, que podría generar el original. No obstante este problema aun no se ha resuelto.
+
+Fue Barnsley, quien en 1988 anunció al mundo que \textbf{si} lo había resuelto, patentando la tecnología. El problema fue que tomaba alrededor de 100 horas para codificar una imagen, y alrededor de 30 minutos para decodificarla, con una persona guiando el proceso. El resultado era una compresión 10.000:1. Poco después con uno de sus alumnos de doctorado, desarrolló un sistema para representar imágenes llamado \textbf{Sistema de Funciones Iteradas Particionado (PIFS)}. Se trataba de un algoritmo que comprimía automáticamente la imagen en un \emph{Sistema de Funciones Iterado Particionado}. El algoritmo no era sofisticado, ni rápido, pero si automático. El costo fue que una imagen codificado con colores de 24-bit podía ser comprimida de 8:1 a 50:1, lo cual aún es bastante bueno.
+
+Todos los programas actuales de compresión de imágenes fractales (que no son muchos) se basan es este algoritmo. La empresa ``Iterated Systems", vende el único compresor/decompresor comercial, llamado ``Images Incorporated". También hay varios programas de académicos disponibles gratuitamente en Internet.
+
+Actualmente la técnica de compresión fractal no supera el estándar de compresión de imágenes JPEG ni el JPEG2000.
+
 \subsection{Antenas fractales}
+
+En la pasada década, los científicos han comenzado a aplicar los fractales a un tema algo \emph{oscuro}: el diseño de las antenas.
+
+Las antenas parecen ser simples, pero la teoría que tienen detrás, basadas en las ecuaciones de Maxwell del electromagnetismo, son impenetrables. Como resultado, los ingenieros de antenas tienen que usar el método de prueba y error. Incluso los mejores y más tecnológicos receptores dependen habitualmente de un hilo que no es mejor que el que usó Marconi para la radio hace cien años.
+
+Los fractales ayudan de dos formas. Primero, pueden mejorar el funcionamiento de los conjuntos de antenas. Muchas antenas parecen estar compuestas de una unidad independiente, incluyendo la mayoría de antenas de radar, pero en realidad están compuestas de formaciones de cientos de pequeñas antenas. Tradicionalmente, estas antenas individuales se colocan de forma aleatoria o de forma ordenada pero Dwight Jaggard, de la Universidad de Pensilvana, junto con otras personas, han descubierto que una colocación en forma de fractal puede combinar la robustez de una colocación aleatoria con la eficiencia de una ordenación coherente, con una reducción significativa del número de elementos necesarios.
+
+``Los fractales son el puente que llena los hueco", comenta Jaggard, ``tienen un desorden a corto alcance y un orden a largo alcance". Incluso las antenas independientes se benefician de tener una forma fractal. Nathan Cohen, un radio astrónomo de la Universidad de Boston, ha experimentado con los cables fractales, conocidos como curvas Koch o triángulos de Sierpinski. No sólo se puede meter la misma longitud de antena en una sexta parte del área, sino que las formas angulares generan capacidades eléctricas y conductividad, eliminando el inconveniente de que los componentes externos sintonicen la antena entre el rango de frecuencias a las que responden.
+
+El por qué las antenas fractales funcionen tan bien fue probado matemáticamente por Cohen y Robert Hohlfeld, quienes establecieron que una buena antena fractal debe satisfacer dos condiciones
+\begin{enumerate}
+\item Tiene que ser simétrica con respecto a un punto
+\item Tiene que ser similar a sí misma (es decir, tener el mismo aspecto básico en cada escala), para poder ser fractal.
+\end{enumerate}
+
+Posiblemente, en un futuro cercano, estas antenas fractales tendrán un uso masivo en el nuevo \textbf{Sistema de Identificación por Radiofrecuencia} que sustituirá a los códigos de barras habituales.
+
 \subsection{Aeronáutica y fluidos}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
