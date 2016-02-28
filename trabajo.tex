@@ -232,9 +232,11 @@ Los números complejos se representan en un plano: \textbf{el plano complejo}, d
 Los \textbf{conjuntos de Julia}, así llamados por el matemático Gaston Julia, son una familia de conjuntos fractales que se obtienen al estudiar el comportamiento de los números complejos al ser iterados por una función.
 
 Son conjuntos de Julia, por ejemplo, los formados por la familia cuadrática definida por la ecuación de recurrencia vista en el ejemplo \ref{example:Julia}:
-\begin{equation}\label{eq:Julia}
+
+\begin{equation}
 z_{n+1} = z_n^2+c \text{ siendo } c \text{ un número complejo}
-\end{equation}
+\end{equation}\label{eq:Julia}
+
 \end{definition}
 
 Para explicar los conjuntos de Julia nos basaremos en el ejemplo que acabamos de comentar, aunque puede realizarse una construcción equivalente con muchas otras funciones.
@@ -258,6 +260,7 @@ Algunos ejemplos de conjuntos de Julia aplicando diferentes valores de $c$ a la 
 \centering
 \includegraphics[width = 0.8\textwidth]{img/Julia_sets.png}
 \caption{Ejemplos de conjuntos de Julia}
+\label{fig:Julia}
 \end{figure}
 
 Puede demostrarse que si $|z_n| > 2$ entonces la sucesión diverge y el punto $z_0$ no pertenece al conjunto de Julia. Por lo tanto, basta encontrar un sólo término en la sucesión que verifique esta desigualdad para tener la certeza de que $z_0$ no está en el conjunto.
@@ -282,8 +285,8 @@ La figura \ref{fig:Mandelbrot} muestra la representación del conjunto de Mandel
 \begin{figure}[hbtp]
 \centering
 \includegraphics[width = 0.8\textwidth]{img/Mandelbrot_set.png}
-\label{fig:Mandelbrot}
 \caption{Conjunto de Mandelbrot}
+\label{fig:Mandelbrot}
 \end{figure}
 
 Si la constante $c$ fuera la misma para todos los puntos del dibujo y no dependiera de la posición, obtendríamos los llamados \emph{Conjuntos de Julia}. Hay uno diferente para cada punto del plano complejo. Estos conjuntos están completamente relacionados con el \emph{Conjunto de Mandelbrot}. Para cada punto de éste se puede decir que hay un conjunto de Julia. La figura \ref{fig:Mandelbrot-Julia} ilustra esta relación:
@@ -291,11 +294,11 @@ Si la constante $c$ fuera la misma para todos los puntos del dibujo y no dependi
 \begin{figure}[hbtp]
 \centering
 \includegraphics[width = 0.8\textwidth]{img/Mandelbrot-Julia.png}
-\label{fig:Mandelbrot}
 \caption{Conjuntos de Julia asociados a cada punto del conjunto de Mandelbrot}
+\label{fig:Mandelbrot-Julia}
 \end{figure}
 
-Queda claro pues que los conjuntos de Mandelbrot y Julia están estrechamente relacionados. El conjunto de Mandelbrot itera $z=z^2+c$ comenzando con $z = 0$ y variando el valor de $c$.El de Julia, por su parte, itera esa misma función, pero con valores fijos para $c$ y variando los de $z$. Cada punto $c$ en el conjunto de Mandelbrot especifica la estructura geométrica del conjunto de Julia correspondiente. Si $c$ está en el conjunto de Mandelbrot, entonces el de Julia será conectado (cerrado). De lo contrario, el conjunto de Julia será sólo una colección de puntos desconectados, trazados sobre una gráfica.
+Queda claro pues que los conjuntos de Mandelbrot y Julia están estrechamente relacionados. El conjunto de Mandelbrot itera $z=z^2+c$ comenzando con $z = 0$ y variando el valor de $c$. El de Julia, por su parte, itera esa misma función, pero con valores fijos para $c$ y variando los de $z$. Cada punto $c$ en el conjunto de Mandelbrot especifica la estructura geométrica del conjunto de Julia correspondiente. Si $c$ está en el conjunto de Mandelbrot, entonces el de Julia será conectado (cerrado). De lo contrario, el conjunto de Julia será sólo una colección de puntos desconectados, trazados sobre una gráfica.
 
 \subsection{Fractales/dimensión de Hausdorlf/dimensión fractal}
 \subsection{Polvo de Cantor} No aparece en The Beauty of fractals (en algún otro libro de la bibliografía está).
