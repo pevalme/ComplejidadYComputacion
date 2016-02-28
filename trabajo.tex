@@ -55,6 +55,7 @@
 \usepackage{float}
 \usepackage{caption}
 \usepackage{titlesec}
+\usepackage[numbered,framed]{matlab-prettifier}
 \newcommand{\sectionbreak}{\clearpage}
 
 
@@ -80,6 +81,16 @@
 
 \renewcommand{\headrulewidth}{0.5pt}
 
+% Para escribir codigo octave
+\let\ph\mlplaceholder % shorter macro
+\lstMakeShortInline"
+
+\lstset{
+  style              = Matlab-editor,
+  basicstyle         = \mlttfamily,
+  escapechar         = ",
+  mlshowsectionrules = true,
+}
 
 \begin{document}
 
@@ -258,7 +269,7 @@ Algunos ejemplos de conjuntos de Julia aplicando diferentes valores de $c$ a la 
 
 \begin{figure}[hbtp]
 \centering
-\includegraphics[width = 0.8\textwidth]{img/Julia_sets.png}
+\includegraphics[width = 0.6\textwidth]{img/Julia_sets.png}
 \caption{Ejemplos de conjuntos de Julia}
 \label{fig:Julia}
 \end{figure}
@@ -284,7 +295,7 @@ La figura \ref{fig:Mandelbrot} muestra la representación del conjunto de Mandel
 
 \begin{figure}[hbtp]
 \centering
-\includegraphics[width = 0.8\textwidth]{img/Mandelbrot_set.png}
+\includegraphics[width = 0.6\textwidth]{img/Mandelbrot_set.png}
 \caption{Conjunto de Mandelbrot}
 \label{fig:Mandelbrot}
 \end{figure}
@@ -293,7 +304,7 @@ Si la constante $c$ fuera la misma para todos los puntos del dibujo y no dependi
 
 \begin{figure}[hbtp]
 \centering
-\includegraphics[width = 0.8\textwidth]{img/Mandelbrot-Julia.png}
+\includegraphics[width = 0.6\textwidth]{img/Mandelbrot-Julia.png}
 \caption{Conjuntos de Julia asociados a cada punto del conjunto de Mandelbrot}
 \label{fig:Mandelbrot-Julia}
 \end{figure}
@@ -302,7 +313,6 @@ Queda claro pues que los conjuntos de Mandelbrot y Julia están estrechamente re
 
 \subsection{Fractales/dimensión de Hausdorlf/dimensión fractal}
 \subsection{Polvo de Cantor} No aparece en The Beauty of fractals (en algún otro libro de la bibliografía está).
-\subsection{Ecuaciones de Volterra}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -452,14 +462,14 @@ donde la función $f$ viene dada por la siguiente gráfica
 
 \begin{figure}[hbtp]
 \centering
-\includegraphics[width = 0.8\textwidth]{img/propiedades-autonomas.png}
+\includegraphics[width = 0.6\textwidth]{img/propiedades-autonomas.png}
 \end{figure}
 
 Podemos observar que si nos situamos ``a la izquierda de $a$'' o ``entre $b$ y $c$'' la función $y$ es decreciente. Del mismo modo, si nos situamos ``entre $a$ y $b$'' o ``a la derecha de $c$'' la función será creciente mientras que en los puntos $a, b$ y $c$ la función ni crece ni decrece. Esta información queda recogida en el siguiente diagrama de fases:
 
 \begin{figure}[hbtp]
 \centering
-\includegraphics[width = 0.8\textwidth]{img/diagrama-fases.png}
+\includegraphics[width = 0.6\textwidth]{img/diagrama-fases.png}
 \end{figure}
 
 En este caso diremos que $a$ y $c$ son puntos \textbf{inestables} pues una pequeña perturbación hará que nos alejemos de ellos. Igualmente, diremos que $b$ es un punto \textbf{estable} porque una pequeña perturbación hará que volvamos de nuevo a desplazarnos hacia $b$.
@@ -534,14 +544,192 @@ No obstante, si tenemos varios puntos de estabilidad la duda que nos surge es, �
 
 \subsection{Sistemas disipativos: atractores}
 \subsection{Flujos, compresibles o no}
+
 \subsection{Atractores extraños: caos}
-Hay que hablar de Atractores de Lorentz (artículo relacionado)
-\subsection{Exponentes de lyapunov}
-Hay que incluir algo.
-\subsection{Ejemplos de sistemas}
-Para los ejemplos: Non linear dynamic and chaos.
-\subsection{Lorenz Volterra}
-Ecuaciones en Non linear dynamic and chaos.
+El término ``atractor'' resulta en si mismo difícil de definir de manera formal y rigurosa. De manera informal un \textbf{atractor} es un conjunto hacia el que todas las trayectorias cercanas convergen. Los puntos fijos y los ciclos estables son ejemplos de atractores.
+
+\begin{definition}[Atractor]
+Un atractor es un conjunto cerrado, $A$, con las siguientes propiedades:
+\begin{itemize}
+\item Es un conjunto invariante, es decir, toda trayectora $\vec{x}(t)$ que empiece en el conjunto nunca sale de él.
+\[\vec{x}(0) \in A \implies \vec{x}(t) \in A \ \forall t\]
+\item Hay un conjunto abierto, $U$, que contiene a $A$ para el que toda trayectoria que comience en $U$ tiende al conjunto $A$.
+\[\exists U \text{ abierto t.q. } \forall \vec{x}, \vec{x}(0) \in U \implies \lim_{t\to \infty}\text{distancia}(\vec{x}(t),A) = 0\]
+\item $A$ es el conjunto más pequeño para el que se cumplen las propiedades anteriores.
+\end{itemize}
+\end{definition}
+
+\begin{example}
+Si consideramos el sistema bidimensional
+\[\begin{array}{l}
+x'(t) = x(t)-x^3(t) \\
+y'(t) = -y(t)
+\end{array}\]
+podemos ver fácilmente que su plano de fases será el mostrado en la figura \ref{fig:planoFasesAtractorEjemplo}
+\begin{figure}[H]
+\centering
+\includegraphics[width = 0.6\textwidth]{img/atractorExample.png}
+\caption{Plano de fases asociado al sistema descrito en el ejemplo}
+\label{fig:planoFasesAtractorEjemplo}
+\end{figure}
+
+Considerando el punto $(1,0)$ podemos observar que cumple las dos primeras propiedades de la definición de atractor. Sin embargo, no cumple la última propiedad, puesto que hay otro punto más que también satisface las propiedades necesarias.
+
+Así, en este caso concreto, el atractor sería el conjunto
+\[A=\{(\pm 1, 0)\}\]
+\end{example}
+
+\begin{definition}[Atractor extraño]
+Un atractor extraño es un atractor que muestra una clara y sensible dependencia de las condiciones iniciales. Estos atractores fueron llamados \emph{extraños} en un primer momento debido a que, a menudo, son conjuntos fractales.
+
+Actualmente, sus propiedades geométricas se consideran menos importantes que las propiedades dinámicas relacionadas con la dependencia con los datos iniciales.
+\end{definition}
+
+Es la sensibilidad del atractor respecto a los datos iniciales lo que nos lleva de nuevo al concepto de \emph{caos}, pues dificulta la predicción de valores futuros a partir de los datos actuales.
+
+\subsection{Ecuaciones de Lorenz}
+\begin{definition}[Ecuaciones de Lorenz]
+En 1963 Lorenz desarrolló un sistema de ecuaciones tridimensional que modelizaba, de manera extraordinariamente simple, la convección en forma de anillos que parece ocurrir a veces en la atmósfera terrestre.
+
+El sistema descrito por Lorenz fue:
+\[\begin{array}{l}
+x'(t) = σ(y(t)-x(t)) \\
+y'(t) = rx(t)-y(t)-x(t)y(t)\\
+z'(t) = x(t)y(t)-bz(t)
+\end{array}\]
+donde σ es el \textbf{número de Prandtl}, que representa la viscosidad/conductividad térmica, $r$ es el \textbf{número de Rayleigh}, que representa la diferencia de temperatura entre base y tope y $b$ es la razón entre la longitud y altura del sistema.
+\end{definition}
+
+Lorenz descubrió que este sistema de apariencia tan sencilla escondíga un comportamiento realmente caótico. Las soluciones oscilaban de manera irregular, sin repetirse nunca el mismo patrón pero manteniéndose siempre dentro de una región limitada del plano de fases. Como puede verse en la figura \ref{fig:Lorenz} la solución de las ecuaciones da lugar a un complicado conjunto \emph{con forma de mariposa} conocido hoy en día como \textbf{atractor extraño}. A diferencia de los puntos fijos estables, el \textbf{atractor extraño} no es un punto ni una curva ni si quiera una superficie, es un \emph{fractal} con dimensión fractal entre 2 y 3.
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.6\textwidth]{img/Lorenz.png}
+\caption{Representación tridimensional de la solución de las ecuaciones de Lorenz}
+\label{fig:Lorenz}
+\end{figure}
+
+\subsubsection{Algunas propiedades de las ecuaciones de Lorenz}
+Lorenz publicó un artículo donde llevaba a cabo un análisis muy detallado de sus ecuaciones. Llevó el análisis tan lejos como pudo empleando ténicas estandarizadas pero, una vez llegado a cierto punto, se topó con lo que parecía un \emph{paradoja}. Una a una fue eliminando todas las posibilidades acerca del comportamiento del sistema a largo plazo.
+
+Probó que, dentro de un cierto rango de parámetros, el sistema no tendría puntos fijos estable ni cilcos finitos estables. No obstante, también demostró que la ssoluciones no salían de una cierta región \emph{delimitada} y que, llegado a cierto punto, se veían atraídas hacia un conjunto de volumen cero. Este conjunto es lo que se conoce como \textbf{atractor extraño}.
+
+Veamos por encima las propiedades del sistema que Lorenz estudió en su famoso artículo.
+
+\begin{itemize}
+\item \textbf{No linearidad}
+El sistema de Lorenz presenta dos términos no lineales: $x(t)y(t)$ y $x(t)z(t)$.
+
+\item \textbf{Simetría}
+Si reemplazamos los términos $x(t)$ e $y(t)$ por $-x(t)$ y $-y(t)$ respectivamente obtenemos un sistema equivalente:
+\[\begin{array}{l}
+-x'(t) = -σ(y(t)-x(t)) \\
+-y'(t) = -rx(t)+y(t)-x(t)y(t)\\
+z'(t) = x(t)y(t)-bz(t)
+\end{array}\]
+
+Es decir, si $(x(t),y(t),z(t))$ es una solución también lo será $(-x(t),-y(t),z(t))$.
+
+\item \textbf{Contracción de volumen}
+El sistema de Lorenz es \emph{disipativo}: el volumen en el plano de fases se contrae. Para comprender esto lo primero que debemos hacer es ver cómo evoluciona este volumen.
+
+Para cualquier sistema tridimensional $\vec{x}'(t) =f(\vec{x}(t))$, consideramos una superficie cerrada $S(t)$ de volumen $V(t)$ en el plano de fases. Consideremos ahora los puntos de $S(t)$ como puntos iniciales para diferentes trayectorias y veamos su evolución durante un instante de tiempo infinitesimal $dt$. Tras este tiempo $S(t)$ se convierte en una nueva superficie $S(t+dt)$.
+
+La figura \ref{fig:volumen2D} representa en dos dimensiones la situación recien descrita.
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.6\textwidth]{img/volumen2D.png}
+\caption{Evolución con el tiempo de la superficie y del volumen contenido en su interior, siendo \textbf{n} el vector normal a la superfice $S(t)$}
+\label{fig:volumen2D}
+\end{figure}
+
+El volumen encerrado por la nueva superficie derrada puede escribirse como
+\[V(t+dt)=V(t) + \int_S (f\cdot \text{\textbf{n}}\ dt)\ dA\]
+
+Puesto que
+\[V'(t)=\frac{V(t+dt)-V(t)}{dt} = \int_S f\cdot \text{\textbf{n}}\ dA\]
+
+Aplicando el teorema de divergencia podemos reescribir la integral como:
+\[V'(t) = \int_V \nabla \cdot f \ dV \]
+siendo, para el sistema de Lorenz
+\[\nabla \cdot f = \frac{\partial}{\partial x}[σ(x-y)] + \frac{\partial}{\partial y}[rx-y-xy] + \frac{\partial}{\partial z}[xy-bz] = -σ-1-b < 0\]
+
+Puesto que la divergencia es constante, la ecuación de la derivada del volumen queda
+\[V'(t) = -(σ+1+b)V(t) \implies V(t) = V(0)e^{-(σ+1+b)t}\]
+con lo que queda claro que el volumen de crece de manera exponencial.
+
+\item \textbf{Puntos fijos}
+El sistema de Lorenz tiene ``dos tipos de puntos fijos''.
+
+Por un lado tenemos el punto fijo $(0,0,0)$ que lo es para cualquier combinación de parámetros que decidamos tomar. Por otro, tenemos puntos fijos que dependen de los parámetros seleccionados. Así
+\[(\pm \sqrt{b(r-1)},\pm \sqrt{b(r-1)},r-1) \text{ para } r>1\]
+es un punto fijo del sistema.
+
+Lorenz definió como $C^+$ el conjunto de puntos fijos como el descrito anteriormente tomando el signo positivo donde hay dos posibilidades. Simétricamente, definió el conjunto $C^-$.
+
+\item \textbf{Estabilidad lineal del origen}
+
+Omitiendo las dos \emph{no linearidades} del sistema de Lorenz obtenemos una linearización del sistema en torno al origen
+\[\begin{array}{l}
+x'(t) = σ(y(t)-x(t)) \\
+y'(t) = rx(t)-y(t)\\
+z'(t) = -bz(t)
+\end{array}\]
+
+La ecuación para la $z(t)$ es independiente de las otras dos y muestra, de manera trivial, un crecimiento exponencial de $z(t)$. Las otras dos ecuaciones del sistema pueden escribirse como una ecuación matricial de la forma:
+
+\[\left(\begin{array}{l}
+x'(t) \\ y'(t)
+\end{array} \right)\left(\begin{array}{cc}
+-σ & σ \\ r & -1
+\end{array} \right)\left(\begin{array}{l}
+x(t) \\ y(t)
+\end{array} \right)\]
+
+La traza de la matriz es $τ=-σ-1<0$ y el determinante $Δ = σ(1-r)$. Si $r>1$ el origen es un \emph{punto de silla} pueso que $Δ<0$. Por otro lado, si $r<1$ entonces todas las direcciones nos encontramos ante un sumidero, pues todas las direcciones convergen hacia el origen. En concreto, el origen es un nodo estable para $r<1$.
+
+\item \textbf{Estabilidad global del origen}
+
+Puede comprobarse que para $r<1$ toda trayectoria tiende al origen a medida que $t$ tiende a infinito. Por tanto el origen es \emph{globalmente estable}. Por tanto, no puede haber ciclos infinitos ni caos para $r<1$.
+
+\end{itemize}
+
+\subsection{Exponentes de Liapunov}
+Para que un sistema sea considerado caótico debe presentar una gran dependencia con los datos iniciales de forma que un pequeño cambio en las condiciones iniciales produzca grandes cambios en el resultado para $t$ grande.
+
+\begin{definition}[Exponente de Liapunov]
+Dado un dato inicial $x_0$ consideramos un dato cercano $x_0+ε_0$, como ya hicimos en el ejemplo \ref{example:Julia} siendo la separación $ε_0$ extremadamente pequeña.
+
+Sea $ε_n$ la separación tras $n$ iteraciones, si se da la relación $|ε_n|\approx e^{n\cdot λ}|ε_0|$, decimos que λ es el \textbf{exponente de Liapunov}.
+\end{definition}
+
+\begin{example}
+Vamos a calcular el exponente de Liapunov para el caso concreto
+\[f(x) = \left\{ \begin{array}{ll}
+rx, & 0 \leq x \leq \frac{1}{2}\\
+r-rx, & \frac{1}{2} < x \leq 1
+\end{array}\right.\]
+
+De forma genérica tendremos:
+\[ε_n = f^n(x_0+ε_0)-f^n(x_0) \]
+y queremos escribir
+\[|ε_n| = |ε_0| e^{nλ} \implies λ = \frac{1}{n} \ln\left| \frac{ε_n}{ε_0}\right| = \frac{1}{n}\ln \left|\frac{f^n(x_0+ε_0)-f^n(x_0)}{ε_0} \right| = \frac{1}{n}\ln \left|(f^n)'(x_0) \right|\]
+donde en el último paso hemos considerado $ε_0 \to 0$.
+
+Aplicando la regla de la cadena podemos escribir
+\[(f^n)'(x_0) = \prod_{i=0}^{n-1}f'(x_i) \]
+
+Razonando sobre los multiplicadores podemos escribir
+\[\ln \left|\prod_{i=0}^{n-1}f'(x_i)\right| = \sum{i=0}^{n-1}\ln |f'(x_i)| \]
+
+En esta ocasión tenemos $f'(x)=\pm r$ para todo $x$ lo que nos lleva a
+\[λ= \frac{1}{n}\sum_{i=0}^{n-1}\ln |f'(x_i)| = \ln r\]
+\end{example}
+
+% \subsection{Ejemplos de sistemas}
+% Para los ejemplos: Non linear dynamic and chaos.
+% Creo que esto sobra. Los ejemplos ya los hemos ido incluyendo cuando lo hemos considerado necesario.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -554,13 +742,34 @@ Ecuaciones en Non linear dynamic and chaos.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Aplicaciones}
-Tiempo estimado de esta parte: 30 min.\\
-Referencia
-\begin{itemize}
-\item Guide to Chaos
-\end{itemize}
 \subsection{Generación gráfica de conjuntos de Julia}
+Los siguientes dos ficheros permiten generar, en octave, conjuntos de Julia creados sobre la ecuación $z=z^2+c$ siendo el valor de la constante elegido libremente por el usuario.
+
+\lstinputlisting{mjcore.m}
+\lstinputlisting{Julia.m}
+
+Ejecutando el código tal cual se muestra en estos fragmente obtenemos la figure \ref{fig:JuliaOctave}
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.6\textwidth]{img/JuliaOctave.png}
+\caption{Conjunto de Julia obtenido mediante octave}
+\label{fig:JuliaOctave}
+\end{figure}
+
 \subsection{Ejemplos gráficos de explorar el conjunto de Mandelbrot}
+El siguiente fragmento de código permite dibujar conjuntos de Mandelbrot con octave
+
+\lstinputlisting{mandelbrot.m}
+
+Ejecutando el fragmento de código tal cual se muestra obtenemos la imagen representada en la figura \ref{fig:MandelbrotOctave}
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.6\textwidth]{img/mandelbrotOctave.png}
+\caption{Conjunto de Mandelbrot obtenido mediante octave}
+\label{fig:MandelbrotOctave}
+\end{figure}
+
 \subsection{Caos y criptografía}
 \subsection{Compresión fractal}
 La compresión fractal es una tecnología bastante controvertida, con detractores y admiradores. La idea básica detrás de la compresión fractal de imágenes, es expresar la imagen como un sistema de funciones iteradas (IFS). La imagen puede mostrarse rápidamente, y un zoom proporciona infinitos niveles de detalles fractales (sintéticos).
