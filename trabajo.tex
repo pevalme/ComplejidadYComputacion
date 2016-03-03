@@ -187,9 +187,26 @@ Este ejemplo será estudiado con más detalle al hablar de los conjuntos de Mand
 
 También es fundamental aclarar, aunque algunos lectores pueden tener ya una idea intuitiva, qué es un fractal.
 
-\begin{definition}[Fractal]
+\begin{definition}[Fractal]\label{def:fractal}
 Un fractal es un objeto geométrico cuya estructura básica, fragmentada o irregular, se repite a diferentes escalas.
 \end{definition}
+
+Para poder comprender el concepto de fractal más allá de su definición veamos un ejemplo muy artificial pero muy ilustrativo.
+
+\begin{example}
+La idea básica de un fractal es que si nos fijamos en una pequeña parte de su estructura, observamos una repetición de la estructura global del objeto.
+
+\begin{verbatim}
+      A
+     A A
+    A   A
+   A A A A
+  A       A
+ A         A
+\end{verbatim}
+
+Este dibujo tal cual se muestra \emph{no es un fractal} de verdad. Si cada símbolo $A$ que se muestra en el dibujo tuviese exactamente la misma forma que la letra representada con todas las $A$'s, entonces tendríamos realmente un fractal.
+\end{example}
 
 \section{Sistemas discretos}
 \begin{definition}[Sistemas discretos]
@@ -227,9 +244,51 @@ Por tanto, encontrar la función $X(t)$ que resuelve el sistema planteado en el 
 que, claramente, es una ecuación en diferencias.
 
 
-\subsection{Procesos de Verhulst. Period doubling, bifurcaciones.}
+\subsection{Procesos de Verhulst}
+%, period doubling y bifurcaciones
+\begin{definition}[Proceso de Verhulst]
+Pierre-François Verhulst fue un matematico belga del siglo XIX.
+
+Su interés en la teoría de las probabilidades se despertó a través de un nuevo juego de lotería. Sin embargo, con el apoyo de Adolphe Quételet, pronto comenzó a aplicarla a las áreas de la economía política y las estadísticas demográficas, las que por aquella época entraban en auge a través de los trabajos de Thomas Robert Malthus.
+
+Su modelo matemático del crecimiento de la población, presentado en 1838, estaba basado en las estadísticas disponibles y complementaba la teoría del crecimiento exponencial (o de la progresión geométrica) a través de términos que expresan los factores que frenan del crecimiento. Continuó desarrollándolo y publicó su trabajo finalmente en 1845. Desde los años 1970, el modelo ha vuelto a recibir gran atención como un ejemplo importante de la teoría del caos (véase ecuación logística).
+\end{definition}
+
+Veamos cómo funcionaba este modelo.
+
+Sea $x_0$ el tamaño inicial de una población y $x_n$ su valor tras $n$ períodos (digamos que medimos $n$ en años por simplicidad), el \textbf{ratio de crecimiento} es el crecimiento relativo anual y viene dado por la ecuación
+\[R=\frac{x_{n+1}-x_n}{x_n} \]
+
+Una vez conocido el ratio de crecimiento de la población podemos escribir
+\[x_{n+1}=f(x_n) = (1+R)x_n = (1+R)^2x_{n-1} = \cdots = (1+R)^{n+1}x_0\]
+Por comodidad escribiremos
+\begin{equation}\label{eq:Verhulst}
+x_n=(1+R)^nx_0
+\end{equation}
+
+Atendiendo a la ecuación \ref{eq:Verhulst} podemos ver que sigue un crecimiento exponencial. Para limitar este crecimiento tan desmedido, Verhulst asumió que el ratio $R$ varía con el tamaño de la poblacion. Así postuló que la variación de R respecto al tamaño de la poblacion es proporcional al a $1-x_n$, es decir,
+\[R = r(1-x_n)\]
+donde la constante r será llamada \textbf{parámetro de crecimiento}.
+
+Teniendo en cuenta esta nueva relación podemos escribir
+\[x_{n+1}=(1+R)x_n = (1+r)x_n-rx_n^2\]
+
+Podemos observar que esta ecuación tiene dos puntos fijos, es decir, hay dos valores posibles para $x_0$ que hacen que la ecuación se mantenga en valor constante. Estos valores son $x_0=0$ y $x_0=1$.
+
+Si tenemos $x_0=0$ nos encontramos ante una población vacía que, evidentemente no puede crecer ni decrecer. Sin embargo, si tomamos un valor distinto de 0 y positivo, por muy pequeño que sea, tendremos $r>0$ lo que dará lugar a un crecimiento de la población.
+
+El caso de $x=1$ merece ser estudiado en profundidad.
+
+\subsubsection{Proceso de Verhulst para $x_0=1$}
+Para estudiar esta situación analizaremos cómo se comportan pequeñas desviaciones de $x_n$ a lo largo del tiempo. Para ello definimos la variable $d_n$ que representará una desviación en el valor de $x_n$. Atendiendo a la ecuación \ref{eq:Verhulst} podemos ver que esta desviación se propaga de la forma:
+\[d_{n+1} = (1+R)d_n\]
+
+Podemos observar que para valores de $R$ entre $0$ y $-2$, la desviación decrece en valor absoluto con respecto a la desviación en el paso anterior. Para cualquier otro valor de $R$ podemos observar que esta desviación va siendo cada vez mayor.
+
 \subsection{Ecuación logística}
-\subsection{$x=x^2+c$. Julia sets. Mandelbrot set.}
+
+
+\subsection{Conjuntos de Julia y Mandelbrot}
 
 \subsubsection{Repaso de números complejos}
 Antes de comenzar a hablar de los fractales de Julia y Mandelbrot se hace necesario dar una pequeña referencia sobre los números complejos. Básicamente podemos definir un número complejo como una expresión de la forma:
@@ -311,7 +370,43 @@ Si la constante $c$ fuera la misma para todos los puntos del dibujo y no dependi
 
 Queda claro pues que los conjuntos de Mandelbrot y Julia están estrechamente relacionados. El conjunto de Mandelbrot itera $z=z^2+c$ comenzando con $z = 0$ y variando el valor de $c$. El de Julia, por su parte, itera esa misma función, pero con valores fijos para $c$ y variando los de $z$. Cada punto $c$ en el conjunto de Mandelbrot especifica la estructura geométrica del conjunto de Julia correspondiente. Si $c$ está en el conjunto de Mandelbrot, entonces el de Julia será conectado (cerrado). De lo contrario, el conjunto de Julia será sólo una colección de puntos desconectados, trazados sobre una gráfica.
 
-\subsection{Fractales/dimensión de Hausdorlf/dimensión fractal}
+\subsection{Fractales, dimensión de Hausdorlf y dimensión fractal}
+
+El término fractal fue propuesto por el matemático \textbf{Benoit Mandelbrot} en 1975, procedente del latin ``Fractus'' que significa ``fracturado''.
+
+El fractal más famoso, si cabe, se debe a Mandelbrot quien lo obtuvo analizando la famosa ecuación en complejos
+\[x_{n+1} = x_n^2 + c\]
+estudiada en la sección anterior.
+
+Recordemos que en la figura \ref{fig:Mandelbrot} la diferencia entre los distintos colores mostrados se debía a la convergencia o no de los diferentes puntos del plano al aplicarles la ecuación de Mandelbrot.
+
+Aquí se encuentra la relación entre el caos y los fractales. Si se tratase de una figura ``normal'' los puntos que convergen son los de color negro y los de color azul los que no. De esta forma podríamos tener el resultado de la ecuación ``controlado''.
+
+Sin embargo, cuando nos acercamos a la ``frontera'' del dibujo volvemos a observar la misma figura con lo que la frontera no está tan clara. Si repetimos el proceso volvemos a la misma situación inicial. Podríamos ``hacer zoom'' \emph{infinitamente} y seguiríamos observando figuras similares.
+
+\subsection{Fractales en la vida real}
+Puede parecer que los fractales no son más que un artificio matemático para representar el comportamiento de ecuaciones artificiales pero nada más lejos de la realidad. \emph{Los fractales están muy prsentes en la vida diaria}, como muestran las figuras \ref{fig:concha} y \ref{fig:brocoli}
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.6\textwidth]{img/concha.jpg}
+\caption{Concha de un molusco}
+\label{fig:concha}
+\end{figure}
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.6\textwidth]{img/brocoli.jpg}
+\caption{Trozo de brocoli al que se ha aplicado zoom}
+\label{fig:brocoli}
+\end{figure}
+
+La existencia de los fractales en la vida cotidiana se debe a la gran capacidad de comprimir información que tienen asociada. Así, por ejemplo, un árbol puede ser un ejemplo de fractal donde cada rama ``se comporta como un pequeño árbol'' del que crecen ramas de las que crecerán otras ramas... hasta llegar a las hojas.
+
+Obviamente los fractales que se encuentran en la vida real son finitos pues al final todo se compone de células pero la idea que hay detrás de este tipo de formaciones es la de fractal.
+
+Como explicaremos en la sección \ref{sec:compresionFractal} nos hemos ayudado de esta capacidad de comprimir información para desarrollar diferentes técnicas de compresión.
+
 \subsection{Polvo de Cantor} No aparece en The Beauty of fractals (en algún otro libro de la bibliografía está).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -792,7 +887,7 @@ Ejecutando el fragmento de código tal cual se muestra obtenemos la imagen repre
 \end{figure}
 
 \subsection{Caos y criptografía}
-\subsection{Compresión fractal}
+\subsection{Compresión fractal}\ref{sec:compresionFractal}
 La compresión fractal es una tecnología bastante controvertida, con detractores y admiradores. La idea básica detrás de la compresión fractal de imágenes, es expresar la imagen como un sistema de funciones iteradas (IFS). La imagen puede mostrarse rápidamente, y un zoom proporciona infinitos niveles de detalles fractales (sintéticos).
 
 El problema es cómo generar eficientemente la imagen IFS.
