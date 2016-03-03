@@ -244,8 +244,8 @@ Por tanto, encontrar la función $X(t)$ que resuelve el sistema planteado en el 
 que, claramente, es una ecuación en diferencias.
 
 
-\subsection{Procesos de Verhulst, period doubling y bifurcaciones}
-
+\subsection{Procesos de Verhulst}
+%, period doubling y bifurcaciones
 \begin{definition}[Proceso de Verhulst]
 Pierre-François Verhulst fue un matematico belga del siglo XIX.
 
@@ -261,8 +261,29 @@ Sea $x_0$ el tamaño inicial de una población y $x_n$ su valor tras $n$ períod
 
 Una vez conocido el ratio de crecimiento de la población podemos escribir
 \[x_{n+1}=f(x_n) = (1+R)x_n = (1+R)^2x_{n-1} = \cdots = (1+R)^{n+1}x_0\]
+Por comodidad escribiremos
+\begin{equation}\label{eq:Verhulst}
+x_n=(1+R)^nx_0
+\end{equation}
 
+Atendiendo a la ecuación \ref{eq:Verhulst} podemos ver que sigue un crecimiento exponencial. Para limitar este crecimiento tan desmedido, Verhulst asumió que el ratio $R$ varía con el tamaño de la poblacion. Así postuló que la variación de R respecto al tamaño de la poblacion es proporcional al a $1-x_n$, es decir,
+\[R = r(1-x_n)\]
+donde la constante r será llamada \textbf{parámetro de crecimiento}.
 
+Teniendo en cuenta esta nueva relación podemos escribir
+\[x_{n+1}=(1+R)x_n = (1+r)x_n-rx_n^2\]
+
+Podemos observar que esta ecuación tiene dos puntos fijos, es decir, hay dos valores posibles para $x_0$ que hacen que la ecuación se mantenga en valor constante. Estos valores son $x_0=0$ y $x_0=1$.
+
+Si tenemos $x_0=0$ nos encontramos ante una población vacía que, evidentemente no puede crecer ni decrecer. Sin embargo, si tomamos un valor distinto de 0 y positivo, por muy pequeño que sea, tendremos $r>0$ lo que dará lugar a un crecimiento de la población.
+
+El caso de $x=1$ merece ser estudiado en profundidad.
+
+\subsubsection{Proceso de Verhulst para $x_0=1$}
+Para estudiar esta situación analizaremos cómo se comportan pequeñas desviaciones de $x_n$ a lo largo del tiempo. Para ello definimos la variable $d_n$ que representará una desviación en el valor de $x_n$. Atendiendo a la ecuación \ref{eq:Verhulst} podemos ver que esta desviación se propaga de la forma:
+\[d_{n+1} = (1+R)d_n\]
+
+Podemos observar que para valores de $R$ entre $0$ y $-2$, la desviación decrece en valor absoluto con respecto a la desviación en el paso anterior. Para cualquier otro valor de $R$ podemos observar que esta desviación va siendo cada vez mayor.
 
 \subsection{Ecuación logística}
 
