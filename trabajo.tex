@@ -55,7 +55,7 @@
 \usepackage{float}
 \usepackage{caption}
 \usepackage{titlesec}
-\usepackage[numbered,framed]{matlab-prettifier}
+%\usepackage[numbered,framed]{matlab-prettifier}
 \newcommand{\sectionbreak}{\clearpage}
 
 
@@ -81,72 +81,12 @@
 
 \renewcommand{\headrulewidth}{0.5pt}
 
-% Para escribir codigo octave
-\let\ph\mlplaceholder % shorter macro
-\lstMakeShortInline"
 
-\lstset{
-  style              = Matlab-editor,
-  basicstyle         = \mlttfamily,
-  escapechar         = ",
-  mlshowsectionrules = true,
-}
+
+
 
 \begin{document}
 
-\begin{titlepage}
-
-\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
-
-\center % Center everything on the page
-
-%----------------------------------------------------------------------------------------
-%	HEADING SECTIONS
-%----------------------------------------------------------------------------------------
-
-\textsc{\LARGE Universidad Autónoma de Madrid}\\[1.5cm] % Name of your university/college
-\textsc{\Large Complejidad y Computación}\\[0.5cm] % Major heading such as course name
-
-
-%----------------------------------------------------------------------------------------
-%	TITLE SECTION
-%----------------------------------------------------------------------------------------
-
-\HRule \\[0.4cm]
-{ \huge \bfseries Teoría del Caos y fractales}\\[0.4cm] % Title of your document
-\HRule \\[1cm]
-
-
-%----------------------------------------------------------------------------------------
-%	AUTHOR SECTION
-%----------------------------------------------------------------------------------------
-
-
-% If you don't want a supervisor, uncomment the two lines below and remove the section above
-\Large \emph{Autoress:}\\
-Alejandro \textsc{Villegas}\\ % Your name
-Elena \textsc{Gutiérrez}\\ % Your name
-Miguel Ángel \textsc{González-gallego} \\
-Pedro \textsc{Valero}\\[1cm] % Your name
-
-%----------------------------------------------------------------------------------------
-%	LOGO SECTION
-%----------------------------------------------------------------------------------------
-
-\includegraphics{img/Logo.jpg}\\ % Include a department/university logo - this will require the graphicx package
-
-%----------------------------------------------------------------------------------------
-%	DATE SECTION
-%----------------------------------------------------------------------------------------
-
-{\large \today}\\[1cm] % Date, change the \today to a set date if you want to be precise
-
-
-%----------------------------------------------------------------------------------------
-
-\vfill % Fill the rest of the page with whitespace
-
-\end{titlepage}
 
 \tableofcontents
 \newpage
@@ -170,7 +110,7 @@ Es importante destacar el hecho de que los sistemas han de ser deterministas pue
 \begin{definition}[Teoría del Caos]
 La teoría del Caos es la rama de las Matemáticas que estudia el comportamiento de sistemas dinámicos \emph{deterministas} muy sensibles a los datos iniciales.
 \end{definition}
-
+Surge al tratar de estudiar sistemas dinámicos no lineales, es decir, aquellos modelados por ecuaciones diferenciales o en diferencias, no lineales, los cuales presentan una dependencia extremendamente sensible a las condiciones iniciales. El efecto que observamos es que, en este tipo de sistemas, se puede comenzar con unas ciertas configuraciones iniciales muy cercanas pero estas comienzan a apartarse rápidamente mientras permanecen en una región acotada. Como el lector puede adivinar, el problema de estos sitemas caóticos es que es imposible predecir el comportamiento a largo plazo.
 \begin{example}\label{example:Julia}
 A modo de ejemplo podemos suponer un fenomeno que venga modelizado por la ecuación:
 \[z_{n+1} = f(z_n) \text{ siendo } f(x) = x^2+1\]
@@ -638,15 +578,14 @@ Sabemos que un pequeño error respecto al dato inicial, si este era el único pu
 No obstante, si tenemos varios puntos de estabilidad la duda que nos surge es, ¿De qué solución real no se distancia mucho el valor que calculemos?
 
 \subsection{Sistemas disipativos: atractores}
-\subsection{Flujos, compresibles o no}
+Los sistemas dinámicos procedentes de las aplicaciones físicas tienden a ser \textbf{disipativos}: debido a alguna fuerza externa, el movimiento cesa. Esta disipación puede venir de fuerzas de fricción, pérdidas termodinámicas,... Debido a este efecto, el sistema entra en su comportamiento típico en una región en la que se da una condición local de mínima energía. Si observaramos el espacio de fases del sistema distingiríamos una parte a la que las trayectorias se aproximan y que permanece invariante a largo plazo.
 
-\subsection{Atractores extraños: caos}
-El término ``atractor'' resulta en si mismo difícil de definir de manera formal y rigurosa. De manera informal un \textbf{atractor} es un conjunto hacia el que todas las trayectorias cercanas convergen. Los puntos fijos y los ciclos estables son ejemplos de atractores.
+De manera informal un \textbf{atractor} es un conjunto hacia el que todas las trayectorias cercanas convergen. Los puntos fijos y los ciclos estables son ejemplos de atractores.
 
 \begin{definition}[Atractor]
 Un atractor es un conjunto cerrado, $A$, con las siguientes propiedades:
 \begin{itemize}
-\item Es un conjunto invariante, es decir, toda trayectora $\vec{x}(t)$ que empiece en el conjunto nunca sale de él.
+\item Es un conjunto invariante, es decir, toda trayectoria $\vec{x}(t)$ que empiece en el conjunto nunca sale de él.
 \[\vec{x}(0) \in A \implies \vec{x}(t) \in A \ \forall t\]
 \item Hay un conjunto abierto, $U$, que contiene a $A$ para el que toda trayectoria que comience en $U$ tiende al conjunto $A$.
 \[\exists U \text{ abierto t.q. } \forall \vec{x}, \vec{x}(0) \in U \implies \lim_{t\to \infty}\text{distancia}(\vec{x}(t),A) = 0\]
@@ -673,14 +612,62 @@ Considerando el punto $(1,0)$ podemos observar que cumple las dos primeras propi
 Así, en este caso concreto, el atractor sería el conjunto
 \[A=\{(\pm 1, 0)\}\]
 \end{example}
+Volviendo a los sistemas disipativos, estudiemos el caso del movimiento de un péndulo. La primera de las figuras muestra el comportamiento de un péndulo simple sobre el que no actúa la fuerza de la gravedad, mientras que la segunda figura muestra el resultado de aplicarle dicha fuerza que amortigüa su movimiento haciéndolo cesar.
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.6\textwidth]{img/pend_simple.jpg}
+\caption{Plano de fases del péndulo simple}
+\label{fig:pend_simple}
+\end{figure}
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.6\textwidth]{img/pend_amort.jpg}
+\caption{Plano de fases del péndulo amortigüado}
+\label{fig:pend_amort}
+\end{figure}
+
+En la figura \ref{fig:pend_simple}, se puede observar que para posiciones angulares múltiplos pares de $\pi$, el sistema presenta puntos fijos (corresponde a mantener el péndulo en la posición vertical).
+
+Nos interesa más la figura \ref{fig:pend_amort}. En este caso, observamos que las posiciones que en el péndulo simple correspondían a puntos fijos, es decir, los múltiplos pares de $\pi$, ahora son \emph{atractores}. La velocidad angular del sistema decae a medida que la posición angular decrece por el \emph{efecto disipativo} del rozamiento.
+\subsection{Flujos, compresibles o no}
+
+\subsection{Atractores extraños: caos}
+
 
 \begin{definition}[Atractor extraño]
-Un atractor extraño es un atractor que muestra una clara y sensible dependencia de las condiciones iniciales. Estos atractores fueron llamados \emph{extraños} en un primer momento debido a que, a menudo, son conjuntos fractales.
-
-Actualmente, sus propiedades geométricas se consideran menos importantes que las propiedades dinámicas relacionadas con la dependencia con los datos iniciales.
+A diferencia de los atractores que acabamos de ver, los atractores \textbf{extraños} tienen estructuras a todas las escalas. De modo que, un atractor es \emph{extraño} si tiene dimension de Hausdorff no entera o fractal o si la dinámica en el atractor es caótica.
 \end{definition}
+En los atractores extraños se observan órbitas irregulares, que las trayectorias divergen exponencialmente y que permanecen en un espacio de fases acotado.
 
-Es la sensibilidad del atractor respecto a los datos iniciales lo que nos lleva de nuevo al concepto de \emph{caos}, pues dificulta la predicción de valores futuros a partir de los datos actuales.
+
+Algunos de los ejemplos más importantes de atractores extraños son los siguientes:
+
+\subsubsection{Mapa de Henón}
+El mapa de Henón es un ejemplo de un sistema dinámico discreto en el tiempo y uno de los más estudiados cuando analizamos comportamientos caóticos. El mapa de Henón toma un punto en el plano $(x_n,y_n)$ y lo mapea en otro nuevo de la siguiente manera:\newline
+
+$\left.
+\begin{array}{rcl}
+x_{n+1} & = & 1-ax^2_n+y_n\\
+y_{n+1}& =& bx_n
+\end{array}\right\}$\newline
+
+
+El mapa depende de los parámetros a y b.[Continuar aquí].
+\subsubsection{Atractor de Rössler}
+Este atractor aparece en el \emph{sistema de Rössler}, un sistema de ecuaciones diferenciales que definen un sistema dinámico continuo que muestra trayectorias caóticas asociadas con las propiedades fractales del atractor.
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.4\textwidth]{img/rossler.png}
+\caption{Atractor de Rössler}
+\label{fig:rossler}
+\end{figure}
+\subsubsection{Atractor de Lorenz}
+Este atractor, introducido por Edward Lorenz en 1963, es un sistema dinámico determinista tridimensional no lineal que deriva de las ecuaciones simplicadas de rollos de convección (estos son formas de transferencia de calor en un fluido, por ejemplo, el aire de la atmósfera) que se producen en la atmósfera de nuestro planeta.
+
+Tanto las ecuaciones como la representación de estos atractores se detallan en la siguiente sección.
 
 \subsection{Ecuaciones de Lorenz}
 \begin{definition}[Ecuaciones de Lorenz]
@@ -832,7 +819,7 @@ En esta ocasión tenemos $f'(x)=\pm r$ para todo $x$ lo que nos lleva a
 
 Cabe remarcar que por tratarse de un problema 1-dimensional, sólo hemos obtenido 1 exponente de Lyapunov. Si el problema hubiera sido 2-dimensional hubiéramos calculado 2 y así sucesivamente.
 
-Aquellas órbitas que convergen a orbitas periódicas comparten los mismos exponentes de Lyapunov. Pero, más interesante es el caso de órbitas que no convergen asintóticamente a órbitas periódicas. Cuando estamos en ese caso y la órbita presenta coeficientes de Lyapunov \emph{positivos}, diremos que la órbita es \textbf{caótica}.
+Aquellas órbitas que convergen a orbitas periódicas comparten los mismos exponentes de Lyapunov. Pero, más interesante es el caso de órbitas que no convergen asintóticamente (a largo plazo) a órbitas periódicas. Cuando estamos en ese caso y la órbita presenta coeficientes de Lyapunov \emph{positivos}, diremos que la órbita es \textbf{caótica}.
 
 \begin{definition}(Órbita caótica)
 Una órbita es caótica si:
@@ -861,8 +848,8 @@ Una órbita es caótica si:
 \subsection{Generación gráfica de conjuntos de Julia}
 Los siguientes dos ficheros permiten generar, en octave, conjuntos de Julia creados sobre la ecuación $z=z^2+c$ siendo el valor de la constante elegido libremente por el usuario.
 
-\lstinputlisting{mjcore.m}
-\lstinputlisting{Julia.m}
+%\lstinputlisting{mjcore.m}
+%\lstinputlisting{Julia.m}
 
 Ejecutando el código tal cual se muestra en estos fragmente obtenemos la figure \ref{fig:JuliaOctave}
 
@@ -876,7 +863,7 @@ Ejecutando el código tal cual se muestra en estos fragmente obtenemos la figure
 \subsection{Ejemplos gráficos de explorar el conjunto de Mandelbrot}
 El siguiente fragmento de código permite dibujar conjuntos de Mandelbrot con octave
 
-\lstinputlisting{mandelbrot.m}
+%\lstinputlisting{mandelbrot.m}
 
 Ejecutando el fragmento de código tal cual se muestra obtenemos la imagen representada en la figura \ref{fig:MandelbrotOctave}
 \begin{figure}[hbtp]
