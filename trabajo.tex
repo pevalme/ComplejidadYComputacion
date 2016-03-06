@@ -183,6 +183,27 @@ Por tanto, encontrar la función $X(t)$ que resuelve el sistema planteado en el 
 \[X(t+1)=X(t)+ΔX(t)\]
 que, claramente, es una ecuación en diferencias.
 
+\subsection{Ecuación logística}
+\begin{definition}[Ecuación logística]
+La función logística, curva logística o curva en forma de S es una función matemática que aparece en diversos modelos de crecimiento de poblaciones, propagación de enfermedades epidémicas y difusión en redes sociales.
+
+Dicha función constituye un refinamiento del modelo exponencial para el crecimiento de una magnitud.
+El estudio inicial de crecimiento es aproximadamente exponencial; al cabo de un tiempo, aparece la competencia entre algunos miembros de P por algún recurso crítico K ("cuello de botella") y la tasa de crecimiento disminuye; finalmente, en la madurez, el crecimiento se detiene.
+\end{definition}
+
+La función logística simple se define mediante la fórmula
+\[P(t) = \frac{1}{1+e^{-t}}\]
+que da lugar a la gráfica \ref{fig:EcLogistica}
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.6\textwidth]{img/EcuacionLogistica.png}
+\caption{Gráfica de $P(t) = \frac{1}{1+e^{-t}}$}
+\label{fig:EcLogistica}
+\end{figure}
+
+
+El crecimiento logístico está relacionado con el crecimiento exponencial, de hecho para pequeños valores de la magnitud que presenta crecimiento logístico, el crecimiento logístico se asemeja mucho al crecimiento exponencial. Sin embargo, a partir de un cierto punto el crecimiento se ralentiza, eso hace que la curva pueda representar adecuadamente la propagación de rumores, la extensión de una innovación tecnológica o una epidemia: al principio estas se propagan rápidamente, cada ``infectado" o ``afectado" por la innovación es susceptible de traspasar el ``contagio" a otro individuo que tenga contacto con él, pero cuando el número de ``infectados" crece es más difícil encontrar una persona que previamente no haya estado en contacto con la enfermedad o innovación.
 
 \subsection{Procesos de Verhulst}
 %, period doubling y bifurcaciones
@@ -199,34 +220,63 @@ Veamos cómo funcionaba este modelo.
 Sea $x_0$ el tamaño inicial de una población y $x_n$ su valor tras $n$ períodos (digamos que medimos $n$ en años por simplicidad), el \textbf{ratio de crecimiento} es el crecimiento relativo anual y viene dado por la ecuación
 \[R=\frac{x_{n+1}-x_n}{x_n} \]
 
-Una vez conocido el ratio de crecimiento de la población podemos escribir
-\[x_{n+1}=f(x_n) = (1+R)x_n = (1+R)^2x_{n-1} = \cdots = (1+R)^{n+1}x_0\]
-Por comodidad escribiremos
-\begin{equation}\label{eq:Verhulst}
-x_n=(1+R)^nx_0
-\end{equation}
+Si este crecimiento relativo fuese constante con valor $r$, la dinámica de la población vendría dada por la ecuación
+\[x_{n+1} = f(x_n) = (1+r)x_n\]
 
-Atendiendo a la ecuación \ref{eq:Verhulst} podemos ver que sigue un crecimiento exponencial. Para limitar este crecimiento tan desmedido, Verhulst asumió que el ratio $R$ varía con el tamaño de la poblacion. Así postuló que la variación de R respecto al tamaño de la poblacion es proporcional al a $1-x_n$, es decir,
-\[R = r(1-x_n)\]
-donde la constante r será llamada \textbf{parámetro de crecimiento}.
+Tras $n$ años el tamaño de la población vendrá dado por la ecuación
+\[x_n = (1+r)^nx_0\]
 
-Teniendo en cuenta esta nueva relación podemos escribir
-\[x_{n+1}=(1+R)x_n = (1+r)x_n-rx_n^2\]
+Según esta ecuación, la población podría crecer hasta el infinito. A fin de evitar esto, Verhulst asumió que el ratio de crecimiento varía en función de la población.
 
-Podemos observar que esta ecuación tiene dos puntos fijos, es decir, hay dos valores posibles para $x_0$ que hacen que la ecuación se mantenga en valor constante. Estos valores son $x_0=0$ y $x_0=1$.
+El ecosistema puede proporcionar una cantidad de alimento limitada para la población. Por tanto parece lógico asumir que si la población crece demasiado, la falta de alimento hará que esta se reduzca, con lo que se evita ese aumento infinito.
 
-Si tenemos $x_0=0$ nos encontramos ante una población vacía que, evidentemente no puede crecer ni decrecer. Sin embargo, si tomamos un valor distinto de 0 y positivo, por muy pequeño que sea, tendremos $r>0$ lo que dará lugar a un crecimiento de la población.
+Verhulst postuló que esta dependencia del crecimiento con el tamaño de la población viene dado por la fórmula
+\[R=r(1-x_n)\]
 
-El caso de $x=1$ merece ser estudiado en profundidad.
+Teniendo esto en cuenta, la población viene definida por la ecuación
+\begin{equation}
+x_{n+1} = f(x_n) = (1+r)x_n - rx_n^2
+\end{equation}\label{eq:Verhulst}
+
+Hay dos elecciones de $x_0$ que hacen que la población se mantenga constante en el tiempo: $x_0=1$ y $x_0=0$. Es evidente que con $x_0=0$ no hay nada en la población por lo que no es posible que esta crezca \footnote{posiblemente no tendría sentido ni decir que existe}. Sin embargo, si la población inicial es muy muy próxima a 0 sin ser 0, la población crecerá igualmente cada año. Por tanto $x_0=0$ es un \textbf{punto fijo inestable}.
+
+El caso $x_0=1$ requiere algo más de estudio.
 
 \subsubsection{Proceso de Verhulst para $x_0=1$}
-Para estudiar esta situación analizaremos cómo se comportan pequeñas desviaciones de $x_n$ a lo largo del tiempo. Para ello definimos la variable $d_n$ que representará una desviación en el valor de $x_n$. Atendiendo a la ecuación \ref{eq:Verhulst} podemos ver que esta desviación se propaga de la forma:
-\[d_{n+1} = (1+R)d_n\]
+Para estudiar esta situación analizaremos cómo se comportan pequeñas desviaciones de $x_n$ a lo largo del tiempo. Para ello definimos la variable $δ_n$ que representará una desviación en el valor de $x_n$.
+\[δ_n = x_n-1\]
+Atendiendo a la ecuación \ref{eq:Verhulst} linealizada\footnote{Puesto que vamos a considerar errores muy pequeños, el término cuadrático es despreciable en comparación al término lineal} podemos ver que esta desviación se propaga de la forma:
+\[δ_{n+1} = (1-r)δ_n\]
 
-Podemos observar que para valores de $R$ entre $0$ y $-2$, la desviación decrece en valor absoluto con respecto a la desviación en el paso anterior. Para cualquier otro valor de $R$ podemos observar que esta desviación va siendo cada vez mayor.
+lo que muestra que el error decrece en cada periodo siempre y cuando $0<r<2$. La figura \ref{fig:r1_8} ilustra la variación de la población para $r=1.8$ considerando un valor inicial $x_0=0.1$.
 
-\subsection{Ecuación logística}
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.6\textwidth]{img/r1_8.png}
+\caption{Evolución de la población con $r=1.8$}
+\label{fig:r1_8}
+\end{figure}
 
+Para $r>2$, la ecuación anterior predice un crecimiento de la desviación lo que nos permite deducir que el punto fijo $x_0=1$ resulta ser inestable. Las figura \ref{fig:r2_3}, \ref{fig:r2_5} y \ref{fig:r3} muestran la evolución de la población para valores de $r$ en la región inestable
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.6\textwidth]{img/r2_3.png}
+\caption{Evolución de la población con $r=2.3$}
+\label{fig:r2_3}
+\end{figure}
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.6\textwidth]{img/r2_5.png}
+\caption{Evolución de la población con $r=2.5$}
+\label{fig:r2_5}
+\end{figure}
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.6\textwidth]{img/r3.png}
+\caption{Evolución de la población con $r=3$}
+\label{fig:r3}
+\end{figure}
 
 \subsection{Conjuntos de Julia y Mandelbrot}
 
@@ -324,7 +374,7 @@ Aquí se encuentra la relación entre el caos y los fractales. Si se tratase de 
 
 Sin embargo, cuando nos acercamos a la ``frontera'' del dibujo volvemos a observar la misma figura con lo que la frontera no está tan clara. Si repetimos el proceso volvemos a la misma situación inicial. Podríamos ``hacer zoom'' \emph{infinitamente} y seguiríamos observando figuras similares.
 
-\subsection{Fractales en la vida real}
+\subsubsection{Fractales en la vida real}
 Puede parecer que los fractales no son más que un artificio matemático para representar el comportamiento de ecuaciones artificiales pero nada más lejos de la realidad. \emph{Los fractales están muy prsentes en la vida diaria}, como muestran las figuras \ref{fig:concha} y \ref{fig:brocoli}
 
 \begin{figure}[hbtp]
@@ -347,7 +397,32 @@ Obviamente los fractales que se encuentran en la vida real son finitos pues al f
 
 Como explicaremos en la sección \ref{sec:compresionFractal} nos hemos ayudado de esta capacidad de comprimir información para desarrollar diferentes técnicas de compresión.
 
-\subsection{Polvo de Cantor} No aparece en The Beauty of fractals (en algún otro libro de la bibliografía está).
+\subsection{Polvo de Cantor}
+
+\begin{definition}[Polvo de Cantor]
+Se denomina polvo de cantor al fractal resultante de iterar sobre el conjunto de cantor en dos dimensiones.
+\end{definition}
+
+\begin{definition}[Conjunto de Cantor]
+El conjunto de Cantor, llamado así por ser aporte de Georg Cantor en 1883, se construye de la siguiente manera:
+
+En un primer paso tomamos el intervalo [0,1], lo dividimos en 3 intervalos iguales y eliminamos el intervalo central, por lo que nos quedarían 2 intervalos nuevos [0,1/3] y [2/3].
+
+Tras esto, repetimos el mismo proceso con cada uno de los intervalos resultantes con lo que nos quedarían los siguientes intervalos: [0,1/9] , [2/9,1/3] , [2/3,7/9] , [8/9,1]. Y así sucesivamente.
+
+La imagen \ref{fig:conjuntoCantor} ilustra la construcción de este conjunto.
+\end{definition}
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.6\textwidth]{img/conjuntoCantor.png}
+\caption{Primeras etapas del proceso de construcción del conjunto de Cantor}
+\label{fig:conjuntoCantor}
+\end{figure}
+
+El conjunto de Cantor exhibe de forma evidente una de las propiedades más importantes de los fractales: la autosimilaridad. Ya que conforme se van aumentando las iteraciones se puede observar de nuevo el conjunto de cantor original.
+
+Como curiosidad se le denominó polvo de cantor porque una vez iterado el conjunto un numero determinado de veces los segmentos se hacen cada vez mas pequeños semejando puntos luciendo como una fila de partículas de polvo dispuestas con regularidad fractal.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -671,7 +746,7 @@ y_{n+1}& =& bx_n
 \end{array}\right\}$\newline
 
 
-El mapa depende de los parámetros a y b. Para el \textbf{mapa clásico de Henón} (Figura \ref{fig:henon_clas}) se cumple a=1.4 y b=0.3. En este caso, el mapa es \emph{caótico}. Para otros valores de a y b el mapa puede ser caótico, intermitente o converger a una órbita periódica. 
+El mapa depende de los parámetros a y b. Para el \textbf{mapa clásico de Henón} (Figura \ref{fig:henon_clas}) se cumple a=1.4 y b=0.3. En este caso, el mapa es \emph{caótico}. Para otros valores de a y b el mapa puede ser caótico, intermitente o converger a una órbita periódica.
 
 \begin{figure}[hbtp]
 \centering
@@ -910,7 +985,63 @@ Ejecutando el fragmento de código tal cual se muestra obtenemos la imagen repre
 \end{figure}
 
 \subsection{Caos y criptografía}
-\subsection{Compresión fractal}\ref{sec:compresionFractal}
+La ciencia de la criptografía se ocupa de los problemas de la seguridad de la información y sus pertinentes almacenamientos y transferencias.
+
+Los fractales y los sistemas caóticos tienen características que se han estudiado extensivamente a través de los años, y su complejidad inherente deriva de la sensibilidad extrema del sistema a las condiciones iniciales. Muchos de los sistemas caóticos tienen la característica de que no existe ninguna solución de forma cerrada para ellos, y por lo tanto no existen las fórmulas ``simples" que definan al sistema en cualquier punto dado. En relación a la criptografía, esto califica como problema muy difícil de resolver. La principal ventaja de los sistemas caóticos, es que son probabilisticamente difíciles, eliminando una de las desventajas fundamentales de la criptografía convencional.
+
+\begin{definition}[Criptografía fractal]
+La criptografía fractal o caótica aplica fractales y sistemas caóticos para obtener métodos criptográficos.
+\end{definition}
+
+\subsubsection{Usando una función caótica pare encriptar}
+La seguridad de este tipo de criptosistema se basa en la esperanza de que sin conocer la clave secreta, el comportamiento caótico sea lo suficientemente difícil de predecir utilizando métodos analíticos. Esto reduciría los posibles ataques a una sola categoría, los ataques de fuerza bruta, en los cuales se prueban todas las claves posibles contra los datos encriptados. Los ataques de fuerza bruta rara vez son exitosos ya que dependen directamente de la longitud de la clave utilizada.
+
+Veamos un ejemplo de cifrado criptográfico.
+
+\begin{example}[Cifrado por bloques simple]
+Este es un algoritmo de cifrado por bloques con una clave secreta. La clave es utilizada para generar un pad que luego es combinado con el texto en claro por bloques de 8 bits.
+
+En este cifrador, las claves de sesión forman parte de la clave de encriptación y se toman en forma cíclica. Por ejemplo si se utiliza una clave de 256 bits, las claves de sesión irán desde la $k_1$ a la $k_{256}$.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width = \textwidth]{img/cifradoCaotico.png}
+\end{figure}
+
+El modo en que se genera el pad consiste en tomar dos claves de sesión sucesivas $k_i$ y $k_{i+1}$ y en lugar de combinarlas directamente con el texto en claro, se utilizan como condiciones iniciales para el mapa caótico.
+
+El bloque $M_1$ representa un mapeo del espacio de claves de sesión, todos los enteros entre el 0 y 255, en el dominio del mapa logístico $L$, todos los reales en el intervalo [0,1]. La suma de la siguiente clave de sesión y el número 16 es usada como el número de iteraciones del mapa logistico. $M_2$ usa un subconjunto difuso\footnote{Un subconjunto difuso, es un conjunto que puede contener elementos de forma parcial, es decir que la propiedad  $x\in A$ puede ser cierta, falsa o solamente posible.} para mapear el dominio del mapa logístico, reales entre 0 y 1, nuevamente al intervalo discreto [0,255]. A medida que se encripta un nuevo bloque, el contador $i$ usado para llevar un registro de la clave de sesión actual es incrementado. La salida del mapa logístico es combinada con el texto en claro para dar el texto encriptado.
+
+El proceso de desencriptado es simple, el mismo pad es generado a partir de la clave y se utiliza para descombinarlo del texto encriptado para recuperar el texto en claro.
+
+En un análisis sencillo de este cifrador se ve que posee buenas propiedades estadísticas. Sin embargo por más que estadísticamente luce bien, haciendo una comparación gráfica tomando como texto claro una imagen y comparándo la imagen sin encriptar con su contraparte encriptada se puede observar que gran cantidad de la información de la imagen original es visible en la imagen cifrada. Este problema ocurre por que el pad producido por el cifrador depende solo de la clave y por lo tanto pose un periodo del tamaño de la clave. Esto significa que series del mismo pad son utilizadas en forma repetida dando lugar a patrones de posicionamiento. Los patrones son fácilmente reconocidos por el ojo humano y aunque los colores hayan cambiado, aun es posible distinguir de qué se trata la imagen original, como muestran las figuras \ref{fig:ImagenCifrada}
+
+\begin{figure}[hbpt]
+\centering
+\includegraphics[width = 0.8\textwidth]{img/imagenCifrada.png}
+\caption{Comparación de imagen original con su versión cifrada}
+\label{fig:ImagenCifrada}
+\end{figure}
+
+El comportamiento periódico del cifrador es un indicio de que el mismo no es seguro. Un método que se puede utilizar para resolver este problema es agregando retroalimentación al mecanismo del cifrador. De esta forma la encriptación no solo dependerá de la clave sino que también dependerá del texto en claro encriptado previamente.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width = \textwidth]{img/cifradoCaoticoRetro.png}
+\end{figure}
+
+Por ejemplo una forma de retroalimentación es utilizar la salida de la función caótica ya añadirla a la entrada para obtener el nuevo x. Además el valor numérico del bloque anterior es añadido al número de iteraciones.
+
+Estas modificaciones hacen que el cifrador funcione mucho mejor que antes y que el fantasma de la imagen original que podía apreciarse en la imagen encriptada prácticamente desaparezca, como muestran las figuras \ref{fig:ImagenCifradaRetro}
+
+\begin{figure}[hbpt]
+\centering
+\includegraphics[width = \textwidth]{img/imagenCifradaRetro.png}
+\caption{Comparación de imagen original con su versión cifrada y su versión con el cifrado mejorado}
+\label{fig:ImagenCifradaRetro}
+\end{figure}
+
+\subsection{Compresión fractal}\label{sec:compresionFractal}
 La compresión fractal es una tecnología bastante controvertida, con detractores y admiradores. La idea básica detrás de la compresión fractal de imágenes, es expresar la imagen como un sistema de funciones iteradas (IFS). La imagen puede mostrarse rápidamente, y un zoom proporciona infinitos niveles de detalles fractales (sintéticos).
 
 El problema es cómo generar eficientemente la imagen IFS.
@@ -950,6 +1081,7 @@ El por qué las antenas fractales funcionen tan bien fue probado matemáticament
 \end{enumerate}
 
 Posiblemente, en un futuro cercano, estas antenas fractales tendrán un uso masivo en el nuevo \textbf{Sistema de Identificación por Radiofrecuencia} que sustituirá a los códigos de barras habituales.
+\end{example}
 
 \subsection{Aeronáutica y fluidos}
 
