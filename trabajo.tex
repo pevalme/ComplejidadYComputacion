@@ -632,9 +632,24 @@ En la figura \ref{fig:pend_simple}, se puede observar que para posiciones angula
 
 Nos interesa más la figura \ref{fig:pend_amort}. En este caso, observamos que las posiciones que en el péndulo simple correspondían a puntos fijos, es decir, los múltiplos pares de $\pi$, ahora son \emph{atractores}. La velocidad angular del sistema decae a medida que la posición angular decrece por el \emph{efecto disipativo} del rozamiento.
 \subsection{Flujos, compresibles o no}
+La \textbf{compresibilidad} de un fluido es su propiedad para disminuir su volumen al aplicar presión o compresión. Todos los fluidos son compresibles en cierto grado. No obstante, los gases son altamente compresibles mientras que los líquidos son altamente incompresibles.
+
+En condiciones regulares y a baja velocidad un fluido \emph{viscoso}, esto es, un fluido que presenta \emph{resistencia a fluir}, describe un \textbf{ movimiento estacionario}, es decir, las condiciones de velocidad en un punto dado no cambian con el tiempo. Cuando la velocidad del flujo es suficientemente grande, el movimiento se vuelve desordenado e irregular. En este caso hablamos de \textbf{flujo turbulento o caótico}. Un ejemplo de este caso es el ondear de una bandera al viento: si el flujo de aire fuera estacionario, la bandera ocuparía una posición fija a lo largo de las líneas de corriente, pero el asta rompe el flujo en un patrón irregular que da origen al movimiento de aleteo transversal de la bandera. En la Figura \ref{fig:flujo_turb} se observa un fluido con regiones de flujo estacionario (parte superior e inferior de la imagen) y regiones de flujo turbulento o caótico (zona central de la imagen).
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.6\textwidth]{img/flujo_turb.jpg}
+\caption{Flujo de un fluido}
+\label{fig:flujo_turb}
+\end{figure}
+
+
+Podríamos pensar que el flujo turbulento de un cierto fluido es resultado de la ampliación de un movimiento que incluye tantas componentes de frecuencia que parece que se vuelve desordenado y confuso. Es decir, puede existir una estructura periódica subyacente, pero es demasiado compleja para seguirla.
+
+La Teoría del Caos adquiere un enfoque diferente. El movimiento turbulento se debe a un comportamiento completamente \emph{aperiódico} y no simplemente una combinación de un gran número de movimientos periódicos. En este caso, el movimiento es  deja de ser susceptible de predicción: 2 partículas que se muevan de forma parecida en el flujo en un tiempo dado pueden hallarse en estados de movimiento muy diferentes tras un lapso suficiente de tiempo.
+
 
 \subsection{Atractores extraños: caos}
-
 
 \begin{definition}[Atractor extraño]
 A diferencia de los atractores que acabamos de ver, los atractores \textbf{extraños} tienen estructuras a todas las escalas. De modo que, un atractor es \emph{extraño} si tiene dimension de Hausdorff no entera o fractal o si la dinámica en el atractor es caótica.
@@ -654,7 +669,24 @@ y_{n+1}& =& bx_n
 \end{array}\right\}$\newline
 
 
-El mapa depende de los parámetros a y b.[Continuar aquí].
+El mapa depende de los parámetros a y b. Para el \textbf{mapa clásico de Henón} (Figura \ref{fig:henon_clas}) se cumple a=1.4 y b=0.3. En este caso, el mapa es \emph{caótico}. Para otros valores de a y b el mapa puede ser caótico, intermitente o converger a una órbita periódica. 
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.3\textwidth]{img/henon_clas.png}
+\caption{Atractor de Henón para a=1.4 y b=0.3}
+\label{fig:henon_clas}
+\end{figure}
+
+A continuación mostramos el diagrama de las órbitas del mapa de Henón para b=0.3. En el diagrama se muestran los valores de la variable $x$ en función del parámetro a. Para valores de a próximos a 1 el período de oscilación es 8 y a partir de a=1.04 aproximadamente, se produce el llamado \emph{period doubling-cascade}, es decir,  el período de oscilación se dobla a 16 y así sucesivamente. A partir de a=1.08 la naturaleza del atractor cambia drásticamente de su condición de periodicidad a caótica. Aún así es posible observar zonas de periocidad intercaladas en aquellas caóticas, como es el caso de los puntos próximas a a=1.25 dónde encontramos órbitas de período 6.
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.6\textwidth]{img/henon_orb.png}
+\caption{Esquema de órbita para el mapa de Henón con b=0.3}
+\label{fig:henon_orb}
+\end{figure}
+
 \subsubsection{Atractor de Rössler}
 Este atractor aparece en el \emph{sistema de Rössler}, un sistema de ecuaciones diferenciales que definen un sistema dinámico continuo que muestra trayectorias caóticas asociadas con las propiedades fractales del atractor.
 
