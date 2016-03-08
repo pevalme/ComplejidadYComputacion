@@ -87,7 +87,59 @@
 
 \begin{document}
 
+\begin{titlepage}
 
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\center % Center everything on the page
+
+%----------------------------------------------------------------------------------------
+%	HEADING SECTIONS
+%----------------------------------------------------------------------------------------
+
+\textsc{\LARGE Universidad Autónoma de Madrid}\\[1.5cm] % Name of your university/college
+\textsc{\Large Complejidad y Computación}\\[0.5cm] % Major heading such as course name
+
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Teoría del Caos y fractales}\\[0.4cm] % Title of your document
+\HRule \\[1cm]
+
+
+%----------------------------------------------------------------------------------------
+%	AUTHOR SECTION
+%----------------------------------------------------------------------------------------
+
+
+% If you don't want a supervisor, uncomment the two lines below and remove the section above
+\Large \emph{Autoress:}\\
+Alejandro \textsc{Villegas}\\ % Your name
+Elena \textsc{Gutiérrez}\\ % Your name
+Miguel Ángel \textsc{González-gallego} \\
+Pedro \textsc{Valero}\\[1cm] % Your name
+
+%----------------------------------------------------------------------------------------
+%	LOGO SECTION
+%----------------------------------------------------------------------------------------
+
+\includegraphics{img/Logo.jpg}\\ % Include a department/university logo - this will require the graphicx package
+
+%----------------------------------------------------------------------------------------
+%	DATE SECTION
+%----------------------------------------------------------------------------------------
+
+{\large \today}\\[1cm] % Date, change the \today to a set date if you want to be precise
+
+
+%----------------------------------------------------------------------------------------
+
+\vfill % Fill the rest of the page with whitespace
+
+\end{titlepage}
 \tableofcontents
 \newpage
 
@@ -360,7 +412,7 @@ Si la constante $c$ fuera la misma para todos los puntos del dibujo y no dependi
 
 Queda claro pues que los conjuntos de Mandelbrot y Julia están estrechamente relacionados. El conjunto de Mandelbrot itera $z=z^2+c$ comenzando con $z = 0$ y variando el valor de $c$. El de Julia, por su parte, itera esa misma función, pero con valores fijos para $c$ y variando los de $z$. Cada punto $c$ en el conjunto de Mandelbrot especifica la estructura geométrica del conjunto de Julia correspondiente. Si $c$ está en el conjunto de Mandelbrot, entonces el de Julia será conectado (cerrado). De lo contrario, el conjunto de Julia será sólo una colección de puntos desconectados, trazados sobre una gráfica.
 
-\subsection{Fractales, dimensión de Hausdorlf y dimensión fractal}
+\subsection{Fractales, dimensión de Hausdorf y dimensión fractal}
 
 El término fractal fue propuesto por el matemático \textbf{Benoit Mandelbrot} en 1975, procedente del latin ``Fractus'' que significa ``fracturado''.
 
