@@ -172,7 +172,7 @@ Puesto que conocemos la ecuación que modela el fenómeno, queda claro que nos e
 Para un $n=11$, que no parece ser algo demasiado grande, siendo $z$ un número complejo, supongamos que cometemos un error muy pequeño, de la forma: $ε=10^{-5}+10^{-5}i$ al medir $z_0$.
 
 En estas condiciones, la diferencia entre el valor obtenido y el original es
-\[f^{11}(ε)=1.4 \cdot 10^{181} + 1.13\cdot 10^{174}\]
+\[f^{11}(ε)=1.4 \cdot 10^{181} + 1.13\cdot 10^{174}i\]
 
 Este ejemplo será estudiado con más detalle al hablar de los conjuntos de Mandelbrot.
 \end{example}
@@ -226,7 +226,7 @@ constituye un ejemplo de sistema dinámico determinista, siendo $F(x)$ una funci
 % Todo lo que viene a continuación viene de http://ltcconline.net/greenl/courses/204/firstOrder/differenceEquations.htm
 
 A simple vista puede parecer que el ejemplo mencionado no es una ecuación en diferencias, puesto que no se aprecia ninguna derivada en la ecuación. No obstante, podemos escribir:
-\[X'(t)=g(X(t)) \implies \lim_{h\to 0} \frac{X(t+h)-X(t)}{h}\]
+\[X'(t)=g(X(t)) \implies \lim_{h\to 0} \frac{X(t+h)-X(t)}{h}=g(X(t))\]
 
 Puesto que los valores posibles de $t$ y $h$ son enteros, lo más pequeño que puede ser $h$ sin llegar a ser $0$ es $h=1$ con lo que tenemos:
 \[g(X(t))=X'(t)=X(t+h)-X(t)=ΔX(t) \implies X(t+h) = X(t) +ΔX(t) \implies \atop F(X(t)) = X(t) + ΔX(t)\]
@@ -270,6 +270,7 @@ Su modelo matemático del crecimiento de la población, presentado en 1838, esta
 Veamos cómo funcionaba este modelo.
 
 Sea $x_0$ el tamaño inicial de una población y $x_n$ su valor tras $n$ períodos (digamos que medimos $n$ en años por simplicidad), el \textbf{ratio de crecimiento} es el crecimiento relativo anual y viene dado por la ecuación
+
 \[R=\frac{x_{n+1}-x_n}{x_n} \]
 
 Si este crecimiento relativo fuese constante con valor $r$, la dinámica de la población vendría dada por la ecuación
