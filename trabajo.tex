@@ -162,9 +162,9 @@ Es importante destacar el hecho de que los sistemas han de ser deterministas pue
 \begin{definition}[Teoría del Caos]
 La teoría del Caos es la rama de las Matemáticas que estudia el comportamiento de sistemas dinámicos \emph{deterministas} muy sensibles a los datos iniciales.
 \end{definition}
-Surge al tratar de estudiar sistemas dinámicos no lineales, es decir, aquellos modelados por ecuaciones diferenciales o en diferencias, no lineales, los cuales presentan una dependencia extremendamente sensible a las condiciones iniciales. El efecto que observamos es que, en este tipo de sistemas, se puede comenzar con unas ciertas configuraciones iniciales muy cercanas pero estas comienzan a apartarse rápidamente mientras permanecen en una región acotada. Como el lector puede adivinar, el problema de estos sitemas caóticos es que es imposible predecir el comportamiento a largo plazo.
+Surge al tratar de estudiar sistemas dinámicos no lineales, es decir, aquellos modelados por ecuaciones diferenciales o en diferencias, no lineales, los cuales presentan una dependencia extremendamente sensible a las condiciones iniciales. El efecto que observamos es que, en este tipo de sistemas, se puede comenzar con unas ciertas configuraciones iniciales muy cercanas pero estas comienzan a apartarse rápidamente mientras permanecen en una región acotada. Como el lector puede adivinar, el problema de estos sistemas caóticos es que es imposible predecir el comportamiento a largo plazo.
 \begin{example}\label{example:Julia}
-A modo de ejemplo podemos suponer un fenomeno que venga modelizado por la ecuación:
+A modo de ejemplo podemos suponer un fenómeno que venga modelizado por la ecuación:
 \[z_{n+1} = f(z_n) \text{ siendo } f(x) = x^2+1\]
 
 Puesto que conocemos la ecuación que modela el fenómeno, queda claro que nos encontramos ante un sistema dinámico determinista, pues para todo valor de $n$ podemos calcular $z_{n+1}$.
@@ -177,13 +177,13 @@ En estas condiciones, la diferencia entre el valor obtenido y el original es
 Este ejemplo será estudiado con más detalle al hablar de los conjuntos de Mandelbrot.
 \end{example}
 
-También es fundamental aclarar, aunque algunos lectores pueden tener ya una idea intuitiva, qué es un fractal.
+También es fundamental aclarar, aunque algunos lectores pueden tener ya una idea intuitiva, qué es un \emph{fractal}.
 
 \begin{definition}[Fractal]\label{def:fractal}
 Un fractal es un objeto geométrico cuya estructura básica, fragmentada o irregular, se repite a diferentes escalas.
 \end{definition}
 
-Para poder comprender el concepto de fractal más allá de su definición veamos un ejemplo muy artificial pero muy ilustrativo.
+Para poder comprender el concepto de fractal más allá de su definición veámos un ejemplo muy artificial pero muy ilustrativo.
 
 \begin{example}
 La idea básica de un fractal es que si nos fijamos en una pequeña parte de su estructura, observamos una repetición de la estructura global del objeto.
@@ -202,7 +202,7 @@ Este dibujo tal cual se muestra \emph{no es un fractal} de verdad. Si cada símb
 
 \section{Sistemas discretos}
 \begin{definition}[Sistemas discretos]
-Los sistemas dinámicos discretos son aquellos que sólo pueden tomar una serie de valores posibles.
+Los sistemas dinámicos discretos son aquellos que en los que el tiempo se mide en pequeños lapsos.
 
 Un reloj digital sería un sistema dinámico discreto mientras que un reloj analógico sería un sistema dinámico continuo.
 \end{definition}
@@ -240,12 +240,12 @@ que, claramente, es una ecuación en diferencias.
 La función logística, curva logística o curva en forma de S es una función matemática que aparece en diversos modelos de crecimiento de poblaciones, propagación de enfermedades epidémicas y difusión en redes sociales.
 
 Dicha función constituye un refinamiento del modelo exponencial para el crecimiento de una magnitud.
-El estudio inicial de crecimiento es aproximadamente exponencial; al cabo de un tiempo, aparece la competencia entre algunos miembros de P por algún recurso crítico K ("cuello de botella") y la tasa de crecimiento disminuye; finalmente, en la madurez, el crecimiento se detiene.
+El estudio inicial de crecimiento es aproximadamente exponencial; al cabo de un tiempo, aparece la competencia entre algunos miembros de P por algún recurso crítico K (``cuello de botella'') y la tasa de crecimiento disminuye; finalmente, en la madurez, el crecimiento se detiene.
 \end{definition}
 
 La función logística simple se define mediante la fórmula
 \[P(t) = \frac{1}{1+e^{-t}}\]
-que da lugar a la gráfica \ref{fig:EcLogistica}
+que da lugar a la gráfica \ref{fig:EcLogistica}.
 
 \begin{figure}[hbtp]
 \centering
@@ -255,12 +255,12 @@ que da lugar a la gráfica \ref{fig:EcLogistica}
 \end{figure}
 
 
-El crecimiento logístico está relacionado con el crecimiento exponencial, de hecho para pequeños valores de la magnitud que presenta crecimiento logístico, el crecimiento logístico se asemeja mucho al crecimiento exponencial. Sin embargo, a partir de un cierto punto el crecimiento se ralentiza, eso hace que la curva pueda representar adecuadamente la propagación de rumores, la extensión de una innovación tecnológica o una epidemia: al principio estas se propagan rápidamente, cada ``infectado" o ``afectado" por la innovación es susceptible de traspasar el ``contagio" a otro individuo que tenga contacto con él, pero cuando el número de ``infectados" crece es más difícil encontrar una persona que previamente no haya estado en contacto con la enfermedad o innovación.
+El crecimiento logístico está relacionado con el crecimiento exponencial, de hecho para pequeños valores de la magnitud que presenta crecimiento logístico, el crecimiento logístico se asemeja mucho al crecimiento exponencial. Sin embargo, a partir de un cierto punto el crecimiento se ralentiza, eso hace que la curva pueda representar adecuadamente la propagación de rumores, la extensión de una innovación tecnológica o una epidemia: al principio estas se propagan rápidamente, cada ``infectado'' o ``afectado'' por la innovación es susceptible de traspasar el ``contagio'' a otro individuo que tenga contacto con él, pero cuando el número de ``infectados'' crece es más difícil encontrar una persona que previamente no haya estado en contacto con la enfermedad o innovación.
 
 \subsection{Procesos de Verhulst}
 %, period doubling y bifurcaciones
 \begin{definition}[Proceso de Verhulst]
-Pierre-François Verhulst fue un matematico belga del siglo XIX.
+Pierre-François Verhulst fue un matemático belga del siglo XIX.
 
 Su interés en la teoría de las probabilidades se despertó a través de un nuevo juego de lotería. Sin embargo, con el apoyo de Adolphe Quételet, pronto comenzó a aplicarla a las áreas de la economía política y las estadísticas demográficas, las que por aquella época entraban en auge a través de los trabajos de Thomas Robert Malthus.
 
@@ -286,21 +286,21 @@ Verhulst postuló que esta dependencia del crecimiento con el tamaño de la pobl
 \[R=r(1-x_n)\]
 
 Teniendo esto en cuenta, la población viene definida por la ecuación
-\begin{equation}
+\begin{equation}\label{eq:Verhulst}
 x_{n+1} = f(x_n) = (1+r)x_n - rx_n^2
-\end{equation}\label{eq:Verhulst}
+\end{equation}
 
 Hay dos elecciones de $x_0$ que hacen que la población se mantenga constante en el tiempo: $x_0=1$ y $x_0=0$. Es evidente que con $x_0=0$ no hay nada en la población por lo que no es posible que esta crezca \footnote{posiblemente no tendría sentido ni decir que existe}. Sin embargo, si la población inicial es muy muy próxima a 0 sin ser 0, la población crecerá igualmente cada año. Por tanto $x_0=0$ es un \textbf{punto fijo inestable}.
 
 El caso $x_0=1$ requiere algo más de estudio.
 
 \subsubsection{Proceso de Verhulst para $x_0=1$}
-Para estudiar esta situación analizaremos cómo se comportan pequeñas desviaciones de $x_n$ a lo largo del tiempo. Para ello definimos la variable $δ_n$ que representará una desviación en el valor de $x_n$.
+Para estudiar esta situación analizaremos cómo se comportan pequeñas desviaciones de $x_n$ a lo largo del tiempo. Para ello definimos la variable $δ_n$ que representará una desviación en el valor de $x_n$ respecto a 1.
 \[δ_n = x_n-1\]
-Atendiendo a la ecuación \ref{eq:Verhulst} linealizada\footnote{Puesto que vamos a considerar errores muy pequeños, el término cuadrático es despreciable en comparación al término lineal} podemos ver que esta desviación se propaga de la forma:
+Atendiendo a la ecuación \eqref{eq:Verhulst} linealizada\footnote{Puesto que vamos a considerar errores muy pequeños, el término cuadrático es despreciable en comparación al término lineal} podemos ver que esta desviación se propaga de la forma:
 \[δ_{n+1} = (1-r)δ_n\]
 
-lo que muestra que el error decrece en cada periodo siempre y cuando $0<r<2$. La figura \ref{fig:r1_8} ilustra la variación de la población para $r=1.8$ considerando un valor inicial $x_0=0.1$.
+lo que muestra que el error decrece en cada período siempre y cuando $0<r<2$. La figura \ref{fig:r1_8} ilustra la variación de la población para $r=1.8$ considerando un valor inicial $x_0=0.1$.
 
 \begin{figure}[hbtp]
 \centering
@@ -309,7 +309,7 @@ lo que muestra que el error decrece en cada periodo siempre y cuando $0<r<2$. La
 \label{fig:r1_8}
 \end{figure}
 
-Para $r>2$, la ecuación anterior predice un crecimiento de la desviación lo que nos permite deducir que el punto fijo $x_0=1$ resulta ser inestable. Las figura \ref{fig:r2_3}, \ref{fig:r2_5} y \ref{fig:r3} muestran la evolución de la población para valores de $r$ en la región inestable
+Para $r>2$, la ecuación anterior predice un crecimiento de la desviación lo que nos permite deducir que el punto fijo $x_0=1$ resulta ser inestable. Las figura \ref{fig:r2_3}, \ref{fig:r2_5} y \ref{fig:r3} muestran la evolución de la población para valores de $r$ en la región inestable.
 
 \begin{figure}[hbtp]
 \centering
@@ -335,7 +335,7 @@ Para $r>2$, la ecuación anterior predice un crecimiento de la desviación lo qu
 \subsubsection{Repaso de números complejos}
 Antes de comenzar a hablar de los fractales de Julia y Mandelbrot se hace necesario dar una pequeña referencia sobre los números complejos. Básicamente podemos definir un número complejo como una expresión de la forma:
 \[z=a +bi\]
-Donde a y b son numeros reales, e i es la raiz cuadrada de -1.
+Donde a y b son numeros reales, e i es la raíz cuadrada de -1.
 
 Los números complejos se representan en un plano: \textbf{el plano complejo}, de manera que cada número complejo tiene asociado un punto del plano y viceversa. Es en esta identificación entre puntos del plano y números complejos en lo que se basa la representación de los fractales.
 
@@ -401,7 +401,7 @@ La figura \ref{fig:Mandelbrot} muestra la representación del conjunto de Mandel
 \label{fig:Mandelbrot}
 \end{figure}
 
-Si la constante $c$ fuera la misma para todos los puntos del dibujo y no dependiera de la posición, obtendríamos los llamados \emph{Conjuntos de Julia}. Hay uno diferente para cada punto del plano complejo. Estos conjuntos están completamente relacionados con el \emph{Conjunto de Mandelbrot}. Para cada punto de éste se puede decir que hay un conjunto de Julia. La figura \ref{fig:Mandelbrot-Julia} ilustra esta relación:
+Si la constante $c$ fuera la misma para todos los puntos del dibujo y no dependiera de la posición, obtendríamos los anteriores conjuntos de Julia. Hay uno diferente para cada punto del plano complejo. Por tanto, estos conjuntos están completamente relacionados con el conjunto de Mandelbrot. Para cada punto de éste se puede decir que hay un conjunto de Julia. La figura \ref{fig:Mandelbrot-Julia} ilustra esta relación:
 
 \begin{figure}[hbtp]
 \centering
@@ -452,13 +452,13 @@ Como explicaremos en la sección \ref{sec:compresionFractal} nos hemos ayudado d
 \subsection{Polvo de Cantor}
 
 \begin{definition}[Polvo de Cantor]
-Se denomina polvo de cantor al fractal resultante de iterar sobre el conjunto de cantor en dos dimensiones.
+Se denomina Polvo de Cantor al fractal resultante de iterar sobre el conjunto de cantor en dos dimensiones.
 \end{definition}
 
 \begin{definition}[Conjunto de Cantor]
 El conjunto de Cantor, llamado así por ser aporte de Georg Cantor en 1883, se construye de la siguiente manera:
 
-En un primer paso tomamos el intervalo [0,1], lo dividimos en 3 intervalos iguales y eliminamos el intervalo central, por lo que nos quedarían 2 intervalos nuevos [0,1/3] y [2/3].
+En un primer paso tomamos el intervalo [0,1], lo dividimos en 3 intervalos iguales y eliminamos el intervalo central, por lo que nos quedarían 2 intervalos nuevos [0,1/3] y [2/3,1].
 
 Tras esto, repetimos el mismo proceso con cada uno de los intervalos resultantes con lo que nos quedarían los siguientes intervalos: [0,1/9] , [2/9,1/3] , [2/3,7/9] , [8/9,1]. Y así sucesivamente.
 
@@ -474,7 +474,7 @@ La imagen \ref{fig:conjuntoCantor} ilustra la construcción de este conjunto.
 
 El conjunto de Cantor exhibe de forma evidente una de las propiedades más importantes de los fractales: la autosimilaridad. Ya que conforme se van aumentando las iteraciones se puede observar de nuevo el conjunto de cantor original.
 
-Como curiosidad se le denominó polvo de cantor porque una vez iterado el conjunto un numero determinado de veces los segmentos se hacen cada vez mas pequeños semejando puntos luciendo como una fila de partículas de polvo dispuestas con regularidad fractal.
+Como curiosidad se le denominó Polvo de Cantor porque una vez iterado el conjunto, un número determinado de veces los segmentos se hacen cada vez mas pequeños semejando puntos luciendo como una fila de partículas de polvo dispuestas con regularidad fractal.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -498,14 +498,14 @@ Como curiosidad se le denominó polvo de cantor porque una vez iterado el conjun
 
 Los sistemas dinámicos continuos deterministas, definidos en \ref{def:sistemaDinamico}, vienen modelizados por ecuaciones diferenciales.
 
-En lugar de expresar el estado actual en función de un estado anterior, las ecuaciones diferenciales tratan de expresar la \emph{tasa de cambio} del estado actual en función del estado actual. La tasa de cambio de una cierta función es su \emph{derivada}. Tenemos la siguiente definicón general de ecuación diferencial.
+En lugar de expresar el estado actual en función de un estado anterior, las ecuaciones diferenciales tratan de expresar la \emph{tasa de cambio} del estado actual en función del estado actual. La tasa de cambio de una cierta función es su \emph{derivada}. Tenemos la siguiente definición general de ecuación diferencial.
 
 \begin{definition}[Ecuación diferencial]
 Una ecuación diferencial es una fórmula matemática que relaciona una función con sus derivadas.
 \end{definition}
 
 \begin{example}[Ecuación del calor]\label{ex:calor}
-Un ejemplo de este tipo de dependencia es la \emph{Ley del calor de Newton}. Si consideramos $x$ como la diferencia de temperatura entre el objecto caliente y la temperatura ambiente del aire que lo rodea, la tasa de cambio de esta diferencia de temperatura es inversamente proporcional a la diferencia de temperatura. En términos de ecuaciones diferenciales, diremos:
+Un ejemplo de este tipo de dependencia es la \emph{Ley del calor de Newton}. Si consideramos $x$ como la diferencia de temperatura entre el objeto caliente y la temperatura ambiente del aire que lo rodea, la tasa de cambio de esta diferencia de temperatura es inversamente proporcional a la diferencia de temperatura. En términos de ecuaciones diferenciales, diremos:
 \begin{equation}
 x'(t) = ax(t)~~~con~~ a<0
 \end{equation}
@@ -521,7 +521,7 @@ Esto quiere decir que la diferencia de temperatura $x(t)$ decrece exponencialmen
 En el siguiente ejemplo, veremos un caso de ecuación diferencial \emph{de segundo orden} \emph{no lineal}.
 
 \begin{example}[Péndulo]
-En este caso estudiaremos el movimiento de un péndulo \emph{bob}, el movimiento de un péndulo que tiene en su extrem un peso y que cuelga de un soporte que limita su movimiento a lo largo de un círculo. La aceleración que experimenta este péndulo es tangente a la dirección del movimiento y proporcional a la componente de la fuerza gravitatoria sobre la dirección tangencial. Si representamos con $x(t)$ la posición angular (es decir, la razón entre la longitud del arco que forma el péndulo con la vertical y la longitud del péndulo), entonces la relación entre su derivada segunda y ésta viene dada por:
+En este caso estudiaremos el movimiento de un péndulo \emph{bob}, el movimiento de un péndulo que tiene en su extremo un peso y que cuelga de un soporte que limita su movimiento a lo largo de un círculo. La aceleración que experimenta este péndulo es tangente a la dirección del movimiento y proporcional a la componente de la fuerza gravitatoria sobre la dirección tangencial. Si representamos con $x(t)$ la posición angular (es decir, la razón entre la longitud del arco que forma el péndulo con la vertical y la longitud del péndulo), entonces la relación entre su derivada segunda y ésta viene dada por:
 \begin{equation}
 x''(t) = -\sin x(t)
 \end{equation}
@@ -637,10 +637,10 @@ Podemos observar que si nos situamos ``a la izquierda de $a$'' o ``entre $b$ y $
 En este caso diremos que $a$ y $c$ son puntos \textbf{inestables} pues una pequeña perturbación hará que nos alejemos de ellos. Igualmente, diremos que $b$ es un punto \textbf{estable} porque una pequeña perturbación hará que volvamos de nuevo a desplazarnos hacia $b$.
 
 \begin{example}
-Retomamos el ejemplo \ref{ex:calor} considerando un valor $a=-1$. Ya vimos que la solución a la EDO era:
+Retomamos el ejemplo \ref{ex:calor} considerando un valor $a=-1$. Ya vimos que la solución a la EDO (ecuación diferencial de primer orden) era:
 \[x(t) = x(0)\cdot e^{-t}\]
 
-En esta ocasión, estudiando el signo de la derivada $x'(t)=ax(t)$ vemos que la la pendiente sólo se anula en $x(t)=0$ y que una vez que la función $x(t)$ toma un valor positivo empieza a decrecer del mismo modo que crece al encontrar un valor negativo. Por tanto tenemos un punto estable en $x(t)=0$. Esto provoca que un pequeño error en la aproximación del dato inicial, cuanto tomamos $t$ grande, no nos aleje mucho del valor real.
+En esta ocasión, estudiando el signo de la derivada $x'(t)=ax(t)$ vemos que la pendiente sólo se anula en $x(t)=0$ y que una vez que la función $x(t)$ toma un valor positivo empieza a decrecer del mismo modo que crece al encontrar un valor negativo. Por tanto tenemos un punto estable en $x(t)=0$. Esto provoca que un pequeño error en la aproximación del dato inicial, cuanto tomamos $t$ grande, no nos aleje mucho del valor real.
 
 Es decir, si tomamos por error $\tilde{x}_0 = x_0 + ε$, estamos cometiendo un error ε en la medida del dato inicial, lo que nos lleva a un error:
 \[x(t)-\tilde{x}(t) = x_0\cdot e^{-t} - \tilde{x}_0\cdot e^{-t} = e^{-t}\cdot ε\]
@@ -661,10 +661,10 @@ al evaluar la función. Puesto que tenemos una exponencial el error cometido se 
 \subsection{Sistemas de ecuaciones no lineales}
 Hasta ahora la tarea ha sido relativamente sencilla, sin embargo, no podemos decir lo mismo cuando estudiamos sistemas dinámicos \emph{no lineales}. La mayoría de los sistemas no lineales de ecuaciones diferenciales no pueden ser resueltos de manera explícita, es decir, las soluciones a dicho sistema no se pueden obtener mediante cálculo. Usaremos métodos geométricos que nos revelarán propiedades cualtitativas de las soluciones: Para qué valores del dato inicial las soluciones son crecientes? Para qué valores son decrecientes?,...
 
-Utilícemos un ejemplo para ilustrar los conceptos siguientes: Supongamos que trabajamos con un modelo para estudiar la evolución de una cierta población. Es común, en este caso, utilizar la función \emph{logística} de la población:
+Utilicemos un ejemplo para ilustrar los conceptos siguientes: Supongamos que trabajamos con un modelo para estudiar la evolución de una cierta población. Es común, en este caso, utilizar la función \emph{logística} de la población:
 
 \begin{equation}
-x'(t) = a\cdot x(t)(1-\frac{x(t)}{K})~~~~con~~a>0~~yK>0
+x'(t) = a\cdot x(t)(1-\frac{x(t)}{K})~~~~con~~a>0~~y~~K>0
 \end{equation}
 A esta ecuación la llamamos \emph{ecuación diferencial logística}. En ese caso, $x(t)$ mide la población de una cierta especie. Llamamos $K$ al valor de la población \emph{limitante}, aquel a partir del cual la población deja de crecer y, de hecho decrece, por sobrepoblación.
 
@@ -676,7 +676,7 @@ GRÁFICA SOLUCIONES.\newline
 
 Con lo que hemos visto sobre puntos estables e inestables, le resultará sencillo al lector detectar que en $x=1$ tenemos un punto estable, mientras que en $x=0$, tenemos un punto inestable. Decimos que ambas soluciones $x(t) = 0$ y $x(t) = 1$ son \textbf{soluciones de equilibrio}.
 
-Ahora podemos resolver las preguntas planteadas anteriormente. La población crecerá siempre la población sea positiva y estrictamente menor que $K$. Mientras que decrecerá siempre que sea superior a $K$. Por otro lado, las soluciones que corresponden con valores negativos de la población y que \emph{explotan} (se van a infinito) en tiempo finito, afortunadamente, pueden descartarse pues no tienen sentido físico.\newline
+Ahora podemos resolver las preguntas planteadas anteriormente. La población crecerá siempre que la población sea positiva y estrictamente menor que $K$. Mientras que decrecerá siempre que sea superior a $K$. Por otro lado, las soluciones que corresponden con valores negativos de la población y que \emph{explotan} (se van a infinito) en tiempo finito, afortunadamente, pueden descartarse pues no tienen sentido físico.\newline
 
 OPCIONALMENTE, PODEMOS MOSTRAR EL DIAGRAMA DE FASES DE ESTA ECUACIÓN.\newline
 
@@ -726,7 +726,7 @@ Si consideramos el sistema bidimensional
 x'(t) = x(t)-x^3(t) \\
 y'(t) = -y(t)
 \end{array}\]
-podemos ver fácilmente que su plano de fases será el mostrado en la figura \ref{fig:planoFasesAtractorEjemplo}
+podemos ver fácilmente que su plano de fases será el mostrado en la figura \ref{fig:planoFasesAtractorEjemplo}.
 \begin{figure}[H]
 \centering
 \includegraphics[width = 0.6\textwidth]{img/atractorExample.png}
@@ -775,7 +775,7 @@ En condiciones regulares y a baja velocidad un fluido \emph{viscoso}, esto es, u
 
 Podríamos pensar que el flujo turbulento de un cierto fluido es resultado de la ampliación de un movimiento que incluye tantas componentes de frecuencia que parece que se vuelve desordenado y confuso. Es decir, puede existir una estructura periódica subyacente, pero es demasiado compleja para seguirla.
 
-La Teoría del Caos adquiere un enfoque diferente. El movimiento turbulento se debe a un comportamiento completamente \emph{aperiódico} y no simplemente una combinación de un gran número de movimientos periódicos. En este caso, el movimiento es  deja de ser susceptible de predicción: 2 partículas que se muevan de forma parecida en el flujo en un tiempo dado pueden hallarse en estados de movimiento muy diferentes tras un lapso suficiente de tiempo.
+La Teoría del Caos adquiere un enfoque diferente. El movimiento turbulento se debe a un comportamiento completamente \emph{aperiódico} y no simplemente una combinación de un gran número de movimientos periódicos. En este caso, el movimiento  deja de ser susceptible de predicción: 2 partículas que se muevan de forma parecida en el flujo en un tiempo dado pueden hallarse en estados de movimiento muy diferentes tras un lapso suficiente de tiempo.
 
 
 \subsection{Atractores extraños: caos}
@@ -845,7 +845,7 @@ z'(t) = x(t)y(t)-bz(t)
 donde σ es el \textbf{número de Prandtl}, que representa la viscosidad/conductividad térmica, $r$ es el \textbf{número de Rayleigh}, que representa la diferencia de temperatura entre base y tope y $b$ es la razón entre la longitud y altura del sistema.
 \end{definition}
 
-Lorenz descubrió que este sistema de apariencia tan sencilla escondíga un comportamiento realmente caótico. Las soluciones oscilaban de manera irregular, sin repetirse nunca el mismo patrón pero manteniéndose siempre dentro de una región limitada del plano de fases. Como puede verse en la figura \ref{fig:Lorenz} la solución de las ecuaciones da lugar a un complicado conjunto \emph{con forma de mariposa} conocido hoy en día como \textbf{atractor extraño}. A diferencia de los puntos fijos estables, el \textbf{atractor extraño} no es un punto ni una curva ni si quiera una superficie, es un \emph{fractal} con dimensión fractal entre 2 y 3.
+Lorenz descubrió que este sistema de apariencia tan sencilla escondía un comportamiento realmente caótico. Las soluciones oscilaban de manera irregular, sin repetirse nunca el mismo patrón pero manteniéndose siempre dentro de una región limitada del plano de fases. Como puede verse en la figura \ref{fig:Lorenz} la solución de las ecuaciones da lugar a un complicado conjunto \emph{con forma de mariposa} conocido hoy en día como \textbf{atractor extraño}. A diferencia de los puntos fijos estables, el \textbf{atractor extraño} no es un punto ni una curva ni si quiera una superficie, es un \emph{fractal} con dimensión fractal entre 2 y 3.
 
 \begin{figure}[hbtp]
 \centering
@@ -857,7 +857,7 @@ Lorenz descubrió que este sistema de apariencia tan sencilla escondíga un comp
 \subsubsection{Algunas propiedades de las ecuaciones de Lorenz}
 Lorenz publicó un artículo donde llevaba a cabo un análisis muy detallado de sus ecuaciones. Llevó el análisis tan lejos como pudo empleando ténicas estandarizadas pero, una vez llegado a cierto punto, se topó con lo que parecía un \emph{paradoja}. Una a una fue eliminando todas las posibilidades acerca del comportamiento del sistema a largo plazo.
 
-Probó que, dentro de un cierto rango de parámetros, el sistema no tendría puntos fijos estable ni cilcos finitos estables. No obstante, también demostró que la ssoluciones no salían de una cierta región \emph{delimitada} y que, llegado a cierto punto, se veían atraídas hacia un conjunto de volumen cero. Este conjunto es lo que se conoce como \textbf{atractor extraño}.
+Probó que, dentro de un cierto rango de parámetros, el sistema no tendría puntos fijos estable ni ciclos finitos estables. No obstante, también demostró que las soluciones no salían de una cierta región \emph{delimitada} y que, llegado a cierto punto, se veían atraídas hacia un conjunto de volumen cero. Este conjunto es lo que se conoce como \textbf{atractor extraño}.
 
 Veamos por encima las propiedades del sistema que Lorenz estudió en su famoso artículo.
 
