@@ -802,9 +802,136 @@ El \textbf{atractor} sería el conjunto \[A=\{(\pm 1, 0)\}\]
 \end{example}
 \end{frame}
 \subsection{Flujos, compresibles o no}
+
 \subsection{Atractores extraños: caos}
+
 \subsection{Ejemplos de sistemas}
-\subsection{Lorenz Volterra}
+
+\subsection{Ecuaciones de Lorenz}
+
+\subsubsection{Introducción}
+\begin{frame}
+\begin{block}{Ecuaciones de Lorenz}
+En 1963 Lorenz trató de desarrollar un modelo que permitiera predecir el clima.
+
+El sistema descrito por Lorenz fue:
+\[\begin{array}{l}
+x'(t) = σ(y(t)-x(t)) \\
+y'(t) = rx(t)-y(t)-x(t)y(t)\\
+z'(t) = x(t)y(t)-bz(t)
+\end{array}\]
+donde σ es el \textbf{número de Prandtl}, que representa la viscosidad/conductividad térmica, $r$ es el \textbf{número de Rayleigh}, que representa la diferencia de temperatura entre base y tope y $b$ es la razón entre la longitud y altura del sistema.
+\end{block}
+
+\begin{itemize}
+\item El sistema parecía ser muy simple (y por tanto útil)
+\item Pero escondía un comporamiento realmente caótico.
+\item Las soluciones daban lugar a una figura con ``forma de mariposa'' conocida hoy en día como \textbf{atractor extraño}.
+\item Este atractor es un fractal con dimensión entre 2 y 3.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.6\textwidth]{img/Lorenz.png}
+\caption{Representación tridimensional de la solución de las ecuaciones de Lorenz}
+\label{fig:Lorenz}
+\end{figure}
+\end{frame}
+
+\subsubsection{Propiedades}
+\begin{frame}
+\begin{block}{Aparente paradoja}
+Lorenz demostró que las soluciones no salían de una cierta región \emph{delimitada} y que, llegado a cierto punto, se veían atraídas hacia un conjunto de volumen cero.
+\end{block}
+
+\begin{itemize}
+\item \textbf{No linearidad}
+\item \textbf{Simetría}
+Es decir, si $(x(t),y(t),z(t))$ es una solución también lo será $(-x(t),-y(t),z(t))$.
+\[\begin{array}{l}
+-x'(t) = -σ(y(t)-x(t)) \\
+-y'(t) = -rx(t)+y(t)-x(t)y(t)\\
+z'(t) = x(t)y(t)-bz(t)
+\end{array}\]
+\item \textbf{Puntos fijos}
+\begin{itemize}
+\item El $(0,0,0)$ siempre es punto fijo.
+\item Según los parámetros tenemos el otro punto fijo:
+\[(\pm \sqrt{b(r-1)},\pm \sqrt{b(r-1)},r-1) \text{ para } r>1\]
+\item Definimos $C^+$ y $C^-$
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+\item \textbf{Contracción de volumen}
+
+El sistema de Lorenz es \emph{disipativo}: el volumen en el plano de fases se contrae.
+
+\begin{block}{Demostración}
+Para cualquier sistema n-dimensional consideramos una superficie cerrada con un cierto volumen en el plano de fases.
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.35\textwidth]{img/volumen2D.png}
+\caption{Evolución con el tiempo de la superficie y del volumen contenido en su interior, siendo \textbf{n} el vector normal a la superfice $S(t)$}
+\label{fig:volumen2D}
+\end{figure}
+
+El volumen varía según la ecuación:
+\[V(t+dt)=V(t) + \int_S (f\cdot \text{\textbf{n}}\ dt)\ dA\]
+\end{block}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Continuación}
+Puesto que
+\[V'(t)=\frac{V(t+dt)-V(t)}{dt} = \int_S f\cdot \text{\textbf{n}}\ dA\]
+
+Aplicando el teorema de divergencia podemos reescribir la integral como:
+\[V'(t) = \int_V \nabla \cdot f \ dV \]
+siendo, para el sistema de Lorenz
+\[\nabla \cdot f = \frac{\partial}{\partial x}[σ(x-y)] + \frac{\partial}{\partial y}[rx-y-xy] + \frac{\partial}{\partial z}[xy-bz] = -σ-1-b < 0\]
+
+Puesto que la divergencia es constante, la ecuación de la derivada del volumen queda
+\[V'(t) = -(σ+1+b)V(t) \implies V(t) = V(0)e^{-(σ+1+b)t}\]
+con lo que queda claro que el volumen de crece de manera exponencial.
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}[<+(1)->]
+\item \textbf{Estabilidad lineal del origen}
+
+\begin{itemize}[<+(1)->]
+\item Sistema linealizado
+\[\begin{array}{l}
+x'(t) = σ(y(t)-x(t)) \\
+y'(t) = rx(t)-y(t)\\
+z'(t) = -bz(t)
+\end{array}\]
+\item Ecuación matricial
+\[\left(\begin{array}{l}
+x'(t) \\ y'(t)
+\end{array} \right)\left(\begin{array}{cc}
+-σ & σ \\ r & -1
+\end{array} \right)\left(\begin{array}{l}
+x(t) \\ y(t)
+\end{array} \right)\]
+\item La traza de la matriz es $τ=-σ-1<0$ y el determinante $Δ = σ(1-r)$.
+\item Si $r>1$ el origen es un \emph{punto de silla} pueso que $Δ<0$
+\item Si $r<1$ entonces nos encontramos ante un sumidero
+\end{itemize}
+\item \textbf{Estabilidad global del origen}
+
+El origen es \textbf{globalmente estable} pues toda trayectoria con $r<1$ tiende al origen cuando $t$ lo hace a $\infty$
+\end{itemize}
+\end{frame}
+
 
 \subsection{Órbitas caóticas y exponentes de Lyapunov}
 
