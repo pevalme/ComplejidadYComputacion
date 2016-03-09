@@ -718,15 +718,19 @@ A esta ecuación la llamamos \emph{ecuación diferencial logística}. En ese cas
 
 Este tipo de comportamiento solo puede ser modelado mediante una ecuación no lineal. Ahora nos preguntamos: Es posible predecir para qué valores iniciales la población crecerá? Y para que valores sólo decrecerá?
 
-En la siguiente gráfica observamos las soluciones de la ecuación diferencial logística:\newline
+En la figura \ref{fig:poblacion} observamos las soluciones de la ecuación diferencial logística.
 
-GRÁFICA SOLUCIONES.\newline
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.6\textwidth]{img/poblacion.png}
+\caption{Soluciones de la ecuación logística diferencial}
+\label{fig:poblacion}
+\end{figure}
+
 
 Con lo que hemos visto sobre puntos estables e inestables, le resultará sencillo al lector detectar que en $x=1$ tenemos un punto estable, mientras que en $x=0$, tenemos un punto inestable. Decimos que ambas soluciones $x(t) = 0$ y $x(t) = 1$ son \textbf{soluciones de equilibrio}.
 
 Ahora podemos resolver las preguntas planteadas anteriormente. La población crecerá siempre que la población sea positiva y estrictamente menor que $K$. Mientras que decrecerá siempre que sea superior a $K$. Por otro lado, las soluciones que corresponden con valores negativos de la población y que \emph{explotan} (se van a infinito) en tiempo finito, afortunadamente, pueden descartarse pues no tienen sentido físico.\newline
-
-OPCIONALMENTE, PODEMOS MOSTRAR EL DIAGRAMA DE FASES DE ESTA ECUACIÓN.\newline
 
 Para poder resolver sistemas de ecuaciones a partir de sus gráficas, nos basamos en los siguientes 3 conceptos importantes:
 

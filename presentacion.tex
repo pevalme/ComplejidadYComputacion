@@ -724,16 +724,24 @@ Error NO despreciable
 x'(t) = a\cdot x(t)(1-\frac{x(t)}{K})~~~~con~~a>0~~y~~K>0
 \end{equation}
 \end{example}
+\end{frame}
+
+\begin{frame}
 %Grafica que deberia aparecer tambien en el pdf
-\begin{block}{Estudio cualtitativo de las soluciones}
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.4\textwidth]{img/poblacion.png}
+\caption{Soluciones de la ecuación logística diferencial}
+\end{figure}\label{fig:poblacion}
 
 \begin{itemize}
 \item \textbf{Soluciones de equilibrio:} $x(t) = 0$ y $x(t)=1$
+\item $x(t) = 0$ es un \textbf{sumidero} mientras que $x(t)=1$ es una \textbf{fuente}.
 \item La población crecerá siempre que la problación inicial sea positiva y estrictamente menor que K.
 \item Las soluciones que corresponden a valores negativos de la población \emph{explotan}. Afortunadamente, no tienen sentido físico.
 \end{itemize}
-\end{block}
 \end{frame}
+
 \begin{frame}
 \begin{block}{Tres conceptos importantes}
 \begin{itemize}
@@ -802,7 +810,35 @@ El \textbf{atractor} sería el conjunto \[A=\{(\pm 1, 0)\}\]
 \end{example}
 \end{frame}
 \subsection{Flujos, compresibles o no}
-
+\begin{frame}
+\begin{definition}[Compresibilidad de un fluido]
+Propiedad para disminuir su volumen al aplicar presión o compresión. Los gases son altamente \emph{compresibles} mientras que los líquidos son altamente \emph{incompresibles}.
+\end{definition}
+\begin{block}{}
+Movimiento \textbf{estacionario}: Las condiciones de velocidad en un punto no cambian con el tiempo.
+\begin{itemize}
+\item Fluido viscoso
+\item Baja velocidad de movimiento
+\end{itemize}
+Flujo \textbf{turbulento} o \textbf{caótico}: El movimiento se vuelve irregular y desordenado.
+\begin{itemize}
+\item Alta velocidad del flujo
+\end{itemize}
+\end{block}
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.4\textwidth]{img/flujo_turb.jpg}
+\caption{Flujo de un fluido}
+\end{figure}
+\end{frame}
+\begin{frame}
+\begin{block}{Enfoque Optimista}
+El flujo turbulento es resultado de la ampliación de un movimiento que incluye tantas componentes de frecuencia se cuelve desordenado y confuso. Existe una \textbf{estructura periódica} subyacente pero es demasiado compleja para seguirla.
+\end{block}
+\begin{block}{Teoría del Caos}
+El movimiento turbulento tiene un \textbf{comportamiento completamente aperiódico}. Deja de ser susceptible de cualquier predicción. En general, 2 partículas que se muevan de forma parecida en el flujo en un tiempo dado pueden hallarse en estados de movimiento totalmente diferentes tras un lapso suficiente de tiempo.
+\end{block}
+\end{frame}
 \subsection{Atractores extraños: caos}
 
 \subsection{Ejemplos de sistemas}
