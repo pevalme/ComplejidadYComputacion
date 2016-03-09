@@ -412,7 +412,7 @@ Si la constante $c$ fuera la misma para todos los puntos del dibujo y no dependi
 
 Queda claro pues que los conjuntos de Mandelbrot y Julia están estrechamente relacionados. El conjunto de Mandelbrot itera $z=z^2+c$ comenzando con $z = 0$ y variando el valor de $c$. El de Julia, por su parte, itera esa misma función, pero con valores fijos para $c$ y variando los de $z$. Cada punto $c$ en el conjunto de Mandelbrot especifica la estructura geométrica del conjunto de Julia correspondiente. Si $c$ está en el conjunto de Mandelbrot, entonces el de Julia será conectado (cerrado). De lo contrario, el conjunto de Julia será sólo una colección de puntos desconectados, trazados sobre una gráfica.
 
-\subsection{Fractales, dimensión de Hausdorf y dimensión fractal}
+\subsection{Fractales, dimensión de Hausdorff y dimensión fractal}
 
 El término fractal fue propuesto por el matemático \textbf{Benoit Mandelbrot} en 1975, procedente del latin ``Fractus'' que significa ``fracturado''.
 
@@ -448,6 +448,53 @@ La existencia de los fractales en la vida cotidiana se debe a la gran capacidad 
 Obviamente los fractales que se encuentran en la vida real son finitos pues al final todo se compone de células pero la idea que hay detrás de este tipo de formaciones es la de fractal.
 
 Como explicaremos en la sección \ref{sec:compresionFractal} nos hemos ayudado de esta capacidad de comprimir información para desarrollar diferentes técnicas de compresión.
+
+\subsubsection{Dimensión de Hausdorff y dimensión fractal}
+\begin{definition}[Dimensión de Hausdorff]
+La \textbf{dimensión de Hausdorff} o dimensión de Hausdorff-Besicovitch es una generalización métrica del concepto de dimensión de un espacio topológico, que permite definir una dimensión fraccionaria (no entera) para un objeto fractal.
+\end{definition}
+
+Mejor que introducir la definición formal de dimensión topológica, demos una definición intuitiva. La \textbf{dimensión topológica} de un cierto objeto en un espacio es $d$ si y sólo si cada punto del objeto se puede \emph{desconectar} (es decir, quitar uno o varios puntos dejando el objeto inconexo) del resto por un conjunto de dimension $d-1$. Es decir, curvas y círculos pueden ser desconectados quitando puntos cualesquiera aislados (por tanto, tienen dimensión topológica 1, que es la dimensión de un punto: 0, más 1); las esferas pueden ser desconectadas quitando curvas o circunferencias de la misma (por tanto tienen dimensión 2) y así sucesivamente.
+
+Todas estas dimensiones son enteras (hay dimensiones infinitas pero podemos prescindir de ellas para lo que nos interesa). Sin embargo, la dimensión topológica es a veces algo \emph{bruta}, en el sentido de que los fractales, por ejemplo, tienen dimensión topológica entera pero, en términos del espacio que ocupan, se comportan como objetos de dimensión mayor.
+
+Es por ello conviene precisar un nuevo concepto de dimensión: \textbf{dimensión de Hausdorff}. De nuevo, intuitivamente, la dimensión de Hausdorff nos dice cómo el objeto en cuestión llena el espacio en el que está inmerso. Para ellos recubriremos la figura con \emph{bolas} de radio $r$. La razón entre el número de bolas que necesitemos $N(r)$ y $ln(\frac{1}{r})$ es la dimensión fractal de nuestro objeto. Esto es,
+
+\begin{equation}
+D = \frac{N(r)}{ln(\frac{1}{r})}
+\end{equation}
+
+En particular, la dimensión topológica de un fractal es siempre estrictamente menor que su dimensión de Hausdorff. 
+
+\subsubsection{Ejemplos}
+La figura \ref{fig:gb} muestra la dimensión fractal de la isla de Gran Bretaña.
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.6\textwidth]{img/GB.png}
+\caption{Medida fractal de la línea de costa de Gran Bretaña}
+\label{fig:gb}
+\end{figure}
+
+Otros ejemplos de objetos con dimensión fractal se muestran en la tabla \ref{tab:ejemplos}.
+
+\begin{figure}[hbtp]
+\footnotesize
+\begin{tabular}{ |c|c|c|}
+  \hline	
+  \textbf{Valor exacto} & \textbf{Valor aproximado} & \textbf{Nombre} 	\\\hline
+  $\frac{log(2)}{log(3)}$ & 0.6309 & Conjunto de Cantor \\	
+  Medida (recuento de cajas) & 1,2 & Conjunto de Julia \emph{Dendrita} \\	
+  $\frac{log(\frac{1+\sqrt[3]{73-6\sqrt{87}}+\sqrt[3]{73+6\sqrt{87}}}{3})}{log(2)}$ & 1,5236 & Frontera de la curva Dragón \\	
+  $3\frac{log(\phi)}{log(1+\sqrt{2})}$ & 1,6379 & Fractal de Fibonacci \\	
+  2 & 2 & Frontera del Conjunto de Mandelbrot \\	
+  Medido & 1,24 & Línea de costa de Gran Bretaña \\	
+  Medido & 1,52 & Línea de costa de Noruega \\	
+  \hline  
+\end{tabular}
+\normalsize
+\caption{Ejemplos de conjuntos con dimensión fractal}
+\label{tab:ejemplos}
+\end{figure}
 
 \subsection{Polvo de Cantor}
 
@@ -1135,7 +1182,8 @@ El por qué las antenas fractales funcionen tan bien fue probado matemáticament
 Posiblemente, en un futuro cercano, estas antenas fractales tendrán un uso masivo en el nuevo \textbf{Sistema de Identificación por Radiofrecuencia} que sustituirá a los códigos de barras habituales.
 \end{example}
 
-\subsection{Aeronáutica y fluidos}
+\subsection{Teoría del Caos y Aeronaútica}
+Tener ciertas condiciones de \textbf{estabilidad} es muy conveniente en numerosos escenarios y más cuando se trata de manetener aviones suspendidos en el aire. Los aviones comerciales son aerodinámicamente estables, es decir, la más mínima ráfaga de viento (posiblemente provocada por el inocente aleteo de una mariposa) lo hará desestabilizarse y entrar en pérdida. En general, para efectuar movimientos en un avión se requieren fuerzas, generalmente propulsadas por el efecto de un motor, desde los mandos de control. Sin embargo, esta estabilidad a veces es inconveniente, cuando un caza en el aire busca moviementos rápidos y precisos. Es de hecho siendo altamente \textbf{inestables} como este tipo de aviones consiguen esa maniobrabilidad. Estan equipados con sistemas de abordo que ajustan constantemente la superficie de vuelo evitando el resultado no deseado de estos efectos mariposas, dejando que sea el piloto el que maneje el suyo propio. Para hacerlo determinan cuál es el \textbf{atractor} del sistema en cada momento. Es complicado saber cual sera el comportamiento de un sistema caótico en cada momento, de modo que conocer el atractor permite hacer más reducido el número de posibles trayectorias.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%
