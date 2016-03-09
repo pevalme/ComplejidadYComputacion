@@ -82,6 +82,8 @@
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
 \usepackage{MathUnicode}
 \usepackage{caption}
+\usepackage{tikz}
+\usepackage{pgfplots}
 
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
@@ -454,7 +456,174 @@ La imagen \ref{fig:conjuntoCantor} ilustra la construcción de este conjunto.
 
 \section{Sistemas continuos}
 \subsection{Sistemas dinámicos deterministas, ecuaciones diferenciales}
-\subsection{Espacio de estados}
+\begin{frame}
+\framesubtitle{Introducción}
+
+\textbf{Comparación con ecuacines en diferencias:}
+\begin{itemize}
+\item La diferencia con los sistemas dinámicos en diferencias se debe a la continuidad de las variables
+\item Expresamos los incrementos como derivadas
+\item Obtenemos \textbf{ecuaciones diferenciales}
+\end{itemize}
+
+\begin{block}{Ecuación diferencial}
+Una ecuación diferencial es una fórmula matemática que relaciona una función con sus derivadas.
+
+Por ejemplo
+\[y'(x) = y(x) \implies y(x) = e^{x+c}\]
+\end{block}
+\end{frame}
+
+\begin{frame}
+\framesubtitle{Ecuación del calor}
+
+\begin{block}{Ecuación del calor}
+La ecuación del calor es una importante ecuación diferencial en derivadas parciales del tipo parabólica que describe la distribución del calor (o variaciones de la temperatura) en una región a lo largo del transcurso del tiempo.
+\end{block}
+
+\textbf{Modelización del problema}
+\begin{itemize}
+\item La variable $t$ es el tiempo
+\item Definimos $x(t)$ como la diferencia de temperatura en todo instante $t$
+\item $x'(t)$ nos da la variación de temperatura en todo instante $t$
+\item \textbf{Teoría:} La tasa de cambio de temperatura es inversamente proporcional a la diferencia de temperatura
+\end{itemize}
+
+La ecuación que modeliza este fenómeno es:
+\begin{equation}
+x'(t) = ax(t)~~~con~~ a<0
+\end{equation}
+
+Cuya solución viene dada por:
+\begin{equation}
+x(t) = c\cdot e^{at}
+\end{equation}
+\end{frame}
+
+\begin{frame}
+\framesubtitle{Péndulo}
+\begin{block}{Movimiento del péndulo}
+Queremos estudiar el movimiento de un péndulo que tiene en su extremo un peso y que cuelga de un soporte que limita su movimiento a lo largo de un círculo.
+\end{block}
+
+\textbf{Modelización del sistema}
+\begin{itemize}
+\item La variable $t$ es el tiempo.
+\item Definimos $x(t)$ como la posición angular del péndulo en todo instante $t$.
+\item La función $x'(t)$ mide la velocidad angular del péndulo.
+\item La función $x''(t)$ mide la aceleración angular del péndulo en todo instante $t$
+\end{itemize}
+
+La ecuación que modeliza este fenómeno es:
+\begin{equation}
+x''(t) = -\sin x(t)
+\end{equation}
+
+Se trata de una ecuación de \emph{segundo orden} y es una de las más importantes en ciencia.
+\end{frame}
+
+\begin{frame}
+\framesubtitle{Clasificación de Ecuaciones Diferenciales Ordinarias}
+\begin{itemize}
+\item Según el orden de las derivadas que aparezcan en la expresión:
+  \begin{itemize}
+  \item Primer orden
+  \item Segundo orden
+  \item ...
+  \end{itemize}
+\item Según la relación entre la función $x$ y sus derivadas
+  \begin{itemize}
+  \item Lineales
+  \item No lineales
+  \end{itemize}
+\item Según si aparece explicítamente la variable $t$ en la ecuación
+  \begin{itemize}
+  \item Autónomas
+  \item No autónomas
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\framesubtitle{Dependencia del dato inicial: Caos}
+
+\begin{block}{Dependencia del dato inicial}
+Siempre es necesario conocer un dato inicial a fin de determinar con exactitud la solución de la ecuación. Sin embargo, en ocasiones, pequeños errores al medir este dato inicial pueden dar lugar a grandes cambios en el sistema.
+\end{block}
+
+\begin{minipage}{0.48\textwidth}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[xmin=-1, xmax=1, samples=50, width=6cm, height=6cm, cycle list name=color list]
+  \addplot (x,-7*e^x);
+  \addplot (x,-6*e^x);
+  \addplot (x,-5*e^x);
+  \addplot (x,-3*e^x);
+  \addplot (x,4*e^x);
+  \addplot (x,-3*e^x);
+  \addplot (x,-2*e^x);
+  \addplot (x,-1*e^x);
+  \addplot (x,e^x);
+  \addplot (x,2*e^x);
+  \addplot (x,3*e^x);
+  \addplot (x,4*e^x);
+  \addplot (x,5*e^x);
+  \addplot (x,6*e^x);
+  \addplot (x,7*e^x);
+\end{axis}
+\end{tikzpicture}
+\captionof{figure}{Familia de funciones de la forma $x(t)=x(0)e^t$}
+\end{center}
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[xmin=-1, xmax=1, samples=50, width=6cm, height=6cm, cycle list name=color list]
+  \addplot (x,-7*e^-x);
+  \addplot (x,-6*e^-x);
+  \addplot (x,-5*e^-x);
+  \addplot (x,-3*e^-x);
+  \addplot (x,4*e^-x);
+  \addplot (x,-3*e^-x);
+  \addplot (x,-2*e^-x);
+  \addplot (x,-1*e^-x);
+  \addplot (x,e^-x);
+  \addplot (x,2*e^-x);
+  \addplot (x,3*e^-x);
+  \addplot (x,4*e^-x);
+  \addplot (x,5*e^-x);
+  \addplot (x,6*e^-x);
+  \addplot (x,7*e^-x);
+\end{axis}
+\end{tikzpicture}
+\captionof{figure}{Familia de funciones de la forma $x(t)=x(0)e^{-t}$}
+\end{center}
+\end{minipage}
+\end{frame}
+
+\subsection{Espacio de estados/fases}
+
+\begin{frame}
+\begin{itemize}
+\item A menudo no es nada sencillo obtener la solución de una ecuación diferencial.
+\item En matemáticas hay una asignatura completa dedicada a la comprensión de estas ecuaciones.
+\item Sin embargo puede estudiarse la tendencia general de la solución.
+\item Para ello empleamos los \textbf{diagrama de fases}
+\end{itemize}
+
+\textbf{Consideramos un problema general $x'(t)=f(x(t))$}
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.6\textwidth]{img/propiedades-autonomas.png}
+\end{figure}
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.6\textwidth]{img/diagrama-fases.png}
+\end{figure}
+
+\end{frame}
+
 \subsection{Oscilaciones}
 \subsection{Sistemas disipativos: atractores}
 \subsection{Flujos, compresibles o no}
