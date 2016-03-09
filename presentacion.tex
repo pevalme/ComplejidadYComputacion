@@ -628,9 +628,77 @@ Siempre es necesario conocer un dato inicial a fin de determinar con exactitud l
 \subsection{Sistemas disipativos: atractores}
 \subsection{Flujos, compresibles o no}
 \subsection{Atractores extraños: caos}
-\subsection{Exponentes de lyapunov}
 \subsection{Ejemplos de sistemas}
 \subsection{Lorenz Volterra}
+
+\subsection{Órbitas caóticas y exponentes de Lyapunov}
+
+\begin{frame}
+\framesubtitle{Definición}
+\textbf{El concepto de equilibrio inestable es muy común en física}
+
+\begin{example}
+Aunque en teoría podemos colocar una pelota en el pico de una montaña sin que se mueva, en la práctica esto es imposible.
+
+El estado de equilibrio estático es \textbf{inestable}
+\end{example}
+
+Un comportamiento muy común en algunos sistemas dinámicos es pasar de un estado de equilibrio inestable a otro estable.
+
+\begin{block}{Órbitas caóticas}
+Las órbitas caóticas son aquellas que permanecen siempre en un estado inestable, sin llegar a ser converger o ser atraídas hacia níngun estado estático o periódico estable.
+
+Esta irregularidad es cuantificada mediante los \textbf{números de Lyapunov} y los \textbf{exponentes de Lyapunov}.
+\end{block}
+
+\begin{block}{Número de Lyapunov}
+Informalmente, diremos que el \textbf{número de Lyapunov} es la tasa o razón media a la que los puntos divergen a lo largo de la órbita. Diremos que el \textbf{exponente de Lyapunov} es el logaritmo natural del número de Lyapunov.
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+\framesubtitle{Ejemplo numérico}
+
+\begin{itemize}
+\item Encontramos \emph{caos} cuando los coeficientes de Lyapunov de nuestro sistema dinámico son mayores que 1.
+\end{itemize}
+
+\begin{block}{Exponente de Lyapunov (definición formal)}
+Dado un dato inicial $x_0$ consideramos un dato cercano $x_0+ε_0$, como ya hicimos en el ejemplo \ref{example:Julia} siendo la separación $ε_0$ extremadamente pequeña.
+
+Sea $ε_n$ la separación tras $n$ iteraciones, si se da la relación $|ε_n|\approx e^{n\cdot λ}|ε_0|$, decimos que λ es el \textbf{exponente de Lyapunov}.
+\end{block}
+
+\begin{example}
+Vamos a calcular el exponente de Lyapunov para el caso concreto
+\[f(x) = \left\{ \begin{array}{ll}
+rx, & 0 \leq x \leq \frac{1}{2}\\
+r-rx, & \frac{1}{2} < x \leq 1
+\end{array}\right.\]
+
+De forma genérica tendremos:
+\[ε_n = f^n(x_0+ε_0)-f^n(x_0) \]
+y queremos escribir
+\[|ε_n| = |ε_0| e^{nλ} \implies λ = \frac{1}{n} \ln\left| \frac{ε_n}{ε_0}\right| = \frac{1}{n}\ln \left|\frac{f^n(x_0+ε_0)-f^n(x_0)}{ε_0} \right| = \frac{1}{n}\ln \left|(f^n)'(x_0) \right|\]
+\end{example}
+\end{frame}
+
+\begin{frame}
+\framesubtitle{Ejemplo numérico}
+\begin{example}[Continuación]
+donde en el último paso hemos considerado $ε_0 \to 0$.
+
+Aplicando la regla de la cadena podemos escribir
+\[(f^n)'(x_0) = \prod_{i=0}^{n-1}f'(x_i) \]
+
+Razonando sobre los multiplicadores podemos escribir
+\[\ln \left|\prod_{i=0}^{n-1}f'(x_i)\right| = \sum{i=0}^{n-1}\ln |f'(x_i)| \]
+
+En esta ocasión tenemos $f'(x)=\pm r$ para todo $x$ lo que nos lleva a
+\[λ= \frac{1}{n}\sum_{i=0}^{n-1}\ln |f'(x_i)| = \ln r\]
+\end{example}
+\end{frame}
 
 \section{Aplicaciones}
 \subsection{Generación gráfica de conjuntos de Julia}
