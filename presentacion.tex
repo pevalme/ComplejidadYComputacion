@@ -623,9 +623,128 @@ Siempre es necesario conocer un dato inicial a fin de determinar con exactitud l
 \end{figure}
 
 \end{frame}
+\subsection{Algunos ejemplos}
 
-\subsection{Oscilaciones}
+\begin{frame}
+\begin{example}
+Consideremos de nuevo la E.D.O. (ecuación diferencial ordinaria):
+\begin{equation}
+x'(t) =ax(t) 
+\end{equation}
+Cuya solución era:
+\begin{equation}
+x(t) =ce^{at} 
+\end{equation}
+\begin{minipage}{0.48\textwidth}
+\begin{center}
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.6\textwidth]{img/exp.png}
+\caption{Caso $a=-1$: $x(t)=ce^{-t}$}
+Error despreciable
+\end{figure}
+\end{center}
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+\begin{center}
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.6\textwidth]{img/exp2.png}
+\caption{Caso $a=-1$: $x(t)=ce^{t}$}
+Error NO despreciable
+\end{figure}
+\end{center}
+\end{minipage}
+\end{example}
+\end{frame}
+
+\subsection{Ecuaciones diferenciales no lineales}
+\begin{frame}
+\textbf{Problema:} La mayoría no pueden ser resueltos de manera explícita. Usaremos propiedades \textbf{cualitativas} de las soluciones.
+
+\begin{example}
+\textbf{Función logística de la población}
+\begin{equation}
+x'(t) = a\cdot x(t)(1-\frac{x(t)}{K})~~~~con~~a>0~~y~~K>0
+\end{equation}
+\end{example}
+%Grafica que deberia aparecer tambien en el pdf
+\begin{block}{Estudio cualtitativo de las soluciones}
+
+\begin{itemize}
+\item \textbf{Soluciones de equilibrio:} $x(t) = 0$ y $x(t)=1$
+\item La población crecerá siempre que la problación inicial sea positiva y estrictamente menor que K.
+\item Las soluciones que corresponden a valores negativos de la población \emph{explotan}. Afortunadamente, no tienen sentido físico.
+\end{itemize}
+\end{block}
+\end{frame}
+\begin{frame}
+\begin{block}{Tres conceptos importantes}
+\begin{itemize}
+\item Existencia de solución
+\item Unicidad de la solución
+\item Dependencia continua $\neq$ Dependencia \emph{sensible}
+\end{itemize}
+\end{block}
+\textbf{Observación}: La \emph{dependencia sensible} o \textbf{efecto mariposa} es la característica más importante de los \textbf{sistemas caóticos}.
+\end{frame}
+
 \subsection{Sistemas disipativos: atractores}
+\begin{frame}
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.6\textwidth]{img/columpio.jpg}
+\caption{Un columpio es un sistema disipativo}
+\end{figure}
+\begin{definition}[Atractor]
+Conjunto hacia el que todas las trayectorias cercanas convergen. 
+\begin{itemize}
+\item Es invariante, toda trayectoria que empiece en el conjunto nunca sale de él.
+\item Existe un conjunto abierto $U$ que contiene al atractor de modo que toda trayectoria que comience en $U$ acaba en el atractor.
+\item Un atractor es el conjunto más pequeño que cumple estas propiedades.
+\end{itemize}
+\end{definition}
+\end{frame}
+
+\begin{frame}
+\begin{example}
+Si consideramos el sistema bidimensional
+\[\begin{array}{l}
+x'(t) = x(t)-x^3(t) \\
+y'(t) = -y(t)
+\end{array}\]
+podemos ver fácilmente que su plano de fases será el mostrado en la figura \ref{fig:planoFasesAtractorEjemplo}.
+\begin{figure}[H]
+\centering
+\includegraphics[width = 0.4\textwidth]{img/atractorExample.png}
+\caption{Plano de fases asociado al sistema descrito en el ejemplo}
+\label{fig:planoFasesAtractorEjemplo}
+\end{figure}
+El \textbf{atractor} sería el conjunto \[A=\{(\pm 1, 0)\}\]
+\end{example}
+\end{frame}
+\begin{frame}
+\begin{example}[El péndulo]
+\begin{minipage}{0.48\textwidth}
+\begin{center}
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.8\textwidth]{img/pend_simple.jpg}
+\caption{Plano de fases del péndulo simple}
+\end{figure}
+\end{center}
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+\begin{center}
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.8\textwidth]{img/pend_amort.jpg}
+\caption{Plano de fases del péndulo amortigüado}
+\end{figure}
+\end{center}
+\end{minipage}
+\end{example}
+\end{frame}
 \subsection{Flujos, compresibles o no}
 \subsection{Atractores extraños: caos}
 \subsection{Ejemplos de sistemas}
