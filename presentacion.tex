@@ -85,6 +85,8 @@
 \usepackage{tikz}
 \usepackage{pgfplots}
 
+
+
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
@@ -127,10 +129,26 @@ Universidad Autónoma de Madrid\\ % Your institution for the title page
 \setlength{\tabcolsep}{10pt}
 \renewcommand{\arraystretch}{1.5}
 
+\usepackage{listings}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+\usepackage{multicol}
+
 \begin{document}
 
 \begin{frame}
 \titlepage % Print the title page as the first slide
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Overview} % Table of contents slide, comment this block out to remove it
+\setcounter{tocdepth}{3}
+\begin{multicols}{2}
+\tableofcontents
+\end{multicols}
 \end{frame}
 
 
@@ -1039,173 +1057,162 @@ En esta ocasión tenemos $f'(x)=\pm r$ para todo $x$ lo que nos lleva a
 \end{frame}
 
 \section{Aplicaciones}
-\subsection{Generación gráfica de conjuntos de Julia}
-\subsection{Ejemplos gráficos de explorar el conjunto de Mandelbrot}
+\lstset{language=Matlab,%
+    %basicstyle=\color{red},
+    breaklines=true,%
+    morekeywords={matlab2tikz},
+    keywordstyle=\color{blue},%
+    morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+    identifierstyle=\color{black},%
+    stringstyle=\color{mylilas},
+    commentstyle=\color{mygreen},%
+    showstringspaces=false,%without this there will be a symbol in the places where there is a space
+    numbers=left,%
+    numberstyle={\tiny \color{black}},% size of the numbers
+    numbersep=9pt, % this defines how far the numbers are from the text
+    basicstyle=\small,
+    emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+    %emph=[2]{word1,word2}, emphstyle=[2]{style},
+}
+
+\subsection{Generación gráfica de conjuntos de Julia y Mandelbrot}
+
+\subsubsection{Códigos}
+\begin{frame}
+\lstinputlisting{mjcore.m}
+\lstinputlisting{Julia.m}
+\end{frame}
+
+\begin{frame}
+\lstinputlisting{mandelbrot.m}
+\end{frame}
+
+\subsubsection{Imágenes}
+\begin{frame}
+
+\begin{minipage}{0.48\textwidth}
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.8\textwidth]{img/JuliaOctave.png}
+\caption{Conjunto de Julia obtenido mediante Octave}
+\label{fig:JuliaOctave}
+\end{figure}
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.8\textwidth]{img/mandelbrotOctave.png}
+\caption{Conjunto de Mandelbrot obtenido mediante Octave}
+\label{fig:MandelbrotOctave}
+\end{figure}
+\end{minipage}
+\end{frame}
+
+
 \subsection{Caos y criptografía}
-\subsection{Compresión fractal}
-\subsection{Antenas fractales}
 
 \begin{frame}
-Las transparencias que vienen a continuación son las que aparecen por defecto con el paquete que estamos usando. Las dejamos hasta el último momento ya que ahí se pueden ver muchos ejemplos de cómo hacer diferentes cosas.
-
-El índice no se ve bien ahora mismo. Pasemos de eso, cuando tengamos esto terminado y veamos cuántas secciones y subsecciones hemos utilizado nos peleamos con cómo mostrar el índice.
-\end{frame}
-
-
-
-\begin{frame}
-\frametitle{Overview} % Table of contents slide, comment this block out to remove it
-\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
-\end{frame}
-
-
-%----------------------------------------------------------------------------------------
-%	PRESENTATION SLIDES
-%----------------------------------------------------------------------------------------
-
-%------------------------------------------------
-\section{First Section} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
-%------------------------------------------------
-
-\subsection{Subsection Example} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
-
-\begin{frame}
-\frametitle{Paragraphs of Text}
-Sed iaculis dapibus gravida. Morbi sed tortor erat, nec interdum arcu. Sed id lorem lectus. Quisque viverra augue id sem ornare non aliquam nibh tristique. Aenean in ligula nisl. Nulla sed tellus ipsum. Donec vestibulum ligula non lorem vulputate fermentum accumsan neque mollis.\\~\\
-
-Sed diam enim, sagittis nec condimentum sit amet, ullamcorper sit amet libero. Aliquam vel dui orci, a porta odio. Nullam id suscipit ipsum. Aenean lobortis commodo sem, ut commodo leo gravida vitae. Pellentesque vehicula ante iaculis arcu pretium rutrum eget sit amet purus. Integer ornare nulla quis neque ultrices lobortis. Vestibulum ultrices tincidunt libero, quis commodo erat ullamcorper id.
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Bullet Points}
 \begin{itemize}
-\item Lorem ipsum dolor sit amet, consectetur adipiscing elit
-\item Aliquam blandit faucibus nisi, sit amet dapibus enim tempus eu
-\item Nulla commodo, erat quis gravida posuere, elit lacus lobortis est, quis porttitor odio mauris at libero
-\item Nam cursus est eget velit posuere pellentesque
-\item Vestibulum faucibus velit a augue condimentum quis convallis nulla gravida
+\item La criptografía se ocupa de los problemas de la seguridad de la información y sus pertinentes almacenamientos y transferencias.
+\item Un problema caótico muy sensible a los datos iniciales es interesante para la criptografía.
+\item Los sistemas caóticos son probabilísticamente difíciles.
 \end{itemize}
-\end{frame}
 
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Blocks of Highlighted Text}
-\begin{block}{Block 1}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ultricies in feugiat rutrum, porttitor sit amet augue. Aliquam ut tortor mauris. Sed volutpat ante purus, quis accumsan dolor.
-\end{block}
-
-\begin{block}{Block 2}
-Pellentesque sed tellus purus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum quis magna at risus dictum tempor eu vitae velit.
-\end{block}
-
-\begin{block}{Block 3}
-Suspendisse tincidunt sagittis gravida. Curabitur condimentum, enim sed venenatis rutrum, ipsum neque consectetur orci, sed blandit justo nisi ac lacus.
+\begin{block}{Criptografía fractal}
+La criptografía fractal o caótica aplica fractales y sistemas caóticos para obtener métodos criptográficos.
 \end{block}
 \end{frame}
 
-%------------------------------------------------
+\subsubsection{Usando una función caótica pare encriptar}
 
 \begin{frame}
-\frametitle{Multiple Columns}
-\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
 
-\column{.45\textwidth} % Left column and width
-\textbf{Heading}
-\begin{enumerate}
-\item Statement
-\item Explanation
-\item Example
-\end{enumerate}
+\begin{block}{Conjunto difuso}
+Un subconjunto difuso, es un conjunto que puede contener elementos de forma parcial, es decir que la propiedad  $x\in A$ puede ser cierta, falsa o solamente posible.
 
-\column{.5\textwidth} % Right column and width
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ultricies in feugiat rutrum, porttitor sit amet augue. Aliquam ut tortor mauris. Sed volutpat ante purus, quis accumsan dolor.
+Cada elemento tiene una probabilidad asociada.
+\end{block}
 
-\end{columns}
-\end{frame}
+\begin{example}[Cifrado por bloques simple]
+Este es un algoritmo de cifrado por bloques con una clave secreta. La clave es utilizada para generar un pad que luego es combinado con el texto en claro por bloques de 8 bits.
 
-%------------------------------------------------
-\section{Second Section}
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Table}
-\begin{table}
-\begin{tabular}{l l l}
-\toprule
-\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
-\midrule
-Treatment 1 & 0.0003262 & 0.562 \\
-Treatment 2 & 0.0015681 & 0.910 \\
-Treatment 3 & 0.0009271 & 0.296 \\
-\bottomrule
-\end{tabular}
-\caption{Table caption}
-\end{table}
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Theorem}
-\begin{theorem}[Mass--energy equivalence]
-$E = mc^2$
-\end{theorem}
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
-\frametitle{Verbatim}
-\begin{example}[Theorem Slide Code]
-\begin{verbatim}
-\begin{frame}
-\frametitle{Theorem}
-\begin{theorem}[Mass--energy equivalence]
-$E = mc^2$
-\end{theorem}
-\end{frame}\end{verbatim}
+\begin{figure}[hbpt]
+\centering
+\includegraphics[width = 0.8\textwidth]{img/cifradoCaotico.png}
+\end{figure}
 \end{example}
 \end{frame}
 
+\begin{frame}
+\begin{figure}[hbpt]
+\centering
+\includegraphics[width = \textwidth]{img/imagenCifradaRetro.png}
+\caption{Comparación de imagen original con su versión cifrada y su versión con el cifrado mejorado}
+\label{fig:ImagenCifradaRetro}
+\end{figure}
+\end{frame}
+
+\subsection{Compresión fractal}
+\begin{frame}
+\begin{block}{Compresión fractal}
+La idea básica detrás de la compresión fractal de imágenes, es expresar la imagen como un sistema de funciones iteradas (IFS). La imagen puede mostrarse rápidamente, y un zoom proporciona infinitos niveles de detalles fractales (sintéticos).
+
+El problema es cómo generar eficientemente la imagen IFS.
+\end{block}
+
+Hay cuatro características de la tecnología IFS que es necesario conocer para entender su situación actual:
+\begin{itemize}
+\item Es un método de compresión que pierde un poco de información (como JPG).
+\item La resolución al agrandar es poderosa, pero no una forma de comprimir 100:1.
+\item La compresión es lenta, la descompresión es rápida.
+\item La tecnología está patentada.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+La idea es tomar una imagen y llevarla a un sistema de funciones iterado, que podría generar el original. No obstante este problema aun no se ha resuelto.
+
+\textbf{Aproximación a la solución}
+\begin{itemize}[<+(1)->]
+\item En 1988 Barnsley anuncia que resuelve el problema
+\item El programa tardaba unas 100 horas por imagen
+\item Requería una persona guiando el proceso
+\item Comprensión total 10.000:1
+\item Posteriormente desarrolla \textbf{Sistema de Funciones Iteradas Particionado (PIFS)}
+\item Comprime automáticamente una imagen en un \emph{Sistema de Funciones Iterado Particionado}
+\item Una imagen de colores en 24-bit se comprime a 8:1 ó 50:1
+\item Actualmente la técnica de compresión fractal no supera el estándar de compresión de imágenes JPEG ni el JPEG2000.
+\end{itemize}
+\end{frame}
+
+\subsection{Antenas fractales}
+
+\begin{frame}
+En la pasada década, los científicos han comenzado a aplicar los fractales a un tema algo \emph{oscuro}: el diseño de las antenas.
+
+\begin{itemize}
+\item Aunque las antenas parecen simples tienen una base teórica detrás muy compleja.
+\item Los ingenieros de antenas se basan en el método prueba-error
+\item Incluso los mejores y más tecnológicos receptores dependen habitualmente de un hilo que no es mejor que el que usó Marconi para la radio hace cien años
+\end{itemize}
+
+\textbf{Utilidad de los fractales}
+\begin{itemize}
+\item Muchas antenas parecen estar compuestas de una unidad independiente, incluyendo la mayoría de antenas de radar, pero en realidad están compuestas de formaciones de cientos de pequeñas antenas [estructura fractal]
+\item Colocación de las antenitas en forma fractal combina la robustez de una colocación aleatoria y la eficiencia de una ordenación coherente. [Dwight Jaggard]
+\end{itemize}
+
+\begin{center}
+``Los fractales son el puente que llena los hueco", comenta Jaggard, ``tienen un desorden a corto alcance y un orden a largo alcance".
+\end{center}
+\end{frame}
+
+
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Figure}
-Uncomment the code on this slide to include your own image from the same directory as the template .TeX file.
-%\begin{figure}
-%\includegraphics[width=0.8\linewidth]{test}
-%\end{figure}
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
-\frametitle{Citation}
-An example of the \verb|\cite| command to cite within the presentation:\\~
-
-This statement requires citation \cite{p1}.
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{References}
-\footnotesize{
-\begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below
-\bibitem[Smith, 2012]{p1} John Smith (2012)
-\newblock Title of the publication
-\newblock \emph{Journal Name} 12(3), 45 -- 678.
-\end{thebibliography}
-}
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\Huge{\centerline{The End}}
+\Huge{\centerline{FIN}}
 \end{frame}
 
 %----------------------------------------------------------------------------------------

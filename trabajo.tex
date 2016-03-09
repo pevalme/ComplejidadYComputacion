@@ -55,6 +55,10 @@
 \usepackage{float}
 \usepackage{caption}
 \usepackage{titlesec}
+\usepackage{listings}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
 %\usepackage[numbered,framed]{matlab-prettifier}
 \newcommand{\sectionbreak}{\clearpage}
 
@@ -940,7 +944,7 @@ La figura \ref{fig:volumen2D} representa en dos dimensiones la situación recien
 \label{fig:volumen2D}
 \end{figure}
 
-El volumen encerrado por la nueva superficie derrada puede escribirse como
+El volumen encerrado por la nueva superficie cerrada puede escribirse como
 \[V(t+dt)=V(t) + \int_S (f\cdot \text{\textbf{n}}\ dt)\ dA\]
 
 Puesto que
@@ -983,7 +987,7 @@ x'(t) \\ y'(t)
 x(t) \\ y(t)
 \end{array} \right)\]
 
-La traza de la matriz es $τ=-σ-1<0$ y el determinante $Δ = σ(1-r)$. Si $r>1$ el origen es un \emph{punto de silla} pueso que $Δ<0$. Por otro lado, si $r<1$ entonces todas las direcciones nos encontramos ante un sumidero, pues todas las direcciones convergen hacia el origen. En concreto, el origen es un nodo estable para $r<1$.
+La traza de la matriz es $τ=-σ-1<0$ y el determinante $Δ = σ(1-r)$. Si $r>1$ el origen es un \emph{punto de silla} pueso que $Δ<0$. Por otro lado, si $r<1$ entonces nos encontramos ante un sumidero, pues todas las direcciones convergen hacia el origen. En concreto, el origen es un nodo estable para $r<1$.
 
 \item \textbf{Estabilidad global del origen}
 
@@ -1059,14 +1063,31 @@ Una órbita es caótica si:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\lstset{language=Matlab,%
+    %basicstyle=\color{red},
+    breaklines=true,%
+    morekeywords={matlab2tikz},
+    keywordstyle=\color{blue},%
+    morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+    identifierstyle=\color{black},%
+    stringstyle=\color{mylilas},
+    commentstyle=\color{mygreen},%
+    showstringspaces=false,%without this there will be a symbol in the places where there is a space
+    numbers=left,%
+    numberstyle={\tiny \color{black}},% size of the numbers
+    numbersep=9pt, % this defines how far the numbers are from the text
+    emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+    %emph=[2]{word1,word2}, emphstyle=[2]{style},
+}
+
 \section{Aplicaciones}
 \subsection{Generación gráfica de conjuntos de Julia}
 Los siguientes dos ficheros permiten generar, en Octave, conjuntos de Julia creados sobre la ecuación $z=z^2+c$ siendo el valor de la constante elegido libremente por el usuario.
 
-%\lstinputlisting{mjcore.m}
-%\lstinputlisting{Julia.m}
+\lstinputlisting{mjcore.m}
+\lstinputlisting{Julia.m}
 
-Ejecutando el código tal cual se muestra en estos fragmente obtenemos la figure \ref{fig:JuliaOctave}
+Ejecutando el código tal cual se muestra en estos fragmente obtenemos la figura \ref{fig:JuliaOctave}
 
 \begin{figure}[hbtp]
 \centering
@@ -1078,7 +1099,7 @@ Ejecutando el código tal cual se muestra en estos fragmente obtenemos la figure
 \subsection{Ejemplos gráficos de explorar el conjunto de Mandelbrot}
 El siguiente fragmento de código permite dibujar conjuntos de Mandelbrot con Octave
 
-%\lstinputlisting{mandelbrot.m}
+\lstinputlisting{mandelbrot.m}
 
 Ejecutando el fragmento de código tal cual se muestra obtenemos la imagen representada en la figura \ref{fig:MandelbrotOctave}
 \begin{figure}[hbtp]
