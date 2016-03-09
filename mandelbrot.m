@@ -1,14 +1,4 @@
 function M=mandelbrot(cmin,cmax,hpx,niter)
-  % This function computes the iteration:
-  % z=z^2+c
-  % for a set of given constants c.
-  %
-  % For each constant the recursion starts on z=0
-  % and goes up to niter iterations to check if the solution
-  % explotes or not.
-  %
-  % Finally the counter, which tell us if the solution goes to
-  % infinite or not, is printed out.
   vpx=round(hpx*abs(imag(cmax-cmin)/real(cmax-cmin)));
   z=zeros(vpx,hpx);
   [cRe,cIm]=meshgrid(linspace(real(cmin),real(cmax),hpx),
