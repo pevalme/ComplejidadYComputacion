@@ -858,8 +858,47 @@ El movimiento turbulento tiene un \textbf{comportamiento completamente aperiódi
 \end{block}
 \end{frame}
 \subsection{Atractores extraños: caos}
+\begin{frame}
+\begin{definition}[Atractores extraños]
+Llamamos \textbf{atractor extraño} a aquellos con \textbf{dimensión de Hausorff no entera} o fractal. También decimos que un atractor es extraño cuando su dinámica es \textbf{caótica}.
+\end{definition}
+\begin{block}{Propiedades}
+\begin{itemize}
+\item Órbitas irregulares
+\item Las trayectorias divergen exponencialmente
+\item EL espacio de fases es \emph{acotado}.
+\end{itemize}
+\end{block}
+\end{frame}
+\subsubsection{Ejemplos de atractores extraños: Mapa de Henón}
+\begin{frame}
+\begin{definition}[Mapa de Henón]
+Es un sistema dinámico discreto en el tiempo y uno de los más estudiados cuando analizamos comportamientos caóticos.\newline
+$\left.
+\begin{array}{rcl}
+x_{n+1} & = & 1-ax^2_n+y_n\\
+y_{n+1}& =& bx_n
+\end{array}\right\}$\newline
+\end{definition}
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.3\textwidth]{img/henon_clas.png}
+\caption{Atractor de Henón para a=1.4 y b=0.3}
+\label{fig:henon_clas}
+\end{figure}
+\end{frame}
 
-\subsection{Ejemplos de sistemas}
+\begin{frame}
+\begin{block}{Mapa de Henón}
+Supongamos $b=0.3$:
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.6\textwidth]{img/henon_orb.png}
+\caption{Esquema de órbita para el mapa de Henón con b=0.3}
+\label{fig:henon_orb}
+\end{figure}
+\end{block}
+\end{frame}
 
 \subsection{Ecuaciones de Lorenz}
 
