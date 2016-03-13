@@ -77,15 +77,17 @@
 }
 
 \usepackage[spanish]{babel} % Para que aparezcan en español los términos "theorem", "lemma" o "proof"
-\usepackage[utf8x]{inputenc} % Para poder añadir tildes
+\usepackage[utf8x]{inputenc}
 \usepackage{graphicx} % Allows including images
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
 \usepackage{MathUnicode}
 \usepackage{caption}
 \usepackage{tikz}
 \usepackage{pgfplots}
+\usepackage{amsmath}
 
-
+\unaccentedoperators
+\setbeamertemplate{caption}[numbered]
 
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
@@ -280,7 +282,7 @@ Un punto fijo de una función $f$ es aquel tal que
 \end{block}
 
 \begin{itemize}
-\item El punto fijo $x_0=0$ es estable.
+\item El punto fijo $x_0=0$ es inestable.
 \item El punto fijo $x_0=1$ requiere estudio
 \begin{itemize}
 \item Definimos el error
@@ -358,7 +360,7 @@ Cada número complejo tiene asociado un punto del plano y viceversa
 \begin{block}{Conjunto de Julia}
 Familia de conjuntos fractales que se obtienen al estudiar el comportamiento de los números complejos al ser iterados por una función.
 
-Iterando en la siguiente \ref{eq:Julia} con $c$ constante obtenemos un ejemplo de conjunto de Julia
+Iterando en la siguiente ecuación con $c$ constante obtenemos un ejemplo de conjunto de Julia
 
 \begin{equation}
 z_{n+1} = z_n^2+c \text{ siendo } c \text{ un número complejo}
