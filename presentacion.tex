@@ -153,6 +153,17 @@ Universidad Autónoma de Madrid\\ % Your institution for the title page
 \end{multicols}
 \end{frame}
 
+% Mostramos un esquemita para ver que toca presentar
+\AtBeginSection[]
+  {
+     \begin{frame}<beamer>
+     \frametitle{Plan}
+     \begin{multicols}{2}
+     \tableofcontents[currentsection,subsubsectionstyle=show/show/show/shaded]
+     \end{multicols}
+     \end{frame}
+  }
+
 
 \section{Introducción}
 \subsection{Algunas definiciones}
@@ -168,11 +179,11 @@ Dos tipos de sistemas dinámicos:
 \item Continuos
 \end{itemize}
 
-\begin{block}{Teoría del Caos}
+\begin{block}{Teoría del Caos}<2->
 La teoría del Caos es la rama de las Matemáticas que estudia el comportamiento de sistemas dinámicos \textbf{deterministas} muy sensibles a los datos iniciales.
 \end{block}
 
-\begin{example}
+\begin{example}<3->
 Ecuación caótica:
 \[z_{n+1} = f(z_n) \text{ siendo } f(x) = x^2+1\]
 Tomando $n=11$ con un error $ε=10^{-5}+10^{-5}i$ al medir $z_0$ tenemos:
@@ -207,6 +218,7 @@ Si cada símbolo $A$ que se muestra en el dibujo tuviese exactamente la misma fo
 \end{frame}
 
 \section{Sistemas discretos}
+
 \subsection{Ecuaciones en diferencias.}
 
 \begin{frame}
@@ -254,8 +266,8 @@ Refinamiento del modelo exponencial para el crecimiento de una magnitud. El estu
 Modelo matemático que representa el desarrollo del número de individuos de una población a lo largo del tiempo.
 \end{definition}
 
-\textbf{Descripción del modelo}
-\begin{itemize}
+\uncover<2->{\textbf{Descripción del modelo}}
+\begin{itemize}[<+(1)->]
 \item Ratio de crecimiento
 \[R=\frac{x_{n+1}-x_n}{x_n}\]
 
@@ -287,7 +299,7 @@ Un punto fijo de una función $f$ es aquel tal que
 \begin{itemize}
 \item Definimos el error
 \[δ_n = x_n-1\]
-\item Linealizando \eqref{eq:Verhulst} tenemos
+\item Linealizando la ecuación \eqref{eq:Verhulst} tenemos
 \[δ_{n+1} = (1-r)δ_n\]
 \item Vemos que la estabilidad depende de $r$.
 \end{itemize}

@@ -36,6 +36,7 @@
 \usepackage[spanish]{babel}
 \usepackage[utf8x]{inputenc}
 \usepackage{pgfplots}
+\usepackage{mathtools}
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{fancyhdr}
@@ -43,20 +44,21 @@
 \usepackage{changepage}
 \usepackage[font=scriptsize]{caption}
 \usepackage[a4paper,bindingoffset=0.2in,left=1in,right=1in,top=1in,bottom=0.5in,footskip=.25in]{geometry}
-\usepackage{cleveref}
 \usepackage[hidelinks]{hyperref}
 \usepackage{eurosym}
 \usepackage{MathUnicode}
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{pdfsync}
-\usepackage{color,xspace,hyperref}
+\usepackage{xspace,hyperref}
 \usepackage{changepage}
 \usepackage{float}
 \usepackage{caption}
 \usepackage{titlesec}
 \usepackage{listings}
 \usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\usepackage{cleveref}
+
 \definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
 \definecolor{mylilas}{RGB}{170,55,241}
 %\usepackage[numbered,framed]{matlab-prettifier}
@@ -84,8 +86,6 @@
 \newtheorem{example}{Ejemplo}[section]
 
 \renewcommand{\headrulewidth}{0.5pt}
-
-
 
 
 
@@ -291,7 +291,7 @@ Verhulst postuló que esta dependencia del crecimiento con el tamaño de la pobl
 \[R=r(1-x_n)\]
 
 Teniendo esto en cuenta, la población viene definida por la ecuación
-\begin{equation}\label{eq:Verhulst}
+\begin{equation}\label{eqVerhulst}
 x_{n+1} = f(x_n) = (1+r)x_n - rx_n^2
 \end{equation}
 
@@ -302,7 +302,7 @@ El caso $x_0=1$ requiere algo más de estudio.
 \subsubsection{Proceso de Verhulst para $x_0=1$}
 Para estudiar esta situación analizaremos cómo se comportan pequeñas desviaciones de $x_n$ a lo largo del tiempo. Para ello definimos la variable $δ_n$ que representará una desviación en el valor de $x_n$ respecto a 1.
 \[δ_n = x_n-1\]
-Atendiendo a la ecuación \eqref{eq:Verhulst} linealizada\footnote{Puesto que vamos a considerar errores muy pequeños, el término cuadrático es despreciable en comparación al término lineal} podemos ver que esta desviación se propaga de la forma:
+Atendiendo a la ecuación \eqref{eqVerhulst} linealizada\footnote{Puesto que vamos a considerar errores muy pequeños, el término cuadrático es despreciable en comparación al término lineal} podemos ver que esta desviación se propaga de la forma:
 \[δ_{n+1} = (1-r)δ_n\]
 
 lo que muestra que el error decrece en cada período siempre y cuando $0<r<2$. La figura \ref{fig:r1_8} ilustra la variación de la población para $r=1.8$ considerando un valor inicial $x_0=0.1$.
@@ -348,17 +348,17 @@ Los números complejos se representan en un plano: \textbf{el plano complejo}, d
 \begin{definition}[Conjunto de Julia]
 Los \textbf{conjuntos de Julia}, así llamados por el matemático Gaston Julia, son una familia de conjuntos fractales que se obtienen al estudiar el comportamiento de los números complejos al ser iterados por una función.
 
-Son conjuntos de Julia, por ejemplo, los formados por la familia cuadrática definida por la ecuación de recurrencia vista en el ejemplo \ref{example:Julia}:
+Son conjuntos de Julia, por ejemplo, los formados por la familia cuadrática definida poeqr la ecuación de recurrencia vista en el ejemplo \ref{example:Julia}:
 
-\begin{equation}
+\begin{equation}\label{eq:Julia}
 z_{n+1} = z_n^2+c \text{ siendo } c \text{ un número complejo}
-\end{equation}\label{eq:Julia}
+\end{equation}
 
 \end{definition}
 
 Para explicar los conjuntos de Julia nos basaremos en el ejemplo que acabamos de comentar, aunque puede realizarse una construcción equivalente con muchas otras funciones.
 
-El conjunto de Julia que se obtiene a partir de esta función se denota \textbf{J$_c$}. Para construirlo, partiendo de un punto cualquiera $z_0$, aplicamos la ecuación \ref{eq:Julia} de manera iterativa obteniendo una serie de puntos del plano:
+El conjunto de Julia que se obtiene a partir de esta función se denota \textbf{J$_c$}. Para construirlo, partiendo de un punto cualquiera $z_0$, aplicamos la ecuación \eqref{eq:Julia} de manera iterativa obteniendo una serie de puntos del plano:
 \[\begin{array}{l}
 z_0=z_0\\
 z_1=z_0^2+c \\
