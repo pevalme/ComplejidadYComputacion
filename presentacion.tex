@@ -95,7 +95,7 @@
 
 \title[CyC]{Teoría del Caos y fractales} % The short title appears at the bottom of every slide, the full title is only on the title page
 
-\author[]{Miguel Ángel González-Gallego \and Elena Gutiérrez \and Pedro Valero \and Alejando Villegas} % Your name
+\author[]{Miguel Ángel González-Gallego \and Elena Gutiérrez \and Pedro Valero \and Alejandro Villegas} % Your name
 \institute[UAM] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
 {
 Universidad Autónoma de Madrid\\ % Your institution for the title page
@@ -188,6 +188,7 @@ Ecuación caótica:
 \[z_{n+1} = f(z_n) \text{ siendo } f(x) = x^2+1\]
 Tomando $n=11$ con un error $ε=10^{-5}+10^{-5}i$ al medir $z_0$ tenemos:
 \[f^{11}(ε)=1.4 \cdot 10^{181} + 1.13\cdot 10^{174}i\]
+\label{example:error}
 \end{example}
 \end{frame}
 
@@ -816,7 +817,7 @@ podemos ver fácilmente que su plano de fases será el mostrado en la figura \re
 \caption{Plano de fases asociado al sistema descrito en el ejemplo}
 \label{fig:planoFasesAtractorEjemplo}
 \end{figure}
-El \textbf{atractor} sería el conjunto \[A=\{(\pm 1, 0)\}\]
+Tendríamos dos \textbf{atractores} \[A_1=\{(+ 1, 0)\}\]\[A_2=\{(- 1, 0)\}\]
 \end{example}
 \end{frame}
 \begin{frame}
@@ -1076,7 +1077,7 @@ Informalmente, diremos que el \textbf{número de Lyapunov} es la tasa o razón m
 \end{itemize}
 
 \begin{block}{Exponente de Lyapunov (definición formal)}
-Dado un dato inicial $x_0$ consideramos un dato cercano $x_0+ε_0$, como ya hicimos en el ejemplo \ref{example:Julia} siendo la separación $ε_0$ extremadamente pequeña.
+Dado un dato inicial $x_0$ consideramos un dato cercano $x_0+ε_0$, como ya hicimos en el ejemplo \ref{example:error} siendo la separación $ε_0$ extremadamente pequeña.
 
 Sea $ε_n$ la separación tras $n$ iteraciones, si se da la relación $|ε_n|\approx e^{n\cdot λ}|ε_0|$, decimos que λ es el \textbf{exponente de Lyapunov}.
 \end{block}
